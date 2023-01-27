@@ -16,6 +16,9 @@ const Header: React.FunctionComponent<IHeaderProps> = () => {
         <Navbar bg="light" variant="light">
             <Container>
                 <Navbar.Brand>
+                <img className="esg-logo" src="/esg_logo.png" alt="tree,scale,money logo"></img>
+                </Navbar.Brand>
+                <Navbar.Brand>
                     ESG Invested
                 </Navbar.Brand>
             </Container>

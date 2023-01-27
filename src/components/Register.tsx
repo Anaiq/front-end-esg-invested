@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { useEffect, useState } from 'react';
+import Button from 'react-bootstrap/Button';
 import "./Register.css";
 
 
@@ -17,14 +18,17 @@ const Register = (props:any) => {
 
     return (
         <div className="reg-form-container">
-            <form onClick={handleSubmit}>
+            <h2>Login</h2>
+            <form className="reg-form" onClick={handleSubmit}>
                 <label htmlFor="text">Username</label>
                 <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" name="username"></input>
                 <label htmlFor="password">Password</label>
                 <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="********" name="password"></input>
-                <button type="submit">Login</button>
+                {/* <button type="submit">Register</button> */}
+                <Button variant="light" size="sm" type="submit">Register</Button>
             </form>
-            <button onClick={() => props.onFormSwitch('login')}>Already Have Account? Login Here.</button>
+            {/* <button onClick={() => props.onFormSwitch('login')}>Already Have Account? Login Here.</button> */}
+            <Button variant="link" onClick={() => props.onFormSwitch('login')}>Already Have Account? Login Here.</Button>
         </div>
 
     )
