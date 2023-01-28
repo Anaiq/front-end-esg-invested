@@ -18,7 +18,7 @@ const Register = (props:any) => {
 
     return (
         <div className="reg-form-container">
-            <h2>Login</h2>
+            <h2>Registration</h2>
             <form className="reg-form" onClick={handleSubmit}>
                 <label htmlFor="text">Username</label>
                 <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Username" name="username"></input>
