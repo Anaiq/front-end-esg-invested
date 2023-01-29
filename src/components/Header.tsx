@@ -16,11 +16,10 @@ const Header: React.FunctionComponent<IHeaderProps> = () => {
         <Navbar bg="light" variant="light">
             <Container>
                 <Navbar.Brand>
-                <img className="esg-logo" src="/esg_logo.png" alt="tree,scale,money logo"></img>
-                </Navbar.Brand>
-                <Navbar.Brand>
-                    ESG Invested
-                </Navbar.Brand>
+                <img  src="images/esg_logo.png" alt="tree,scale,money logo" width="80" height="40"  className="d-inline-block align-top">
+                </img>
+                ESG Invested
+                </Navbar.Brand>    
             </Container>
         </Navbar>
     );
