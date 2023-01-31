@@ -11,7 +11,7 @@ interface IHeaderProps {
 
 }
 
-const Header: React.FunctionComponent<IHeaderProps> = () => {
+const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     return (
         <Navbar bg="light" variant="light">
             <Container>
