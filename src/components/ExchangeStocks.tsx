@@ -1,27 +1,20 @@
 import * as React from 'react';
+import { ExchangeStock } from '../models/exchangeStockModel'; //importing the Exchange interface
 import Button from 'react-bootstrap/Button'
 
-
-export interface ExchangeStock {
-        exchange_id: number,
-        stockSymbol: string,
-        companyName: string,
-        currentStockPrice: string,
-        environmentScore: string,
-        socialScore: string,
-        governanceScore: string
-    
+interface IEStockProps {
+    exchangeStock: ExchangeStock
 }
 
-const ExchangeStocks: React.FunctionComponent<ExchangeStock> = (ExchangeStock) => {
+const ExchangeStocks: React.FunctionComponent<IEStockProps> = ({exchangeStock}) => {
     return (
         <tr>
-            <td>{ExchangeStock.stockSymbol}</td>
-            <td>{ExchangeStock.companyName}</td>
-            <td>{ExchangeStock.currentStockPrice}</td>
-            <td>{ExchangeStock.environmentScore}</td>
-            <td>{ExchangeStock.socialScore}</td>
-            <td>{ExchangeStock.governanceScore}</td>
+            <td>{exchangeStock.stockSymbol}</td>
+            <td>{exchangeStock.companyName}</td>
+            <td>{exchangeStock.currentStockPrice}</td>
+            <td>{exchangeStock.environmentRating}</td>
+            <td>{exchangeStock.socialRating}</td>
+            <td>{exchangeStock.governanceRating}</td>
             <td></td>
             <td><Button as="input" type="submit" value="Buy" variant="secondary"></Button></td>
         </tr>

@@ -1,12 +1,13 @@
 import * as React from 'react';
 import Table from 'react-bootstrap/Table';
-import ExchangeStocks, {ExchangeStock} from './ExchangeStocks';
+import { ExchangeStock } from '../models/exchangeStockModel';
+import ExchangeStocks from './ExchangeStocks';
 
-interface ExchangeList {
-    exchanges: ExchangeStock[]
+interface IExchangeListProps {
+    exchangeStocks: ExchangeStock[]
 }
 
-const ExchangeLists: React.FunctionComponent<ExchangeList> = ({exchanges}) => {
+const ExchangeLists: React.FunctionComponent<IExchangeListProps> = ({exchangeStocks}) => {
     return (
         <section>
             <h2> ESG Stock Exchange</h2>
@@ -22,7 +23,7 @@ const ExchangeLists: React.FunctionComponent<ExchangeList> = ({exchanges}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {exchanges.map((exchange) => (<ExchangeStocks {...exchange}/>))}
+                    {exchangeStocks.map((exchangeStock) => (<ExchangeStocks exchangeStock={exchangeStock} {...exchangeStock}/>))}
                 </tbody>
             </Table>
             <ul>
