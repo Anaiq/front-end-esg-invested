@@ -6,100 +6,12 @@ import './App.css';
 import Register from './components/Register'; 
 import Login from './components/Login'; 
 import Header from './components/Header'; 
+import Footer from './components/Footer';
 import ExchangeLists from './components/ExchangeLists';
+import About from './components/About';
 
-// const exchangeStocksList = [
-  //     {
-  //       exchange_id: 1,
-  //       stockSymbol: "AAPL",
-  //       companyName: 'Apple Inc.',
-  //       currentStockPrice: "141.55",
-  //       environmentRating: "BB",
-  //       socialRating: "B",
-  //       governanceRating: "B"
-  //     },
-  //     {
-  //       exchange_id: 2,
-  //       stockSymbol: "MSFT",
-  //       companyName: 'Microsoft Corporation',
-  //       currentStockPrice: "239.89",
-  //       environmentRating: "AA",
-  //       socialRating: "BBB",
-  //       governanceRating: "BB"
-  //     },
-  //     {
-  //       exchange_id: 3,
-  //       stockSymbol: "AMZN",
-  //       companyName: 'Amazon.com Inc.',
-  //       currentStockPrice: "96.83",
-  //       environmentRating: "AA",
-  //       socialRating: "BB",
-  //       governanceRating: "BBB"
-  //     },
-  //     {
-  //       exchange_id: 4,
-  //       stockSymbol: "GOOGL",
-  //       companyName: 'Alphabet Inc. Class A',
-  //       currentStockPrice: "95.00",
-  //       environmentRating: "BB",
-  //       socialRating: "BB",
-  //       governanceRating: "BB"
-  //     },
-  //     {
-  //       exchange_id: 5,
-  //       stockSymbol: "BRK_B",
-  //       companyName: 'Berkshire Hathaway Inc. Class B',
-  //       currentStockPrice: "311.50",
-  //       environmentRating: "B",
-  //       socialRating: "B",
-  //       governanceRating: "B"
-  //     },
-  //     {
-  //       exchange_id: 6,
-  //       stockSymbol: "GOOG",
-  //       companyName: 'Alphabet Inc. Class C',
-  //       currentStockPrice: "96.54",
-  //       environmentRating: "B",
-  //       socialRating: "BB",
-  //       governanceRating: "BB"
-  //     },
-  //     {
-  //       exchange_id: 7,
-  //       stockSymbol: "NVDA",
-  //       companyName: 'NVIDIA Corporation',
-  //       currentStockPrice: "192.86",
-  //       environmentRating: "A",
-  //       socialRating: "BB",
-  //       governanceRating: "BB"
-  //     },
-  //     {
-  //       exchange_id: 8,
-  //       stockSymbol: "XOM",
-  //       companyName: 'Exxon Mobile Corporation',
-  //       currentStockPrice: "113.93",
-  //       environmentRating: "A",
-  //       socialRating: "BB",
-  //       governanceRating: "BB"
-  //     },
-  //     {
-  //       exchange_id: 9,
-  //       stockSymbol: "UNH",
-  //       companyName: 'UnitedHealth Group Incorporated',
-  //       currentStockPrice: "492.00",
-  //       environmentRating: "A",
-  //       socialRating: "BB",
-  //       governanceRating: "BB"
-  //     },
-  //     {
-  //       exchange_id: 10,
-  //       stockSymbol: "JNJ",
-  //       companyName: 'Johnson & Johnson',
-  //       currentStockPrice: "169.46",
-  //       environmentRating: "A",
-  //       socialRating: "BB",
-  //       governanceRating: "BB"
-  //     }      
-  //   ];
+
+
   const kBaseUrl = "http://127.0.0.1:5000/";
 
   // convert from API functions goes here:
@@ -180,13 +92,14 @@ function App() {
         <Header/>
       </header>
       <main className="main">
-        {
+        {/* {
           currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-        }
-        <ExchangeLists exchangeStocks={exchanges}/>
+        } */}
+        {/* <ExchangeLists exchangeStocks={exchanges}/> */}
+        <About />
       </main>
       <footer>
-        {/* <Footer/> */}
+        <Footer/>
       </footer>
       
     </div>

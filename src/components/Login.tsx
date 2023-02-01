@@ -5,8 +5,6 @@ import "./Login.css";
 import Button from 'react-bootstrap/Button';
 
 
-
-
 const Login= (props:any) => {
 
     const [username, setUsername] = useState('');
