@@ -26,22 +26,7 @@ const ExchangeLists: React.FunctionComponent<IExchangeListProps> = ({exchangeSto
                     {exchangeStocks.map((exchangeStock) => (<ExchangeStocks exchangeStock={exchangeStock} {...exchangeStock}/>))}
                 </tbody>
             </Table>
-            <ul>
-                
-                {/* <li>Amazon.com Inc.</li>
-                <li>Alphabet Inc. Class A</li>
-                <li>Berkshire Hathaway Inc. Class B</li>
-                <li>Alphabet Inc. Class C</li>
-                <li>NVIDIA Corporation</li>
-                <li>Exxon Mobil Corporation</li>
-                <li>UnitedHealth Group Incorporated</li>
-                <li>Johnson & Johnson</li>
-                <li>JPMorgan Chase & Co.</li>
-                <li>Amazon.com Inc.</li>
-                <li>Amazon.com Inc.</li> */}
-            </ul>
         </section>
-        
     );
 };
 

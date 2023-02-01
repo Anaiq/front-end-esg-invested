@@ -11,7 +11,6 @@ interface IAboutProps {
 const About: React.FunctionComponent<IAboutProps> = (props) => {
     return (
         <div>
-            <Header/>
             <Container fluid="md">
                 About Page
                 <Row>
@@ -39,7 +38,6 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
                     <Col><a href="https://www.investopedia.com/terms/s/sri.asp">What Is a Socially Responsible Investment (SRI)?</a></Col>
                 </Row>
             </Container>
-            {/* <Footer /> */}
         </div>
     );
 };

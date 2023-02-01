@@ -5,10 +5,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Register from './components/Register'; 
 import Login from './components/Login'; 
+import About from './components/About';
 import Header from './components/Header'; 
 import Footer from './components/Footer';
 import ExchangeLists from './components/ExchangeLists';
-import About from './components/About';
+import PortfolioLists from './components/PortfolioLists';
 
 
 
@@ -91,12 +92,14 @@ function App() {
       <header>
         <Header/>
       </header>
+      {/* React Router section to wrap around this part */}
       <main className="main">
         {/* {
           currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
         } */}
         {/* <ExchangeLists exchangeStocks={exchanges}/> */}
-        <About />
+        <PortfolioLists portfolioStocks={portfolios}/>
+        {/* <About /> */}
       </main>
       <footer>
         <Footer/>
