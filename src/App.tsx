@@ -11,7 +11,7 @@ import PortfolioHome from './components/PortfolioHome';
 import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import ExchangeLists from './components/ExchangeLists';
-import PortfolioLists from './components/PortfolioLists';
+
 
 
 
@@ -70,6 +70,10 @@ function App() {
     setCurrentForm(formName);
   }
 
+  const [investorLogin, setInvestorLogin] = useState("False");
+
+  const [portfolios, setPortfolios] = useState([]);
+
   const [exchanges, setExchanges] = useState([]); 
   // create a helper function above the useEffect to keep the useEffect small
   const getAllExchanges = () => {
@@ -82,12 +86,9 @@ function App() {
         console.log(error.message);
       });
   };
-    
-  const [portfolios, setPortfolios] = useState([]);
 
-  const [investor, setInvestor] = useState();
+  const [transactions, settransactions] = useState([]);
   
-
   // then have to modify the useEffect
   useEffect(() => {
     getAllExchanges();
@@ -98,11 +99,11 @@ function App() {
           <Routes>
               <Route path="/" element={<Login />}></Route>
               <Route path="register" element={<Register />}></Route>
-              <Route path="portfolio" element={<PortfolioHome />}></Route>
+              <Route path="portfolio" element={<PortfolioHome portfolios={portfolios}/>}></Route>
               <Route path="/about" element={<About />}></Route>
               <Route path="esg-goal-planner" element={<ESGGoalSet />}></Route>
               <Route path="invest" element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
-              {/* <Route path="transactions" element={}></Route> */}
+              {/* <Route path="transactions" element=TransactionsLists transactions={transactions}></Route> */}
               <Route path="/logout" element={<Logout />}></Route>
           </Routes>
         </BrowserRouter>

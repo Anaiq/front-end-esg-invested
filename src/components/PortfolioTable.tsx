@@ -4,12 +4,12 @@ import { Investor } from '../models/investorModel'; //importing the Investor int
 import PortfolioStocks from './PortfolioStocks';
 import { PortfolioStock } from '../models/portfolioStockModel';
 
-interface IPortfolioListProps {
+interface IPortfolioTableProps {
     portfolioStocks: PortfolioStock[],
     investor?: Investor
 }
 
-const PortfolioLists: React.FunctionComponent<IPortfolioListProps> = ({portfolioStocks, investor}) => {
+const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks, investor}) => {
     return (
         <section>
             <h2> Happy Investing {investor ? `, ${investor.investorName}` : "Investor"}!</h2>

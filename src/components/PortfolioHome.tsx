@@ -2,11 +2,16 @@ import * as React from 'react';
 import Header from './Header'; 
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
+import {Investor} from '../models/investorModel';
+import PortfolioTable from './PortfolioTable';
+import PortfolioStocks from './PortfolioStocks';
+import { PortfolioStock } from '../models/portfolioStockModel';
 
 interface IPortfolioHomeProps {
+    portfolios: any;
 }
 
-const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = (props) => {
+const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios}) => {
     return (
         <section>
             <header>
@@ -14,6 +19,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = (props) => {
             </header>
             <main className="main">
                 <h2>PORTFOLIO PAGE</h2>
+                <PortfolioTable portfolioStocks={portfolios}/>
             </main>
             <footer>
                 <Footer/>
