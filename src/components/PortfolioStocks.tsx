@@ -1,28 +1,25 @@
 import * as React from 'react';
-import { Investor } from '../models/investorModel'; //importing the Investor interface
-import { Transaction } from '../models/transactionModel'; //importing the Investor interface
-import { Stock } from '../models/stockModel'; //importing the Investor interface
+import { PortfolioStock } from '../models/portfolioStockModel';
 import Button from 'react-bootstrap/Button'
 
 
 interface IPStockProps {
-    transaction:Transaction,
-    stock:Stock
+    portfolioStock: PortfolioStock
 }
 
-const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({transaction, stock}) => {
+const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock}) => {
     return (
         <tr>
-            <td>{transaction.stockSymbol}</td>
-            <td>{transaction.companyName}</td>
-            <td>{transaction.currentStockPrice}</td>
-            <td>{transaction.numberStockShares}</td>
-            <td>{transaction.transactionTotalValue}</td>
-            <td>{transaction.transactionType}</td>
-            <td>{transaction.transactionTime}</td>
-            <td>{stock.environmentRating}</td>
-            <td>{stock.socialRating}</td>
-            <td>{stock.governanceRating}</td>
+            <td>{portfolioStock.stockSymbol}</td>
+            <td>{portfolioStock.companyName}</td>
+            <td>{portfolioStock.currentStockPrice}</td>
+            <td>{portfolioStock.numberStockShares}</td>
+            <td>{portfolioStock.transactionTotalValue}</td>
+            <td>{portfolioStock.transactionType}</td>
+            <td>{portfolioStock.transactionTime}</td>
+            <td>{portfolioStock.environmentRating}</td>
+            <td>{portfolioStock.socialRating}</td>
+            <td>{portfolioStock.governanceRating}</td>
             
             <td><Button as="input" type="submit" value="Buy" variant="secondary"></Button></td>
             <td><Button as="input" type="submit" value="Sell" variant="secondary"></Button></td>

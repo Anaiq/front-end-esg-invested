@@ -68,7 +68,7 @@ function App() {
     setCurrentForm(formName);
   }
 
-  const [exchanges, setExchanges] = useState([]);
+  const [exchanges, setExchanges] = useState([]); 
   // create a helper function above the useEffect to keep the useEffect small
   const getAllExchanges = () => {
     return getAllExchangesApi()
@@ -80,6 +80,11 @@ function App() {
         console.log(error.message);
       });
   };
+    
+  const [portfolios, setPortfolios] = useState([]);
+
+  const [investor, setInvestor] = useState();
+  
 
   // then have to modify the useEffect
   useEffect(() => {
@@ -87,19 +92,18 @@ function App() {
   }, []);
 
   return (
-
     <div className="App">
       <header>
         <Header/>
       </header>
       {/* React Router section to wrap around this part */}
       <main className="main">
-        {/* {
+        {
           currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-        } */}
-        {/* <ExchangeLists exchangeStocks={exchanges}/> */}
-        <PortfolioLists portfolioStocks={portfolios}/>
-        {/* <About /> */}
+        } 
+        {/* <ExchangeLists exchangeStocks={exchanges}/>
+        <PortfolioLists portfolioStocks={portfolios} investor={investor}/>
+        <About /> */}
       </main>
       <footer>
         <Footer/>

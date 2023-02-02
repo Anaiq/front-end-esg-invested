@@ -1,21 +1,18 @@
 import * as React from 'react';
 import Table from 'react-bootstrap/Table';
+import { Investor } from '../models/investorModel'; //importing the Investor interface
 import PortfolioStocks from './PortfolioStocks';
-import { Investor } from '../models/investorModel';
-import { Transaction } from '../models/transactionModel';
-import { Stock } from '../models/stockModel';
+import { PortfolioStock } from '../models/portfolioStockModel';
 
 interface IPortfolioListProps {
-    portfolioStocks: any[],
-    investor:Investor,
-    transaction:Transaction,
-    stock:Stock
+    portfolioStocks: PortfolioStock[],
+    investor?: Investor
 }
 
 const PortfolioLists: React.FunctionComponent<IPortfolioListProps> = ({portfolioStocks, investor}) => {
     return (
         <section>
-            <h2> Happy Investing, {investor.investorName}!</h2>
+            <h2> Happy Investing {investor ? `, ${investor.investorName}` : "Investor"}!</h2>
             <Table striped>
                 <thead>
                     <tr>
