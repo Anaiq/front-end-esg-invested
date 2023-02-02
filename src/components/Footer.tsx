@@ -6,7 +6,7 @@ interface IFooterProps {
 const Footer: React.FunctionComponent<IFooterProps> = (props) => {
     return (
         <div >
-            <section className="shadow ml-2">
+            <section>
                 MIT License &copy; QP, 2023
             </section>
         </div>

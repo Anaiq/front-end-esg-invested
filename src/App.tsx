@@ -1,13 +1,13 @@
 import React from 'react';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Register from './components/Register'; 
 import Login from './components/Login'; 
+import Home from './components/Home';
 import About from './components/About';
-import Header from './components/Header'; 
-import Footer from './components/Footer';
 import ExchangeLists from './components/ExchangeLists';
 import PortfolioLists from './components/PortfolioLists';
 
@@ -92,24 +92,32 @@ function App() {
   }, []);
 
   return (
-    <div className="App">
-      <header>
-        <Header/>
-      </header>
-      {/* React Router section to wrap around this part */}
-      <main className="main">
-        {
-          currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-        } 
-        {/* <ExchangeLists exchangeStocks={exchanges}/>
-        <PortfolioLists portfolioStocks={portfolios} investor={investor}/>
-        <About /> */}
-      </main>
-      <footer>
-        <Footer/>
-      </footer>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />}></Route>
+      <Route path="/about" element={<About />}></Route>
+      {/* <Route path="exchange" element={<ExchangeLists  />}></Route> */}
+    </Routes>
+  </BrowserRouter>
+    
+    // <div className="App">
+    //   <header>
+    //     <Header/>
+    //   </header>
+    //   {/* React Router section to wrap around this part */}
+    //   <main className="main">
+    //     {
+    //       currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
+    //     } 
+    //     {/* <ExchangeLists exchangeStocks={exchanges}/>
+    //     <PortfolioLists portfolioStocks={portfolios} investor={investor}/>
+    //     <About /> */}
+    //   </main>
+    //   <footer>
+    //     <Footer/>
+    //   </footer>
       
-    </div>
+    // </div>
   );
 }
 
