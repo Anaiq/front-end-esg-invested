@@ -6,7 +6,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Register from './components/Register'; 
 import Login from './components/Login'; 
-import Home from './components/Home';
+import Logout from './components/Logout';
+import PortfolioHome from './components/PortfolioHome';
 import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import ExchangeLists from './components/ExchangeLists';
@@ -92,33 +93,36 @@ function App() {
     getAllExchanges();
   }, []);
 
-  return (
+  return (    
     <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<Home />}></Route>
-      <Route path="/about" element={<About />}></Route>
-      <Route path="esg-goal-planner" element={<ESGGoalSet />}></Route>
-      <Route path="exchange" element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
-    </Routes>
-  </BrowserRouter>
-    
+          <Routes>
+              <Route path="/" element={<Login />}></Route>
+              <Route path="register" element={<Register />}></Route>
+              <Route path="portfolio" element={<PortfolioHome />}></Route>
+              <Route path="/about" element={<About />}></Route>
+              <Route path="esg-goal-planner" element={<ESGGoalSet />}></Route>
+              <Route path="invest" element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
+              {/* <Route path="transactions" element={}></Route> */}
+              <Route path="/logout" element={<Logout />}></Route>
+          </Routes>
+        </BrowserRouter>
+
     // <div className="App">
     //   <header>
     //     <Header/>
     //   </header>
-    //   {/* React Router section to wrap around this part */}
+      
     //   <main className="main">
     //     {
     //       currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
     //     } 
-    //     {/* <ExchangeLists exchangeStocks={exchanges}/>
-    //     <PortfolioLists portfolioStocks={portfolios} investor={investor}/>
-    //     <About /> */}
+        
+    //     {/* <PortfolioLists portfolioStocks={portfolios} investor={investor}/> */}
+        
     //   </main>
     //   <footer>
     //     <Footer/>
     //   </footer>
-      
     // </div>
   );
 }

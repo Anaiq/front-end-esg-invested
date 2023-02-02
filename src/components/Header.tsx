@@ -23,24 +23,24 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                 </Navbar.Brand> 
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
-                        <Nav defaultActiveKey="/home" as="ul">
+                        <Nav defaultActiveKey="/portfolio" as="ul">
                             <Nav.Item as="li">
-                            <Link to='/' className='btn'><Nav.Link href="/home">Home</Nav.Link></Link>
+                            <Link to='/portfolio' className='btn'><Nav.Link href="/portfolio" eventKey="portfolio">Portfolio</Nav.Link></Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/about' className='btn'><Nav.Link eventKey="about">About</Nav.Link></Link>
+                                <Link to='/about' className='btn'><Nav.Link href="/about" eventKey="about">About</Nav.Link></Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/esg-goal-planner' className='btn'><Nav.Link eventKey="esg-goal-planner">ESG Goal Planner</Nav.Link></Link>
+                                <Link to='/esg-goal-planner' className='btn'><Nav.Link href="/esg-goal-planner"eventKey="esg-goal-planner">ESG Goal Planner</Nav.Link></Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/about' className='btn'><Nav.Link eventKey="invest">Invest</Nav.Link></Link>
+                                <Link to='/invest' className='btn'><Nav.Link href="/invest" eventKey="invest">Invest</Nav.Link></Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/about' className='btn'><Nav.Link eventKey="Transactions">Transactions</Nav.Link></Link>
+                                <Link to='/transactions' className='btn'><Nav.Link href="/transactions" eventKey="transactions">Transactions</Nav.Link></Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/about' className='btn'><Nav.Link eventKey="logout">Logout</Nav.Link></Link>
+                                <Link to='/logout' className='btn'><Nav.Link href="/logout" eventKey="logout">Logout</Nav.Link></Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Text>
