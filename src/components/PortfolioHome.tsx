@@ -4,8 +4,7 @@ import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import {Investor} from '../models/investorModel';
 import PortfolioTable from './PortfolioTable';
-import PortfolioStocks from './PortfolioStocks';
-import { PortfolioStock } from '../models/portfolioStockModel';
+
 
 interface IPortfolioHomeProps {
     portfolios: any;

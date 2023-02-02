@@ -12,7 +12,7 @@ interface IPortfolioTableProps {
 const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks, investor}) => {
     return (
         <section>
-            <h2> Happy Investing {investor ? `, ${investor.investorName}` : "Investor"}!</h2>
+            <h2> Happy Investing, {investor ? `, ${investor.investorName}` : "Investor"}!</h2>
             <Table striped>
                 <thead>
                     <tr>

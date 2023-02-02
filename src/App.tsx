@@ -11,6 +11,7 @@ import PortfolioHome from './components/PortfolioHome';
 import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import ExchangeLists from './components/ExchangeLists';
+import Transactions from './components/Transactions'
 
 
 
@@ -61,7 +62,20 @@ const getAllExchangesApi = () => {
       console.log(error.data);
     });
 };
-  
+
+// get all stock on the exchange request
+const getAllTransactionsApi = () => {
+  return axios
+    .get(`${kBaseUrl}/transactions`)
+    .then((response) => {
+      console.log(response.data);
+      // return response.data;
+      return response.data.map(convertTransactionFromApi);
+    })
+    .catch((error) => {
+      console.log(error.data);
+    });
+};
 
 function App() {
   const [currentForm, setCurrentForm] = useState('login');
@@ -71,10 +85,10 @@ function App() {
   }
 
   const [investorLogin, setInvestorLogin] = useState("False");
-
   const [portfolios, setPortfolios] = useState([]);
-
   const [exchanges, setExchanges] = useState([]); 
+  const [transactions, setTransactions] = useState([]);
+
   // create a helper function above the useEffect to keep the useEffect small
   const getAllExchanges = () => {
     return getAllExchangesApi()
@@ -86,12 +100,27 @@ function App() {
         console.log(error.message);
       });
   };
-
-  const [transactions, settransactions] = useState([]);
   
   // then have to modify the useEffect
   useEffect(() => {
     getAllExchanges();
+  }, []);
+
+  // create a helper function above the useEffect to keep the useEffect small
+  const getAllTransactions = () => {
+    return getAllTransactionsApi()
+      .then((transactions) => {
+        setTransactions(transactions);
+        console.log(transactions);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  
+  // then have to modify the useEffect
+  useEffect(() => {
+    getAllTransactions();
   }, []);
 
   return (    
@@ -103,7 +132,7 @@ function App() {
               <Route path="/about" element={<About />}></Route>
               <Route path="esg-goal-planner" element={<ESGGoalSet />}></Route>
               <Route path="invest" element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
-              {/* <Route path="transactions" element=TransactionsLists transactions={transactions}></Route> */}
+              <Route path="transactions" element={<Transactions transactions={transactions} />}></Route>
               <Route path="/logout" element={<Logout />}></Route>
           </Routes>
         </BrowserRouter>
