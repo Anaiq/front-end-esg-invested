@@ -8,6 +8,7 @@ import Register from './components/Register';
 import Login from './components/Login'; 
 import Home from './components/Home';
 import About from './components/About';
+import ESGGoalSet from './components/ESGGoalSet';
 import ExchangeLists from './components/ExchangeLists';
 import PortfolioLists from './components/PortfolioLists';
 
@@ -96,7 +97,8 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />}></Route>
       <Route path="/about" element={<About />}></Route>
-      {/* <Route path="exchange" element={<ExchangeLists  />}></Route> */}
+      <Route path="esg-goal-planner" element={<ESGGoalSet />}></Route>
+      <Route path="exchange" element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
     </Routes>
   </BrowserRouter>
     
