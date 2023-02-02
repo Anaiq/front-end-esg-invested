@@ -10,5 +10,4 @@ export interface Transaction {
     transactionTime: string,
     investorId: number,
     stockId:number
-
 };

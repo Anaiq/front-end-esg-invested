@@ -107,21 +107,21 @@ function App() {
   }, []);
 
   // create a helper function above the useEffect to keep the useEffect small
-  const getAllTransactions = () => {
-    return getAllTransactionsApi()
-      .then((transactions) => {
-        setTransactions(transactions);
-        console.log(transactions);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+  // const getAllTransactions = () => {
+  //   return getAllTransactionsApi()
+  //     .then((transactions) => {
+  //       setTransactions(transactions);
+  //       console.log(transactions);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // };
   
-  // then have to modify the useEffect
-  useEffect(() => {
-    getAllTransactions();
-  }, []);
+  // // then have to modify the useEffect
+  // useEffect(() => {
+  //   getAllTransactions();
+  // }, []);
 
   return (    
     <BrowserRouter>

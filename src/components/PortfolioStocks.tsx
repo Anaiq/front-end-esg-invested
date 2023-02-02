@@ -9,21 +9,23 @@ interface IPStockProps {
 
 const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock}) => {
     return (
-        <tr>
-            <td>{portfolioStock.stockSymbol}</td>
-            <td>{portfolioStock.companyName}</td>
-            <td>{portfolioStock.currentStockPrice}</td>
-            <td>{portfolioStock.numberStockShares}</td>
-            <td>{portfolioStock.transactionTotalValue}</td>
-            <td>{portfolioStock.transactionType}</td>
-            <td>{portfolioStock.transactionTime}</td>
-            <td>{portfolioStock.environmentRating}</td>
-            <td>{portfolioStock.socialRating}</td>
-            <td>{portfolioStock.governanceRating}</td>
-            
-            <td><Button as="input" type="submit" value="Buy" variant="secondary"></Button></td>
-            <td><Button as="input" type="submit" value="Sell" variant="secondary"></Button></td>
-        </tr>
+        <section>
+            <tr>
+                <td>{portfolioStock.stockSymbol}</td>
+                <td>{portfolioStock.companyName}</td>
+                <td>{portfolioStock.currentStockPrice}</td>
+                <td>{portfolioStock.numberStockShares}</td>
+                <td>{portfolioStock.transactionTotalValue}</td>
+                <td>{portfolioStock.transactionType}</td>
+                <td>{portfolioStock.transactionTime}</td>
+                <td>{portfolioStock.environmentRating}</td>
+                <td>{portfolioStock.socialRating}</td>
+                <td>{portfolioStock.governanceRating}</td>
+                
+                <td><Button as="input" type="submit" value="Buy" variant="secondary"></Button></td>
+                <td><Button as="input" type="submit" value="Sell" variant="secondary"></Button></td>
+            </tr>
+        </section>
     );
 };
 
