@@ -12,7 +12,7 @@ interface ITransactionsHistoryProps {
 
 const TransactionsHistoryTable: React.FunctionComponent<ITransactionsHistoryProps> = ({transactionStocks, investor}) => {
     return (
-        <section>
+        <div>
             <h2>{investor? `${investor.investorName}`: "Investor"}'s Transactions History</h2>
             <Table striped>
                 <thead>
@@ -30,7 +30,7 @@ const TransactionsHistoryTable: React.FunctionComponent<ITransactionsHistoryProp
                     {transactionStocks.map((transactionStock) => (<TransactionStocks transactionStock={transactionStock} {...transactionStock}/>))}
                 </tbody>
             </Table>
-        </section>
+        </div>
     );
 };
 

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Header from './Header'; 
 import Footer from './Footer';
-import { Link } from 'react-router-dom';
 import TransactionsHistoryTable from './TransactionsHistoryTable';
 
 
@@ -12,18 +11,18 @@ interface ITransactionsProps {
 
 const Transactions: React.FunctionComponent<ITransactionsProps> = ({transactions}) => {
     return (
-        <section>
+        <div>
             <header>
                 <Header/>
             </header>
             <main className="main">
-                <h2>HISTORY OF TRANSACTIONS</h2>
+                <h2>HISTORY OF TRANSACTIONS</h2><br></br>
                 <TransactionsHistoryTable transactionStocks={transactions}/>
             </main>
             <footer>
                 <Footer/>
             </footer>
-        </section>
+        </div>
         
     );
 };

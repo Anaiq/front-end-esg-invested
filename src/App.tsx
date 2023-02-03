@@ -12,6 +12,8 @@ import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import ExchangeLists from './components/ExchangeLists';
 import Transactions from './components/Transactions'
+import Error from './components/Error';
+
 
 
 
@@ -30,10 +32,10 @@ const convertInvestorFromApi = (apiInvestor:any) => {
     total_shares_buys:totalSharesBuys, total_shares_sales:totalSharesSales, total_shares_cask_value:totalSharesCashValue,
     total_assets_balance:totalAssetsBalance, current_e_rating:currentERating, current_s_rating:currentSRating,  
     current_g_rating:currentGRating, e_goal:eGoal, s_goal:sGoal, g_goal:gGoal} = apiInvestor;
-  const newInvestorStock = {investorId, investorName, isLoggedIn, cashBalance, totalSharesBuys, totalSharesSales,
+  const newInvestor = {investorId, investorName, isLoggedIn, cashBalance, totalSharesBuys, totalSharesSales,
     totalSharesCashValue, totalAssetsBalance, currentERating, currentSRating, currentGRating,e_goal:eGoal,
     sGoal, gGoal};
-  return newInvestorStock;
+  return newInvestor;
 };
 const convertStockFromApi = (apiStock:any) => {
   const {stock_id:stockId, stock_symbol:stockSymbol, environment_rating:environmentRating, social_rating:socialRating, 
@@ -49,7 +51,24 @@ const convertTransactionFromApi = (apiTransaction:any) => {
     transactionTotalValue, transactionType, transactionTime, investorId, stockId};
   return newTransactionStock;
 };
-// get all stock on the exchange request
+
+// get current investor
+const getInvestorApi = () => {
+  return axios
+    .get(`${kBaseUrl}/investors/29`)
+    .then((response) => {
+      console.log(response.data);
+      // return response.data;
+      console.log(response.data.map(convertInvestorFromApi));
+      return response.data.map(convertInvestorFromApi);
+    })
+    .catch((error) => {
+      console.log(error.data);
+    });
+};
+
+
+// get all stock on the exchange 
 const getAllExchangesApi = () => {
   return axios
     .get(`${kBaseUrl}/exchanges`)
@@ -63,10 +82,10 @@ const getAllExchangesApi = () => {
     });
 };
 
-// get all stock on the exchange request
+// get all stocks for specified investor
 const getAllTransactionsApi = () => {
   return axios
-    .get(`${kBaseUrl}/transactions`)
+    .get(`${kBaseUrl}/investors/29/transactions`)
     .then((response) => {
       console.log(response.data);
       // return response.data;
@@ -83,13 +102,27 @@ function App() {
   const toggleForm = (formName:any) => {
     setCurrentForm(formName);
   }
-
+  const [investor, setInvestor] = useState()
   const [investorLogin, setInvestorLogin] = useState("False");
   const [portfolios, setPortfolios] = useState([]);
   const [exchanges, setExchanges] = useState([]); 
   const [transactions, setTransactions] = useState([]);
 
-  // create a helper function above the useEffect to keep the useEffect small
+  const getInvestor = () => {
+    return getInvestorApi()
+      .then((investor) => {
+        setInvestor(investor);
+        console.log(investor);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  
+  useEffect(() => {
+    getInvestor();
+  }, []);
+
   const getAllExchanges = () => {
     return getAllExchangesApi()
       .then((exchanges) => {
@@ -101,41 +134,48 @@ function App() {
       });
   };
   
-  // then have to modify the useEffect
+
   useEffect(() => {
     getAllExchanges();
   }, []);
 
-  // create a helper function above the useEffect to keep the useEffect small
-  // const getAllTransactions = () => {
-  //   return getAllTransactionsApi()
-  //     .then((transactions) => {
-  //       setTransactions(transactions);
-  //       console.log(transactions);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     });
-  // };
-  
-  // // then have to modify the useEffect
-  // useEffect(() => {
-  //   getAllTransactions();
-  // }, []);
 
-  return (    
+  const getAllTransactions = () => {
+    return getAllTransactionsApi()
+      .then((transactions) => {
+        setTransactions(transactions);
+        console.log(transactions);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+  
+
+  useEffect(() => {
+    getAllTransactions();
+  }, []);
+
+  return ( 
+    <div className='App'>
+    <main className='main'>
     <BrowserRouter>
           <Routes>
-              <Route path="/" element={<Login />}></Route>
-              <Route path="register" element={<Register />}></Route>
-              <Route path="portfolio" element={<PortfolioHome portfolios={portfolios}/>}></Route>
-              <Route path="/about" element={<About />}></Route>
-              <Route path="esg-goal-planner" element={<ESGGoalSet />}></Route>
-              <Route path="invest" element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
-              <Route path="transactions" element={<Transactions transactions={transactions} />}></Route>
-              <Route path="/logout" element={<Logout />}></Route>
+              <Route path='/' element={<Login />}></Route>
+              <Route path='register' element={<Register />}></Route>
+              <Route path='portfolio' element={<PortfolioHome  portfolios={portfolios}/>}></Route>
+              <Route path='/about' element={<About />}></Route>
+              <Route path='esg-goal-planner' element={<ESGGoalSet />}></Route>
+              <Route path='invest' element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
+              <Route path='transactions' element={<Transactions transactions={transactions} />}></Route>
+              <Route path='/logout' element={<Logout />}></Route>
+              <Route path='*' element={<Error />} />
           </Routes>
-        </BrowserRouter>
+      </BrowserRouter>
+    </main>
+      
+    </div>   
+    
 
     // <div className="App">
     //   <header>

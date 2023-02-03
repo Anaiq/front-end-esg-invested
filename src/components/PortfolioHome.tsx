@@ -8,6 +8,7 @@ import PortfolioTable from './PortfolioTable';
 
 interface IPortfolioHomeProps {
     portfolios: any;
+    // investor: any
 }
 
 const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios}) => {

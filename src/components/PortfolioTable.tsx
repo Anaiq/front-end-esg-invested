@@ -11,7 +11,7 @@ interface IPortfolioTableProps {
 
 const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks, investor}) => {
     return (
-        <section>
+        <div>
             <h2> Happy Investing, {investor ? `, ${investor.investorName}` : "Investor"}!</h2>
             <Table striped>
                 <thead>
@@ -32,7 +32,7 @@ const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfoli
                     {portfolioStocks.map((portfolioStock) => (<PortfolioStocks portfolioStock={portfolioStock} {...portfolioStock}/>))}
                 </tbody>
             </Table>
-        </section>
+        </div>
     );
 };
 
