@@ -11,7 +11,9 @@ import PortfolioHome from './components/PortfolioHome';
 import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import ExchangeLists from './components/ExchangeLists';
-import Transactions from './components/Transactions'
+import Transactions from './components/Transactions';
+import Header from './components/Header';
+import Footer from './components/Footer';
 import Error from './components/Error';
 
 
@@ -171,6 +173,7 @@ function App() {
               <Route path='/logout' element={<Logout />}></Route>
               <Route path='*' element={<Error />} />
           </Routes>
+          <footer><Footer /></footer>
       </BrowserRouter>
     </main>
       
