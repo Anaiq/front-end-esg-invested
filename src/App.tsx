@@ -12,8 +12,8 @@ import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import ExchangeLists from './components/ExchangeLists';
 import Transactions from './components/Transactions';
-import Header from './components/Header';
-import Footer from './components/Footer';
+// import Header from './components/Header';
+// import Footer from './components/Footer';
 import Error from './components/Error';
 
 
@@ -35,7 +35,7 @@ const convertInvestorFromApi = (apiInvestor:any) => {
     total_assets_balance:totalAssetsBalance, current_e_rating:currentERating, current_s_rating:currentSRating,  
     current_g_rating:currentGRating, e_goal:eGoal, s_goal:sGoal, g_goal:gGoal} = apiInvestor;
   const newInvestor = {investorId, investorName, isLoggedIn, cashBalance, totalSharesBuys, totalSharesSales,
-    totalSharesCashValue, totalAssetsBalance, currentERating, currentSRating, currentGRating,e_goal:eGoal,
+    totalSharesCashValue, totalAssetsBalance, currentERating, currentSRating, currentGRating,eGoal,
     sGoal, gGoal};
   return newInvestor;
 };
@@ -61,9 +61,9 @@ const getInvestorApi = () => {
     .then((response) => {
       console.log(response.data);
       // return response.data;
-      console.log(response.data.map(convertInvestorFromApi));
-      return response.data.map(convertInvestorFromApi);
-    })
+      console.log(convertTransactionFromApi(response.data));
+      return (convertTransactionFromApi(response.data));
+      })
     .catch((error) => {
       console.log(error.data);
     });
@@ -77,6 +77,7 @@ const getAllExchangesApi = () => {
     .then((response) => {
       console.log(response.data);
       // return response.data;
+      console.log(response.data.map(convertExchangeFromApi));
       return response.data.map(convertExchangeFromApi);
     })
     .catch((error) => {
@@ -91,6 +92,7 @@ const getAllTransactionsApi = () => {
     .then((response) => {
       console.log(response.data);
       // return response.data;
+      console.log(response.data.map(convertTransactionFromApi));
       return response.data.map(convertTransactionFromApi);
     })
     .catch((error) => {
@@ -104,26 +106,26 @@ function App() {
   const toggleForm = (formName:any) => {
     setCurrentForm(formName);
   }
-  const [investor, setInvestor] = useState()
+  const [investor, setInvestor] = useState("")
   const [investorLogin, setInvestorLogin] = useState("False");
   const [portfolios, setPortfolios] = useState([]);
   const [exchanges, setExchanges] = useState([]); 
   const [transactions, setTransactions] = useState([]);
 
-  const getInvestor = () => {
-    return getInvestorApi()
-      .then((investor) => {
-        setInvestor(investor);
-        console.log(investor);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+  // const getInvestor = () => {
+  //   return getInvestorApi()
+  //     .then((investor) => {
+  //       setInvestor(investor);
+  //       console.log(investor);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // };
   
-  useEffect(() => {
-    getInvestor();
-  }, []);
+  // useEffect(() => {
+  //   getInvestor();
+  // }, []);
 
   const getAllExchanges = () => {
     return getAllExchangesApi()
@@ -173,7 +175,6 @@ function App() {
               <Route path='/logout' element={<Logout />}></Route>
               <Route path='*' element={<Error />} />
           </Routes>
-          <footer><Footer /></footer>
       </BrowserRouter>
     </main>
       

@@ -46,9 +46,9 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
                 </Container>
             </main>
             
-            {/* <footer>
+            <footer>
                 <Footer/>
-            </footer> */}
+            </footer>
         </div>
     );
 };
