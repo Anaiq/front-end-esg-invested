@@ -8,7 +8,6 @@ interface ITStockProps {
 
 const TransactionStocks: React.FunctionComponent<ITStockProps> = ({transactionStock}) => {
     return (
-        <div>
             <tr>
                 <td>{transactionStock.stockSymbol}</td>
                 <td>{transactionStock.companyName}</td>
@@ -18,7 +17,6 @@ const TransactionStocks: React.FunctionComponent<ITStockProps> = ({transactionSt
                 <td>{transactionStock.transactionType}</td>
                 <td>{transactionStock.transactionTime}</td>
             </tr>
-        </div>
     );
 };
 

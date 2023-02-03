@@ -12,6 +12,7 @@ import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import ExchangeLists from './components/ExchangeLists';
 import Transactions from './components/Transactions';
+import { Investor } from './models/investorModel';
 // import Header from './components/Header';
 // import Footer from './components/Footer';
 import Error from './components/Error';
@@ -29,16 +30,20 @@ const convertExchangeFromApi = (apiExchangeStock:any) => {
   const newExchangeStock = { exchangeId, stockSymbol, companyName, currentStockPrice, environmentRating, socialRating, governanceRating};
   return newExchangeStock;
 };
+
+  
 const convertInvestorFromApi = (apiInvestor:any) => {
   const {investor_id:investorId, investor_name:investorName, is_logged_in:isLoggedIn, cash_balance:cashBalance, 
-    total_shares_buys:totalSharesBuys, total_shares_sales:totalSharesSales, total_shares_cask_value:totalSharesCashValue,
+    total_shares_buys:totalSharesBuys, total_shares_sales:totalSharesSales, total_shares_cash_value:totalSharesCashValue,
     total_assets_balance:totalAssetsBalance, current_e_rating:currentERating, current_s_rating:currentSRating,  
-    current_g_rating:currentGRating, e_goal:eGoal, s_goal:sGoal, g_goal:gGoal} = apiInvestor;
+    current_g_rating:currentGRating, e_goal:eGoal, s_goal:sGoal, g_goal:gGoal, transactions} = apiInvestor;
   const newInvestor = {investorId, investorName, isLoggedIn, cashBalance, totalSharesBuys, totalSharesSales,
     totalSharesCashValue, totalAssetsBalance, currentERating, currentSRating, currentGRating,eGoal,
-    sGoal, gGoal};
-  return newInvestor;
+    sGoal, gGoal, transactions};
+  return newInvestor
 };
+
+
 const convertStockFromApi = (apiStock:any) => {
   const {stock_id:stockId, stock_symbol:stockSymbol, environment_rating:environmentRating, social_rating:socialRating, 
     governance_rating:governanceRating} = apiStock;
@@ -54,15 +59,15 @@ const convertTransactionFromApi = (apiTransaction:any) => {
   return newTransactionStock;
 };
 
-// get current investor
+// get current investor  **needs return type here!!
 const getInvestorApi = () => {
   return axios
     .get(`${kBaseUrl}/investors/29`)
     .then((response) => {
       console.log(response.data);
       // return response.data;
-      console.log(convertTransactionFromApi(response.data));
-      return (convertTransactionFromApi(response.data));
+      console.log(convertInvestorFromApi(response.data));
+      return (convertInvestorFromApi(response.data));
       })
     .catch((error) => {
       console.log(error.data);
@@ -75,9 +80,9 @@ const getAllExchangesApi = () => {
   return axios
     .get(`${kBaseUrl}/exchanges`)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       // return response.data;
-      console.log(response.data.map(convertExchangeFromApi));
+      // console.log(response.data.map(convertExchangeFromApi));
       return response.data.map(convertExchangeFromApi);
     })
     .catch((error) => {
@@ -90,9 +95,8 @@ const getAllTransactionsApi = () => {
   return axios
     .get(`${kBaseUrl}/investors/29/transactions`)
     .then((response) => {
-      console.log(response.data);
-      // return response.data;
-      console.log(response.data.map(convertTransactionFromApi));
+      // console.log(response.data);
+      // console.log(response.data.map(convertTransactionFromApi));
       return response.data.map(convertTransactionFromApi);
     })
     .catch((error) => {
@@ -106,32 +110,50 @@ function App() {
   const toggleForm = (formName:any) => {
     setCurrentForm(formName);
   }
-  const [investor, setInvestor] = useState("")
+  const [investor, setInvestor] = useState({
+    investorId:0, 
+    investorName: '', 
+    isLoggedIn: false, 
+    cashBalance: 0, 
+    totalSharesBuys: 0,
+    totalSharesSales: 0,
+    totalSharesCashValue: 0, 
+    totalAssetsBalance: 0, 
+    currentERating: '',
+    currentSRating: '',
+    currentGRating: '',
+    eGoal: '', 
+    sGoal: '',
+    gGoal: ''
+  });
+
   const [investorLogin, setInvestorLogin] = useState("False");
   const [portfolios, setPortfolios] = useState([]);
   const [exchanges, setExchanges] = useState([]); 
+  const [stocks, setStocks] = useState([])
   const [transactions, setTransactions] = useState([]);
 
-  // const getInvestor = () => {
-  //   return getInvestorApi()
-  //     .then((investor) => {
-  //       setInvestor(investor);
-  //       console.log(investor);
-  //     })
-  //     .catch((error) => {
-  //       console.log(error.message);
-  //     });
-  // };
+  const getInvestor = () => {
+    return getInvestorApi()
+      .then((investor) => {
+        console.log(investor);
+        // setInvestor(investor);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   
-  // useEffect(() => {
-  //   getInvestor();
-  // }, []);
+  useEffect(() => {
+    getInvestor();
+  }, []);
 
   const getAllExchanges = () => {
     return getAllExchangesApi()
       .then((exchanges) => {
-        setExchanges(exchanges);
         console.log(exchanges);
+        setExchanges(exchanges);
+        
       })
       .catch((error) => {
         console.log(error.message);
@@ -148,7 +170,8 @@ function App() {
     return getAllTransactionsApi()
       .then((transactions) => {
         setTransactions(transactions);
-        console.log(transactions);
+        setPortfolios(transactions)
+        // console.log(transactions);
       })
       .catch((error) => {
         console.log(error.message);
@@ -167,7 +190,7 @@ function App() {
           <Routes>
               <Route path='/' element={<Login />}></Route>
               <Route path='register' element={<Register />}></Route>
-              <Route path='portfolio' element={<PortfolioHome  portfolios={portfolios}/>}></Route>
+              <Route path='portfolio' element={<PortfolioHome investor={investor} portfolios={portfolios}/>}></Route>
               <Route path='/about' element={<About />}></Route>
               <Route path='esg-goal-planner' element={<ESGGoalSet />}></Route>
               <Route path='invest' element={<ExchangeLists exchangeStocks={exchanges} />}></Route>

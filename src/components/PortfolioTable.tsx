@@ -6,13 +6,12 @@ import { PortfolioStock } from '../models/portfolioStockModel';
 
 interface IPortfolioTableProps {
     portfolioStocks: PortfolioStock[],
-    investor?: Investor
 }
 
-const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks, investor}) => {
+const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks}) => {
     return (
         <div>
-            <h2> Happy Investing, {investor ? `, ${investor.investorName}` : "Investor"}!</h2>
+            
             <Table striped>
                 <thead>
                     <tr>

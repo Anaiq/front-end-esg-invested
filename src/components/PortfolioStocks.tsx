@@ -9,7 +9,6 @@ interface IPStockProps {
 
 const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock}) => {
     return (
-        <section>
             <tr>
                 <td>{portfolioStock.stockSymbol}</td>
                 <td>{portfolioStock.companyName}</td>
@@ -25,7 +24,6 @@ const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock}
                 <td><Button as="input" type="submit" value="Buy" variant="secondary"></Button></td>
                 <td><Button as="input" type="submit" value="Sell" variant="secondary"></Button></td>
             </tr>
-        </section>
     );
 };
 
