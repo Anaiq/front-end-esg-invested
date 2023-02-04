@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from 'react';
-import PropTypes from "prop-types";
 import "./Header.css";
 import { Interface } from "readline";
 import { Link } from 'react-router-dom';
@@ -9,7 +8,6 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
 interface IHeaderProps {
-
 }
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {

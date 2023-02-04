@@ -3,7 +3,6 @@ import Header from './Header';
 import Footer from './Footer';
 import GoalChart from './GoalChart';
 import GoalList from './GoalList';
-import {Link} from 'react-router-dom';
 
 interface IESGGoalSetProps {
 }

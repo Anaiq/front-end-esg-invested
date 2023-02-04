@@ -18,10 +18,11 @@ import { Investor } from './models/investorModel';
 import Error from './components/Error';
 
 
-
-
-
   const kBaseUrl = "http://127.0.0.1:5000/";
+  const kDefaultFormState = {
+    username: '',
+    password: ''
+    };
 
   // convert from API functions goes here:
 const convertExchangeFromApi = (apiExchangeStock:any) => {
@@ -31,7 +32,6 @@ const convertExchangeFromApi = (apiExchangeStock:any) => {
   return newExchangeStock;
 };
 
-  
 const convertInvestorFromApi = (apiInvestor:any) => {
   const {investor_id:investorId, investor_name:investorName, is_logged_in:isLoggedIn, cash_balance:cashBalance, 
     total_shares_buys:totalSharesBuys, total_shares_sales:totalSharesSales, total_shares_cash_value:totalSharesCashValue,
@@ -42,7 +42,6 @@ const convertInvestorFromApi = (apiInvestor:any) => {
     sGoal, gGoal, transactions};
   return newInvestor
 };
-
 
 const convertStockFromApi = (apiStock:any) => {
   const {stock_id:stockId, stock_symbol:stockSymbol, environment_rating:environmentRating, social_rating:socialRating, 
@@ -64,9 +63,9 @@ const getInvestorApi = () => {
   return axios
     .get(`${kBaseUrl}/investors/29`)
     .then((response) => {
-      console.log(response.data);
+      // console.log(response.data);
       // return response.data;
-      console.log(convertInvestorFromApi(response.data));
+      // console.log(convertInvestorFromApi(response.data));
       return (convertInvestorFromApi(response.data));
       })
     .catch((error) => {
@@ -74,6 +73,31 @@ const getInvestorApi = () => {
     });
 };
 
+const registerInvestorApi = (investorData:{}) => {
+  const currentInvestorData = {...investorData, 
+      password: "N/A",
+      is_logged_in: false,
+      cash_balance: 0,
+      total_shares_buys: 0,
+      total_shares_sales: 0,
+      total_shares_cash_value: 0,
+      total_assets_balance: 0,
+      current_e_rating: "",
+      current_s_rating: "",
+      current_g_rating: "",
+      e_goal: "",
+      s_goal: "",
+      g_goal: ""
+  }
+  return axios
+  .post(`${kBaseUrl}/investors`, currentInvestorData)
+  .then(response => {
+    return convertInvestorFromApi(response.data);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+}
 
 // get all stock on the exchange 
 const getAllExchangesApi = () => {
@@ -105,12 +129,9 @@ const getAllTransactionsApi = () => {
 };
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('login');
-
-  const toggleForm = (formName:any) => {
-    setCurrentForm(formName);
-  }
-  const [investor, setInvestor] = useState({
+  const [currentForm, setCurrentForm] = useState('/login');
+  
+  const [loggedIninvestor, setloggInInvestor] = useState({
     investorId:0, 
     investorName: '', 
     isLoggedIn: false, 
@@ -127,16 +148,42 @@ function App() {
     gGoal: ''
   });
 
-  const [investorLogin, setInvestorLogin] = useState("False");
+  const [regInvestorData, setRegInvestorData] = useState({
+    investorId:0, 
+    investorName: '', 
+    isLoggedIn: false, 
+    cashBalance: 0, 
+    totalSharesBuys: 0,
+    totalSharesSales: 0,
+    totalSharesCashValue: 0, 
+    totalAssetsBalance: 0, 
+    currentERating: '',
+    currentSRating: '',
+    currentGRating: '',
+    eGoal: '', 
+    sGoal: '',
+    gGoal: ''
+  });
+
+  const [investorLoginStatus, setInvestorLoginStatus] = useState(false)
   const [portfolios, setPortfolios] = useState([]);
   const [exchanges, setExchanges] = useState([]); 
   const [stocks, setStocks] = useState([])
   const [transactions, setTransactions] = useState([]);
 
+  const toggleForm = (formName:any) => {
+      setCurrentForm(formName);
+  }
+
+  const onFormSwitch = (event:any): void => {
+    console.log('switched form');
+    toggleForm(currentForm);
+  }
+
   const getInvestor = () => {
     return getInvestorApi()
       .then((investor) => {
-        console.log(investor);
+        // console.log(investor);
         // setInvestor(investor);
       })
       .catch((error) => {
@@ -148,10 +195,27 @@ function App() {
     getInvestor();
   }, []);
 
+  const handleRegisterSubmit = (data:{}) => {
+    console.log('data:', data)
+    // call api, update the registered with the data that comes back
+    registerInvestorApi(data)
+    .then(newInvestor => {
+      setRegInvestorData(regInvestorData)
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
+  const handleLoginSubmit = (data:{}) => {
+    console.log('data:', data)
+    // call api, update the investorData with the data that comes back
+  }
+
   const getAllExchanges = () => {
     return getAllExchangesApi()
       .then((exchanges) => {
-        console.log(exchanges);
+        // console.log(exchanges);
         setExchanges(exchanges);
         
       })
@@ -185,42 +249,28 @@ function App() {
 
   return ( 
     <div className='App'>
-    <main className='main'>
-    <BrowserRouter>
+      <main className='main'>
+        <BrowserRouter>
           <Routes>
-              <Route path='/' element={<Login />}></Route>
-              <Route path='register' element={<Register />}></Route>
-              <Route path='portfolio' element={<PortfolioHome investor={investor} portfolios={portfolios}/>}></Route>
-              <Route path='/about' element={<About />}></Route>
-              <Route path='esg-goal-planner' element={<ESGGoalSet />}></Route>
-              <Route path='invest' element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
-              <Route path='transactions' element={<Transactions transactions={transactions} />}></Route>
-              <Route path='/logout' element={<Logout />}></Route>
-              <Route path='*' element={<Error />} />
+            {/* {
+              currentForm === 'login'? <Route path='/login' element={<Login onFormSwitch={toggleForm} handleLoginSubmit={handleLoginSubmit} />}></Route> : 
+              <Route path='register' element={<Register handleLoginSubmit={handleLoginSubmit} onFormSwitch={toggleForm}/>}></Route>
+            }; */}
+          
+            <Route path='/login' element={<Login onFormSwitch={toggleForm} handleLoginSubmit={handleLoginSubmit} />}></Route> 
+            <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit} onFormSwitch={toggleForm}/>}></Route>
+            <Route path='portfolio' element={<PortfolioHome investor={loggedIninvestor} portfolios={portfolios}/>}></Route>
+            <Route path='/about' element={<About />}></Route>
+            <Route path='esg-goal-planner' element={<ESGGoalSet />}></Route>
+            <Route path='invest' element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
+            <Route path='transactions' element={<Transactions transactions={transactions} />}></Route>
+            <Route path='/logout' element={<Logout />}></Route>
+            <Route path='*' element={<Error />} />
           </Routes>
-      </BrowserRouter>
-    </main>
-      
+        </BrowserRouter>
+      </main>
+        
     </div>   
-    
-
-    // <div className="App">
-    //   <header>
-    //     <Header/>
-    //   </header>
-      
-    //   <main className="main">
-    //     {
-    //       currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>
-    //     } 
-        
-    //     {/* <PortfolioLists portfolioStocks={portfolios} investor={investor}/> */}
-        
-    //   </main>
-    //   <footer>
-    //     <Footer/>
-    //   </footer>
-    // </div>
   );
 }
 
