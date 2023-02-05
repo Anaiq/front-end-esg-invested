@@ -1,0 +1,32 @@
+import * as React from 'react';
+import Card from 'react-bootstrap/Card';
+import { Investor } from '../models/investorModel';
+interface IMoneyBalanceProps {
+    investor:Investor
+}
+
+const MoneyBalance: React.FunctionComponent<IMoneyBalanceProps> = ({investor}) => {
+    return (
+        <>
+        <Card
+            text={'dark'}
+            style={{ width: '18rem' }}
+            className="mb-2"
+            >
+            <Card.Header></Card.Header>
+            <Card.Body>
+                <Card.Title> Current Cash Balances </Card.Title>
+                <Card.Text>
+                    Total Cash Balance: $ {`${investor.totalSharesCashValue}`}
+                </Card.Text>
+                <Card.Text>
+                    Total Asset Balance: $ {`${investor.totalAssetsBalance}`}
+                </Card.Text>
+            </Card.Body>
+        </Card>
+        </>
+        
+    );
+};
+
+export default MoneyBalance;

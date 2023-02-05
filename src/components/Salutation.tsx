@@ -2,12 +2,13 @@ import * as React from 'react';
 import { Investor } from '../models/investorModel';
 
 interface ISalutationProps {
-    investor?: Investor
+    investor: Investor
 }
 
 const Salutation: React.FunctionComponent<ISalutationProps> = ({investor}) => {
+    console.log(investor.investorName);
     return (
-        <h2> Happy Investing, {investor ? `, ${investor.investorName}` : "Investor"}!</h2>
+        <h2> Happy Investing, {`${investor.investorName}`}!</h2>
     );
 };
 

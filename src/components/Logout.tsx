@@ -1,19 +1,22 @@
 import React from "react";
 import { useState } from 'react';
 import "./Logout.css";
+import { Investor } from "../models/investorModel";
 import LoginHeader from "./LoginHeader";
 import Footer from "./Footer";
-import Button from 'react-bootstrap/Button';
 
+interface ILogoutProps {
+    investor: Investor;
+}
 
-const Logout= (props:any) => {
+const Logout: React.FunctionComponent<ILogoutProps> = ({investor}) => {
     return (
         <div>
             <header>
                 <LoginHeader/>
             </header>
             <main>
-                <h1> Goodbye, "(Name of Investor Here)"!</h1>
+                <h1> Goodbye, {`${investor.investorName}`}!</h1>
             </main>
             <footer>
                 <Footer/>
@@ -23,3 +26,7 @@ const Logout= (props:any) => {
 };
 
 export default Logout;
+
+
+
+

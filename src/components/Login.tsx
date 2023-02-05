@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import Button from 'react-bootstrap/Button';
 import LoginHeader from './LoginHeader';
 import Footer from './Footer';
-import { useNavigate } from "react-router-dom";
+
 
 const kDefaultFormState = {
     username: '',
@@ -13,11 +15,11 @@ const kDefaultFormState = {
 
 interface ILoginProps {
     handleLoginSubmit: any,
-    onFormSwitch: any
+    setInvestorData: any
 }
 
-const Login: React.FunctionComponent<ILoginProps> = ({handleLoginSubmit, onFormSwitch}) => {
-// const Login= ({handleLoginSubmit, onFormSwitch, currentForm}) => {
+const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit, setInvestorData}) => {
+// const Login= ({handleLoginSubmit, currentForm}) => {
     const [loginFormData, setLoginFormData] = useState(kDefaultFormState);
     // console.log("loginFormData:", loginFormData)
 
@@ -32,10 +34,22 @@ const Login: React.FunctionComponent<ILoginProps> = ({handleLoginSubmit, onFormS
     // console.log(loginFormData.username);
     // console.log(loginFormData.password);
 
+    const navigate = useNavigate();
+
     const handleSubmit = (event:any): void => {
     event.preventDefault()
-    handleLoginSubmit(loginFormData)
-    setLoginFormData(kDefaultFormState);
+    if (!loginFormData.username || !loginFormData.password ) return;
+    if (loginFormData === undefined) {
+        return;
+    } else {
+        handleLoginSubmit(loginFormData)
+        console.log('LoginFormData: ', loginFormData);
+        setInvestorData({loginFormData});
+        setLoginFormData(kDefaultFormState);
+        navigate('/portfolio');
+    }
+
+    
     }
 
     return (
@@ -51,12 +65,12 @@ const Login: React.FunctionComponent<ILoginProps> = ({handleLoginSubmit, onFormS
                 <label htmlFor="password">Password</label>
                 <input type="password" id="password" value={loginFormData.password} onChange={handleChange} placeholder="********" name="password"></input>
                 <Button variant="light" size="sm" type="submit" value="Log In" 
-                    onClick={()=> handleLoginSubmit(loginFormData.username)}>Login</Button>
+                    >Login</Button>
             </form>
-            <Button variant="link" onClick={onFormSwitch('register')}>Need an Account? Register Here.</Button>
-            <footer>
+            <Link to='/register'>Need an Account? Register Here.</Link>
+            {/* <footer>
                 <Footer/>
-            </footer>
+            </footer> */}
         </div>
         
     );

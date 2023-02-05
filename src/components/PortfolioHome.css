@@ -1,0 +1,8 @@
+#phome {
+    display: flex;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+    /* background-image: linear-gradient(21deg,#034159 20%, #025951 40%, #02735E ) */
+    background-color: #abcea7;
+}

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Table from 'react-bootstrap/Table';
-import { Investor } from '../models/investorModel'; //importing the Investor interface
 import PortfolioStocks from './PortfolioStocks';
 import { PortfolioStock } from '../models/portfolioStockModel';
 
@@ -9,9 +8,7 @@ interface IPortfolioTableProps {
 }
 
 const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks}) => {
-    return (
-        <div>
-            
+    return ( 
             <Table striped>
                 <thead>
                     <tr>
@@ -31,7 +28,6 @@ const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfoli
                     {portfolioStocks.map((portfolioStock) => (<PortfolioStocks portfolioStock={portfolioStock} {...portfolioStock}/>))}
                 </tbody>
             </Table>
-        </div>
     );
 };
 

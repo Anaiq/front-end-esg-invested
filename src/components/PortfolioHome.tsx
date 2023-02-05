@@ -1,10 +1,10 @@
 import * as React from 'react';
 import Header from './Header'; 
 import Footer from './Footer';
-import { Link } from 'react-router-dom';
 import {Investor} from '../models/investorModel';
 import PortfolioTable from './PortfolioTable';
 import Salutation from './Salutation';
+import MoneyDisplay from './Money';
 
 
 interface IPortfolioHomeProps {
@@ -13,15 +13,19 @@ interface IPortfolioHomeProps {
 }
 
 const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor}) => {
+    console.log(`investorData.investorName: ${investor?.investorName}`)
     return (
         <section>
-            <header>
+            {/* <header>
                 <Header/>
-            </header>
-            <main className="main">
-                <h2>PORTFOLIO PAGE</h2>
+            </header> */}
+            <main className='main'>
                 <Salutation investor={investor}/>
-                <PortfolioTable portfolioStocks={portfolios}/>
+                <MoneyDisplay investor={investor}></MoneyDisplay>
+                <div>
+                    <PortfolioTable portfolioStocks={portfolios}/>
+                </div>
+                
             </main>
             <footer>
                 <Footer/>
