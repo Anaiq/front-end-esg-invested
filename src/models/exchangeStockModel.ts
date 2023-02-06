@@ -1,5 +1,5 @@
 // create an interface (type object) that can be used throughout the application
-export interface ExchangeStock {
+export type ExchangeStock = {
     exchangeId: number,
     stockSymbol: string,
     companyName: string,

@@ -13,5 +13,17 @@ export type Investor ={
     currentGRating: string,
     eGoal: string, 
     sGoal: string,
-    gGoal: string
+    gGoal: string,
+    transactions:{
+        transactionId: number,
+        stockSymbol: string,
+        companyName: string,
+        currentStockPrice: number,
+        numberStockShares: number
+        transactionTotalValue: number
+        transactionType: string,
+        transactionTime: string,
+        investorId: number,
+        stockId:number
+    }[]
 };

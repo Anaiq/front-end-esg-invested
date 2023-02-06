@@ -1,5 +1,5 @@
 // create an interface (type object) that can be used throughout the application
-export interface Transaction {
+export type Transaction = {
     transactionId: number,
     stockSymbol: string,
     companyName: string,

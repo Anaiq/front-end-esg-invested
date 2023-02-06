@@ -4,6 +4,11 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import { Investor } from './models/investorModel';
+import { InvestorApi } from './models/investorApiModel';
+import { StockApi } from './models/stockApiModel';
+import { ExchangeStockApi } from './models/exchangeStockApiModel';
+import { TransactionApi } from './models/transactionApiModel'
 import Register from './components/Register'; 
 import Login from './components/Login'; 
 import Logout from './components/Logout';
@@ -12,7 +17,6 @@ import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import Invest from './components/Invest';
 import Transactions from './components/Transactions';
-import { Investor } from './models/investorModel';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Error from './components/Error';
@@ -25,14 +29,14 @@ import Error from './components/Error';
     };
 
   // convert from API functions goes here:
-const convertExchangeFromApi = (apiExchangeStock:any) => {
+const convertExchangeFromApi = (apiExchangeStock:ExchangeStockApi) => {
   const {exchange_id:exchangeId, stock_symbol:stockSymbol, company_name:companyName, current_stock_price:currentStockPrice, 
     environment_rating:environmentRating, social_rating:socialRating, governance_rating:governanceRating} = apiExchangeStock;
   const newExchangeStock = { exchangeId, stockSymbol, companyName, currentStockPrice, environmentRating, socialRating, governanceRating};
   return newExchangeStock;
 };
 
-const convertInvestorFromApi = (apiInvestor:any) => {
+const convertInvestorFromApi = (apiInvestor:InvestorApi) => {
   const {investor_id:investorId, investor_name:investorName, is_logged_in:isLoggedIn, cash_balance:cashBalance, 
     total_shares_buys:totalSharesBuys, total_shares_sales:totalSharesSales, total_shares_cash_value:totalSharesCashValue,
     total_assets_balance:totalAssetsBalance, current_e_rating:currentERating, current_s_rating:currentSRating,  
@@ -43,14 +47,14 @@ const convertInvestorFromApi = (apiInvestor:any) => {
   return newInvestor
 };
 
-const convertStockFromApi = (apiStock:any) => {
+const convertStockFromApi = (apiStock:StockApi) => {
   const {stock_id:stockId, stock_symbol:stockSymbol, environment_rating:environmentRating, social_rating:socialRating, 
     governance_rating:governanceRating} = apiStock;
   const newStock = { stockId, stockSymbol, environmentRating, socialRating, governanceRating};
   return newStock;
 };
 
-const convertTransactionFromApi = (apiTransaction:any) => {
+const convertTransactionFromApi = (apiTransaction:TransactionApi) => {
   const {transaction_id:transactionId, stock_symbol:stockSymbol, company_name:companyName, current_stock_price:currentStockPrice, 
     number_stock_shares:numberStockShares, transaction_total_value:transactionTotalValue, transaction_type:transactionType, 
     transaction_time:transactionTime,investor_id:investorId, stock_id:stockId} = apiTransaction;
@@ -59,7 +63,7 @@ const convertTransactionFromApi = (apiTransaction:any) => {
   return newTransactionStock;
 };
 
-
+// API CALLS HERE
 // register a new investor
 const registerInvestorApi = (investorData:any) => {
   console.log('investorData: ', investorData);
@@ -78,7 +82,8 @@ const registerInvestorApi = (investorData:any) => {
       current_g_rating: '',
       e_goal: '',
       s_goal: '',
-      g_goal: ''
+      g_goal: '', 
+      transactions: []
   }
   console.log('registerInvestorApi requestBody:' , requestBody)
   return axios
@@ -111,7 +116,8 @@ const loginInvestorApi = (investorData:any) => {
     current_g_rating: '',
     e_goal: '',
     s_goal: '',
-    g_goal: ''
+    g_goal: '',
+    transactions: []
   }
 
   console.log('loginInvestorApi requestBody:', requestBody);
@@ -157,8 +163,9 @@ const getAllTransactionsApi = () => {
     });
 };
 
+
 function App() {  
-  const [investorData, setInvestorData] = useState({
+  const [investorData, setInvestorData] = useState<Investor>({
     investorId:0, 
     investorName: '', 
     isLoggedIn: false, 
@@ -172,7 +179,8 @@ function App() {
     currentGRating: '',
     eGoal: '', 
     sGoal: '',
-    gGoal: ''
+    gGoal: '',
+    transactions: []
   });
 
   const [portfolios, setPortfolios] = useState([]);
@@ -180,6 +188,9 @@ function App() {
   const [stocks, setStocks] = useState([])
   const [transactions, setTransactions] = useState([]);
 
+useEffect(() => {
+  // data fetching code
+}, [])
 
   const handleRegisterSubmit = (data:any) => {
     // call api, update the registered investor data with the data that comes back
@@ -192,10 +203,6 @@ function App() {
       console.log(error);
     })
   }
-
-  useEffect(() => {
-    handleRegisterSubmit(investorData);
-  }, []);
   
 
   const handleLoginSubmit = (data:any) => {
@@ -203,13 +210,16 @@ function App() {
     loginInvestorApi(data)
     .then((newInvestorData) => {
       console.log('new login Investor Data: ', newInvestorData)
-      setInvestorData(investorData);
+      setInvestorData(investorData); //newInvestorData
     })
     .catch(error => {
       console.log(error);
     })
-  }
+  };
 
+  useEffect(() => {
+    handleLoginSubmit(investorData);
+  }, [investorData]);
 
   const getAllExchanges = () => {
     return getAllExchangesApi()
@@ -225,7 +235,7 @@ function App() {
   
   useEffect(() => {
     getAllExchanges();
-  }, []);
+  }, []); //This only needs to be done on initial render, values will NOT change
 
 
   const getAllTransactions = () => {
@@ -242,16 +252,15 @@ function App() {
   
   useEffect(() => {
     getAllTransactions();
-  }, []);
+  }, [transactions]); //add dependency here? if transactions change, this should be updated
 
   console.log('investorData: ', investorData)
   return ( 
     <div className='App'>
       <main className='main'>
         <BrowserRouter>
-          <header><Header/></header>
           <Routes>          
-            <Route path='/login' element={<Login investor={investorData} setInvestorData={setInvestorData} handleLoginSubmit={handleLoginSubmit}  />}></Route> 
+            <Route path='/' element={<Login investor={investorData} setInvestorData={setInvestorData} handleLoginSubmit={handleLoginSubmit}  />}></Route> 
             <Route path='register' element={<Register setInvestorData={setInvestorData} handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
             <Route path='portfolio' element={<PortfolioHome investor={investorData} portfolios={portfolios}/>}></Route>
             <Route path='/about' element={<About />}></Route>
@@ -268,5 +277,3 @@ function App() {
 }
 
 export default App;
-
-{/* <Link to={user.id}>{user.name}</Link> */}

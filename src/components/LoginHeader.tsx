@@ -23,7 +23,7 @@ const Header: React.FunctionComponent<ILoginHeaderProps> = (props) => {
                     <Navbar.Text>
                         <Nav defaultActiveKey="/login" as="ul">
                             <Nav.Item as="li">
-                            <Link to='/login' className='btn'><Nav.Link href="/login" eventKey="portfolio">Login</Nav.Link></Link>
+                            <Link to='/' className='btn'><Nav.Link href="/login" eventKey="portfolio">Login</Nav.Link></Link>
                             </Nav.Item>
                             <Nav.Item as="li">
                                 <Link to='/register' className='btn'><Nav.Link href="/register" eventKey="about">Register</Nav.Link></Link>

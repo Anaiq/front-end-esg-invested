@@ -19,9 +19,9 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
     console.log(`investorData.investorName: ${investor?.investorName}`)
     return (
         <div className='portfolio'>
-            {/* <header>
+            <header>
                 <Header/>
-            </header> */}
+            </header>
             <main className='main'>
                 <Salutation investor={investor}/>
                 <h2>ESG Goal Chart and Current Portfolio ESG Ratings</h2>
