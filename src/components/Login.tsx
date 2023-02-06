@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import Button from 'react-bootstrap/Button';
 import LoginHeader from './LoginHeader';
+import { Investor } from "../models/investorModel";
 import Footer from './Footer';
 
 
@@ -15,10 +16,11 @@ const kDefaultFormState = {
 
 interface ILoginProps {
     handleLoginSubmit: any,
-    setInvestorData: any
+    setInvestorData: any,
+    investor: Investor
 }
 
-const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit, setInvestorData}) => {
+const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit, setInvestorData, investor}) => {
 // const Login= ({handleLoginSubmit, currentForm}) => {
     const [loginFormData, setLoginFormData] = useState(kDefaultFormState);
     // console.log("loginFormData:", loginFormData)
@@ -44,7 +46,8 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit, setInv
     } else {
         handleLoginSubmit(loginFormData)
         console.log('LoginFormData: ', loginFormData);
-        setInvestorData({loginFormData});
+        console.log('InvestorData: ', investor)
+        setInvestorData({investor});
         setLoginFormData(kDefaultFormState);
         navigate('/portfolio');
     }

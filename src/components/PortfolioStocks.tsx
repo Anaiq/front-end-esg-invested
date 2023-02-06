@@ -12,9 +12,9 @@ const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock}
             <tr>
                 <td>{portfolioStock.stockSymbol}</td>
                 <td>{portfolioStock.companyName}</td>
-                <td>{portfolioStock.currentStockPrice}</td>
+                <td>$ {(portfolioStock.currentStockPrice/100).toFixed(2)}</td>
                 <td>{portfolioStock.numberStockShares}</td>
-                <td>{portfolioStock.transactionTotalValue}</td>
+                <td>$ {(portfolioStock.transactionTotalValue/100).toFixed(2)}</td>
                 <td>{portfolioStock.transactionType}</td>
                 <td>{portfolioStock.transactionTime}</td>
                 <td>{portfolioStock.environmentRating}</td>

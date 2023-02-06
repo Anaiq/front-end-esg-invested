@@ -3,7 +3,7 @@ export interface Transaction {
     transactionId: number,
     stockSymbol: string,
     companyName: string,
-    currentStockPrice: string,
+    currentStockPrice: number,
     numberStockShares: number
     transactionTotalValue: number
     transactionType: string,

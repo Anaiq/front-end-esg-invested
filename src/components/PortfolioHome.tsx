@@ -15,7 +15,7 @@ interface IPortfolioHomeProps {
 const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor}) => {
     console.log(`investorData.investorName: ${investor?.investorName}`)
     return (
-        <section>
+        <div className='portfolio'>
             {/* <header>
                 <Header/>
             </header> */}
@@ -30,7 +30,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
             <footer>
                 <Footer/>
             </footer>
-        </section>
+        </div >
         
     );
 };

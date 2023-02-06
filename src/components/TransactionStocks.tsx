@@ -11,9 +11,9 @@ const TransactionStocks: React.FunctionComponent<ITStockProps> = ({transactionSt
             <tr>
                 <td>{transactionStock.stockSymbol}</td>
                 <td>{transactionStock.companyName}</td>
-                <td>{transactionStock.currentStockPrice}</td>
+                <td>$ {(transactionStock.currentStockPrice/100).toFixed(2)}</td>
                 <td>{transactionStock.numberStockShares}</td>
-                <td>{transactionStock.transactionTotalValue}</td>
+                <td>$ {(transactionStock.transactionTotalValue/100).toFixed(2)}</td>
                 <td>{transactionStock.transactionType}</td>
                 <td>{transactionStock.transactionTime}</td>
             </tr>

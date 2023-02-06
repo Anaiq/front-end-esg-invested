@@ -16,7 +16,7 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
             <header>
                 <Header/>
             </header>
-            <main className="main">
+            <main className="about">
                 <h2>About Page</h2>
                 <Container >
                     <Row>
@@ -35,13 +35,13 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
                     </Row>
                     
                     <Row>
-                        <Col><a href="https://www.investopedia.com/terms/e/environmental-social-and-governance-esg-criteria.asp">What Is Environmental, Social, and Governance (ESG) Investing?</a></Col>
-                        <Col><a href="https://www.fool.com/investing/stock-market/types-of-stocks/esg-investing/esg-rating/">What Is an ESG Rating?</a></Col>
-                        <Col><a href="https://www.investopedia.com/financial-advisor/esg-sri-impact-investing-explaining-difference-clients/">ESG, SRI, and Impact Investing: What's the Difference?</a></Col>
+                        <Col><a href="https://www.investopedia.com/terms/e/environmental-social-and-governance-esg-criteria.asp" target="_blank" rel="noopener noreferrer">What Is Environmental, Social, and Governance (ESG) Investing?</a></Col>
+                        <Col><a href="https://www.fool.com/investing/stock-market/types-of-stocks/esg-investing/esg-rating/" target="_blank" rel="noopener noreferrer">What Is an ESG Rating?</a></Col>
+                        <Col><a href="https://www.investopedia.com/financial-advisor/esg-sri-impact-investing-explaining-difference-clients/" target="_blank" rel="noopener noreferrer">ESG, SRI, and Impact Investing: What's the Difference?</a></Col>
                     </Row>
                     <Row>
-                        <Col><a href="https://www.investopedia.com/terms/g/green-investing.asp">What Is Green Investing?</a></Col>
-                        <Col><a href="https://www.investopedia.com/terms/s/sri.asp">What Is a Socially Responsible Investment (SRI)?</a></Col>
+                        <Col><a href="https://www.investopedia.com/terms/g/green-investing.asp" target="_blank" rel="noopener noreferrer">What Is Green Investing?</a></Col>
+                        <Col><a href="https://www.investopedia.com/terms/s/sri.asp" target="_blank" rel="noopener noreferrer">What Is a Socially Responsible Investment (SRI)?</a></Col>
                     </Row>
                 </Container>
             </main>

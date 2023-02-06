@@ -15,9 +15,9 @@ const ExchangeLists: React.FunctionComponent<IExchangeListProps> = ({exchangeSto
             <header>
                 <Header/>
             </header>
-            <main id="exchange">
+            <main className='exchange'>
                 <h2> ESG Stock Exchange</h2>
-                <div className="mb-3">
+                <div className="mb-1">
                     <Table striped>
                         <thead>
                             <tr>

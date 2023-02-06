@@ -251,7 +251,7 @@ function App() {
         <BrowserRouter>
           <header><Header/></header>
           <Routes>          
-            <Route path='/login' element={<Login setInvestorData={setInvestorData} handleLoginSubmit={handleLoginSubmit}  />}></Route> 
+            <Route path='/login' element={<Login investor={investorData} setInvestorData={setInvestorData} handleLoginSubmit={handleLoginSubmit}  />}></Route> 
             <Route path='register' element={<Register setInvestorData={setInvestorData} handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
             <Route path='portfolio' element={<PortfolioHome investor={investorData} portfolios={portfolios}/>}></Route>
             <Route path='/about' element={<About />}></Route>

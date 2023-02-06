@@ -17,10 +17,10 @@ const MoneyBalance: React.FunctionComponent<IMoneyBalanceProps> = ({investor}) =
             <Card.Body>
                 <Card.Title> Current Cash Balances </Card.Title>
                 <Card.Text>
-                    Total Cash Balance: $ {`${investor.totalSharesCashValue}`}
+                    Total Cash Balance: $ {`${(investor.totalSharesCashValue/100).toFixed(2)}`}
                 </Card.Text>
                 <Card.Text>
-                    Total Asset Balance: $ {`${investor.totalAssetsBalance}`}
+                    Total Asset Balance: $ {`${(investor.totalAssetsBalance/100).toFixed(2)}`}
                 </Card.Text>
             </Card.Body>
         </Card>
