@@ -7,8 +7,7 @@ import Salutation from './Salutation';
 import MoneyDisplay from './Money';
 import ESGRatingsFilter from './RatingFilter';
 import ESGFilter from './ESGFilter';
-import GoalChart from './GoalChart';
-import CurrentChart from './CurrentChart';
+import Charts from './Charts';
 
 
 interface IPortfolioHomeProps {
@@ -25,13 +24,9 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
             </header> */}
             <main className='main'>
                 <Salutation investor={investor}/>
-                <div className='chart'>
-                    <h2>Your ESG Goal Chart</h2>
-                    <GoalChart />
-                    <h2>Your Current ESG Allocations</h2>
-                    <CurrentChart />
-                    <MoneyDisplay investor={investor}></MoneyDisplay>
-                </div>
+                <h2>ESG Goal Chart and Current Portfolio ESG Ratings</h2>
+                <Charts />
+                <MoneyDisplay investor={investor}></MoneyDisplay>
                 <div>
                     <ESGFilter />
                     <ESGRatingsFilter />
