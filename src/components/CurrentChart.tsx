@@ -6,7 +6,7 @@ interface ICurrentChartProps {
 const CurrentChart: React.FunctionComponent<ICurrentChartProps> = (props) => {
     return (
         <section>
-            <h2>Your Current ESG Allocations</h2>
+            <h4>CHART HERE</h4>
         </section>
     );
 };

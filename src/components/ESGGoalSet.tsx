@@ -16,13 +16,13 @@ const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor}) => {
                 <Header/>
             </header>
             <main className="main">
-                <h2>{`${investor.investorName}`}, PLan your ESG Goals here!!</h2>
+                <h2>{`${investor.investorName}`}, Plan your ESG Goals!</h2>
                 <div className="goal-chart">
                     <GoalChart />
                 </div>    
                 <div className="goal-list">
                     <GoalList />
-                    </div>
+                </div>
             </main>
             
             <footer>

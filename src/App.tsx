@@ -10,7 +10,7 @@ import Logout from './components/Logout';
 import PortfolioHome from './components/PortfolioHome';
 import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
-import ExchangeLists from './components/ExchangeLists';
+import Invest from './components/Invest';
 import Transactions from './components/Transactions';
 import { Investor } from './models/investorModel';
 import Header from './components/Header';
@@ -256,7 +256,7 @@ function App() {
             <Route path='portfolio' element={<PortfolioHome investor={investorData} portfolios={portfolios}/>}></Route>
             <Route path='/about' element={<About />}></Route>
             <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData}/>}></Route>
-            <Route path='invest' element={<ExchangeLists exchangeStocks={exchanges} />}></Route>
+            <Route path='invest' element={<Invest exchangeStocks={exchanges} />}></Route>
             <Route path='transactions' element={<Transactions investor={investorData} transactions={transactions} />}></Route>
             <Route path='/logout' element={<Logout investor={investorData}/>}></Route>
             <Route path='*' element={<Error />} />

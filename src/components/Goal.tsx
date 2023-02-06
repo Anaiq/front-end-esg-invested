@@ -7,14 +7,21 @@ interface IGoalProps {
 
 const Goal: React.FunctionComponent<IGoalProps> = (props) => {
     return (
-        <section>
-            <h2>ESG Goals</h2>
-                <Form.Control type="text" placeholder="Environmental" /> <span> %</span>
-                <Form.Control type="text" placeholder="Social" /> <span> %</span>
-                <Form.Control type="text" placeholder="Governance" /> <span> %</span>
-        </section>
+        <Form>
+            <Form.Label>Environmental</Form.Label>
+            <Form.Control size="lg" type="text" placeholder="Environmental" /> 
+            <Form.Label>Social</Form.Label>
+            <Form.Control size="lg" type="text" placeholder="Social" /> 
+            <Form.Label>Governance</Form.Label>
+            <Form.Control size="lg" type="text" placeholder="Governance" /> 
+            <Form.Text id="percentage" muted>
+                Place choose minimal rating for each  ESG Category
+            </Form.Text>
+        </Form>
         
     );
 };
 
 export default Goal;
+
+

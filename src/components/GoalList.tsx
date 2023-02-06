@@ -7,11 +7,11 @@ interface IGoalListProps {
 
 const GoalList: React.FunctionComponent<IGoalListProps> = (props) => {
     return (
-        <section>
-            <h2> Goal List</h2>
-                <Goal />
-                <Button as="input" type="submit" value="submit" variant="secondary"></Button>
-        </section>
+        <>
+            <Goal />
+            <Button as="input" type="submit" value="submit" variant="secondary"></Button>
+        </>
+            
     );
 };
 

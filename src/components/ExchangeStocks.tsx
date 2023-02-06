@@ -11,7 +11,7 @@ const ExchangeStocks: React.FunctionComponent<IEStockProps> = ({exchangeStock}) 
         <tr>
             <td>{exchangeStock.stockSymbol}</td>
             <td>{exchangeStock.companyName}</td>
-            <td>{exchangeStock.currentStockPrice}</td>
+            <td>${exchangeStock.currentStockPrice}</td>
             <td>{exchangeStock.environmentRating}</td>
             <td>{exchangeStock.socialRating}</td>
             <td>{exchangeStock.governanceRating}</td>
