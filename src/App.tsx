@@ -43,7 +43,7 @@ const convertInvestorFromApi = (apiInvestor:InvestorApi) => {
     current_g_rating:currentGRating, e_goal:eGoal, s_goal:sGoal, g_goal:gGoal, transactions} = apiInvestor;
   const newInvestor = {investorId, investorName, isLoggedIn, cashBalance, totalSharesBuys, totalSharesSales,
     totalSharesCashValue, totalAssetsBalance, currentERating, currentSRating, currentGRating,eGoal,
-    sGoal, gGoal, transactions};
+    sGoal, gGoal, transactions:transactions.map(convertTransactionFromApi)};
   return newInvestor
 };
 
@@ -208,7 +208,7 @@ useEffect(() => {
     registerInvestorApi(data)
     .then((registeredInvestor) => {
       console.log('new registered Investor: ', registeredInvestor)
-      setInvestorData(registeredInvestor);
+      setInvestorData(registeredInvestor!);
     })
     .catch(error => {
       console.log(error);
@@ -217,14 +217,14 @@ useEffect(() => {
   
 
   const handleLoginSubmit = (data:{
-    username: string
+    username: string,
     password: string
     }) => {
     // call api, update the investorData with the data that comes back
     loginInvestorApi(data)
-    .then(loggedInvestor => {
+    .then(loggedInvestor => { //if lggedinves....
       console.log('loggedInInvestor: ', loggedInvestor)
-      setInvestorData(loggedInvestor); 
+      setInvestorData(loggedInvestor!); 
     })
     .catch(error => {
       console.log(error);
@@ -263,7 +263,7 @@ useEffect(() => {
   
   useEffect(() => {
     getAllTransactions();
-  }, [transactions]); //add dependency here? if transactions change, this should be updated
+  }, []); 
 
   console.log('investorData: ', investorData)
 

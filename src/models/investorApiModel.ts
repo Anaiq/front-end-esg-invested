@@ -1,4 +1,6 @@
 // create an interface (type object) that can be used throughout the application
+import { TransactionApi } from "./transactionApiModel";
+
 export type InvestorApi ={
     investor_id:number, 
     investor_name: string, 
@@ -14,16 +16,5 @@ export type InvestorApi ={
     e_goal: string, 
     s_goal: string,
     g_goal: string,
-    transactions:{
-        transaction_id: number,
-        stock_symbol: string,
-        company_name: string,
-        current_stock_price: number,
-        number_stock_shares: number
-        transaction_total_value: number
-        transaction_type: string,
-        transaction_time: string,
-        investor_id: number,
-        stock_id:number
-    }[]
+    transactions:TransactionApi[]
 };
