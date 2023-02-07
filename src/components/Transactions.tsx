@@ -18,7 +18,7 @@ const Transactions: React.FunctionComponent<ITransactionsProps> = ({transactions
             <header>
                 <Header/>
             </header>
-            <main className="main">
+            <main >
                 <h2>{`${investor.investorName}`}'s History of Transactions</h2><br></br>
                 <TransactionsHistoryTable transactionStocks={transactions}/>
             </main>

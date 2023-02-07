@@ -1,7 +1,5 @@
-.portfolio {
-    display: grid;
-    /* background-image: linear-gradient(21deg,#034159 20%, #025951 40%, #02735E ) */
-    background-color: #abcea7;
+.header {
+    margin-bottom: 100px;
 }
 
 .chart {

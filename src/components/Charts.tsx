@@ -9,15 +9,29 @@ import {
     } from 'chart.js';
     import { Bar } from 'react-chartjs-2';
 
-    ChartJS.register(
-        CategoryScale,
-        LinearScale,
-        BarElement,
-        Title,
-        Tooltip,
-        Legend
-    );
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
+
+// export const options = {
+//     responsive: false,
+//     plugins: {
+//         legend: {
+//             position: 'top' as const,
+//         },
+//         title: {
+//             display: true,
+//         text: 'Chart.js Bar Chart',
+//         },
+//     },
+// };
     
+export const options = {};
 interface IChartsProps {
 }
 
@@ -42,7 +56,7 @@ const Charts: React.FunctionComponent<IChartsProps> = (props) => {
         ],
     }
 
-    const options = {};
+    // const options = {};
 
     return(
         <Bar data={data}

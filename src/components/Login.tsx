@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import Button from 'react-bootstrap/Button';
 import LoginHeader from './LoginHeader';
-import { Investor } from "../models/investorModel";
 import Footer from './Footer';
 
 
@@ -16,11 +15,9 @@ const kDefaultFormState = {
 
 interface ILoginProps {
     handleLoginSubmit: any,
-    setInvestorData: any,
-    investor: Investor
 }
 
-const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit, setInvestorData, investor}) => {
+const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
 // const Login= ({handleLoginSubmit, currentForm}) => {
     const [loginFormData, setLoginFormData] = useState(kDefaultFormState);
     // console.log("loginFormData:", loginFormData)
@@ -29,12 +26,12 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit, setInv
         const fieldValue = event.target.value;
         const fieldName = event.target.name;
         const newFormData = {...loginFormData, [fieldName]:fieldValue}
-        // console.log("newFormData:", newFormData);
+        console.log("newFormData:", newFormData);
         setLoginFormData(newFormData);
     }
 
-    // console.log(loginFormData.username);
-    // console.log(loginFormData.password);
+    console.log(loginFormData.username);
+    console.log(loginFormData.password);
 
     const navigate = useNavigate();
 
@@ -45,10 +42,6 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit, setInv
         return;
     } else {
         handleLoginSubmit(loginFormData)
-        console.log('LoginFormData: ', loginFormData);
-        console.log('InvestorData: ', investor)
-        setInvestorData({investor});
-        setLoginFormData(kDefaultFormState);
         navigate('/portfolio');
     }
 

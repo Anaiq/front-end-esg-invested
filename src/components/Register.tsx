@@ -14,10 +14,9 @@ const kDefaultFormState = {
 
 interface IRegisterProps {
     handleRegisterSubmit: any,
-    setInvestorData: any
 }
 
-const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmit, setInvestorData }) => {
+const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmit }) => {
 // const Register = (props:any) => {
     const [regFormData, setRegFormData] = useState(kDefaultFormState);
 
@@ -34,8 +33,6 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
     const handleSubmit = (event:any): void => {
     event.preventDefault()
     handleRegisterSubmit(regFormData)
-    
-    setInvestorData(regFormData);
     setRegFormData(kDefaultFormState);
     navigate('/portfolio');
     }

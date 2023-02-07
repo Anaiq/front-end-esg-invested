@@ -16,16 +16,18 @@ interface IPortfolioHomeProps {
 }
 
 const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor}) => {
-    console.log(`investorData.investorName: ${investor?.investorName}`)
+    console.log(`investorData.investorName: ${investor.investorName}`)
     return (
-        <div className='portfolio'>
-            <header>
+        <div>
+            <header className='portfolio'>
                 <Header/>
             </header>
-            <main className='main'>
+            <div>
                 <Salutation investor={investor}/>
                 <h2>ESG Goal Chart and Current Portfolio ESG Ratings</h2>
+                <div className='goal-charts'>
                 <Charts />
+                </div>
                 <MoneyDisplay investor={investor}></MoneyDisplay>
                 <div>
                     <ESGFilter />
@@ -34,7 +36,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
                 <div>
                     <PortfolioTable portfolioStocks={portfolios}/>
                 </div>
-            </main>
+            </div>
             <footer>
                 <Footer/>
             </footer>

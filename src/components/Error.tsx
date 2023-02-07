@@ -9,7 +9,7 @@ const Error: React.FunctionComponent<IErrorProps> = (props) => {
         <div>
             <h2>404</h2>
             <p>Oops! Sorry, page not found</p>
-            <Link to='/login'>Log In</Link>
+            <Link to='/'>Log In</Link>
         </div>
     );
 };

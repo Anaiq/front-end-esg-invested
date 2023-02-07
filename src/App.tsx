@@ -65,9 +65,12 @@ const convertTransactionFromApi = (apiTransaction:TransactionApi) => {
 
 // API CALLS HERE
 // register a new investor
-const registerInvestorApi = (investorData:any) => {
-  console.log('investorData: ', investorData);
-  const investorName = investorData.username;
+const registerInvestorApi = (registrationCredentials:{
+  username: string
+  password: string
+  }) => {
+  console.log('registrationCredentials: ', registrationCredentials);
+  const investorName = registrationCredentials.username;
   const requestBody = {
       investor_name: investorName, 
       password: 'N/A',
@@ -99,9 +102,12 @@ const registerInvestorApi = (investorData:any) => {
 }
 
 // get current investor  **needs return type here!!
-const loginInvestorApi = (investorData:any) => {
-  console.log('investorData: ', investorData);
-  const investorName = investorData.username;
+const loginInvestorApi = (loginCredentials:{
+  username: string
+  password: string
+  }) => {
+  console.log('loginCredentials: ', loginCredentials);
+  const investorName = loginCredentials.username;
   const requestBody = {
     investor_name:investorName, 
     password: 'N/A',
@@ -124,8 +130,8 @@ const loginInvestorApi = (investorData:any) => {
   return axios
   .post(`${kBaseUrl}/login`, requestBody)
   .then((response) => {
-    console.log('loginInvestorApi:' , response.data);
-    console.log(convertInvestorFromApi(response.data));
+    console.log('loginInvestorApi: ' , response.data);
+    console.log('converted LoginInvestorApi: ',convertInvestorFromApi(response.data));
     return convertInvestorFromApi(response.data);
 })
 .catch((error) => {
@@ -133,6 +139,8 @@ const loginInvestorApi = (investorData:any) => {
 });
 }
 
+
+// add an investor transaction
 
 // get all stock on the exchange 
 const getAllExchangesApi = () => {
@@ -192,12 +200,15 @@ useEffect(() => {
   // data fetching code
 }, [])
 
-  const handleRegisterSubmit = (data:any) => {
+  const handleRegisterSubmit = (data:{
+    username: string
+    password: string
+    })=> {
     // call api, update the registered investor data with the data that comes back
     registerInvestorApi(data)
-    .then((newInvestorData) => {
-      console.log('new registered Investor Data: ', newInvestorData)
-      setInvestorData(investorData);
+    .then((registeredInvestor) => {
+      console.log('new registered Investor: ', registeredInvestor)
+      setInvestorData(registeredInvestor);
     })
     .catch(error => {
       console.log(error);
@@ -205,21 +216,21 @@ useEffect(() => {
   }
   
 
-  const handleLoginSubmit = (data:any) => {
+  const handleLoginSubmit = (data:{
+    username: string
+    password: string
+    }) => {
     // call api, update the investorData with the data that comes back
     loginInvestorApi(data)
-    .then((newInvestorData) => {
-      console.log('new login Investor Data: ', newInvestorData)
-      setInvestorData(investorData); //newInvestorData
+    .then(loggedInvestor => {
+      console.log('loggedInInvestor: ', loggedInvestor)
+      setInvestorData(loggedInvestor); 
     })
     .catch(error => {
       console.log(error);
     })
   };
 
-  useEffect(() => {
-    handleLoginSubmit(investorData);
-  }, [investorData]);
 
   const getAllExchanges = () => {
     return getAllExchangesApi()
@@ -243,7 +254,7 @@ useEffect(() => {
       .then((transactions) => {
         setTransactions(transactions);
         setPortfolios(transactions)
-        // console.log(transactions);
+        console.log(transactions);
       })
       .catch((error) => {
         console.log(error.message);
@@ -255,13 +266,14 @@ useEffect(() => {
   }, [transactions]); //add dependency here? if transactions change, this should be updated
 
   console.log('investorData: ', investorData)
+
   return ( 
     <div className='App'>
       <main className='main'>
         <BrowserRouter>
           <Routes>          
-            <Route path='/' element={<Login investor={investorData} setInvestorData={setInvestorData} handleLoginSubmit={handleLoginSubmit}  />}></Route> 
-            <Route path='register' element={<Register setInvestorData={setInvestorData} handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
+            <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
+            <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
             <Route path='portfolio' element={<PortfolioHome investor={investorData} portfolios={portfolios}/>}></Route>
             <Route path='/about' element={<About />}></Route>
             <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData}/>}></Route>
