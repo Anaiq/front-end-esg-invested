@@ -1,4 +1,4 @@
-import React, {useCallback} from 'react';
+import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -17,16 +17,10 @@ import About from './components/About';
 import ESGGoalSet from './components/ESGGoalSet';
 import Invest from './components/Invest';
 import Transactions from './components/Transactions';
-import Header from './components/Header';
-import Footer from './components/Footer';
 import Error from './components/Error';
 
 
   const kBaseUrl = 'http://localhost:5000';
-  const kDefaultFormState = {
-    username: '',
-    password: ''
-    };
 
   // convert from API functions goes here:
 const convertExchangeFromApi = (apiExchangeStock:ExchangeStockApi) => {
@@ -101,7 +95,7 @@ const registerInvestorApi = (registrationCredentials:{
   });
 }
 
-// get current investor  **needs return type here!!
+// get current investor  
 const loginInvestorApi = (loginCredentials:{
   username: string
   password: string
@@ -137,10 +131,35 @@ const loginInvestorApi = (loginCredentials:{
 .catch((error) => {
   console.log(error.data);
 });
-}
+};
 
 
 // add an investor transaction
+
+
+//add money to investor cash balance
+const addMoneyApi = (cashData:{
+  id: number,
+  cash: number
+  }) => {
+const depositedMoney = cashData.cash;
+const requestBody = {id: cashData.id, depositedMoney: depositedMoney}
+console.log('deposited money amount: ', depositedMoney)
+console.log('addMoneyApi requestBody: ', requestBody);
+
+return axios
+.patch(`${kBaseUrl}/investors/${cashData.id}/add_money`)
+.then((response) => {
+  console.log('loginInvestorApi: ' , response.data);
+  console.log('converted LoginInvestorApi: ',convertInvestorFromApi(response.data));
+  return convertInvestorFromApi(response.data);
+})
+.catch((error) => {
+  console.log(error.data);
+})
+
+};
+
 
 // get all stock on the exchange 
 const getAllExchangesApi = () => {
@@ -158,9 +177,9 @@ const getAllExchangesApi = () => {
 };
 
 // get all stocks for specified investor
-const getAllTransactionsApi = () => {
+const getAllTransactionsApi = (id:number) => {
   return axios
-    .get(`${kBaseUrl}/investors/29/transactions`)
+    .get(`${kBaseUrl}/investors/${id}/transactions`)
     .then((response) => {
       // console.log(response.data);
       // console.log(response.data.map(convertTransactionFromApi));
@@ -225,10 +244,29 @@ useEffect(() => {
     .then(loggedInvestor => { //if lggedinves....
       console.log('loggedInInvestor: ', loggedInvestor)
       setInvestorData(loggedInvestor!); 
+      getAllTransactions(loggedInvestor!)
     })
     .catch(error => {
       console.log(error);
     })
+  };
+
+  const  handleAddMoneySubmit = (cashData:{
+    id: number,
+    cash: number
+    }) => {
+    addMoneyApi(cashData)
+    .then(investorAddedCash => {
+      // console.log('investor that added cash:', investorAddedCash.investorName)
+      setInvestorData(investorAddedCash!);
+      getAllTransactions(investorAddedCash!)
+      if (investorAddedCash) {
+        console.log('investor added cash:', investorAddedCash.investorName)
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
   };
 
 
@@ -249,21 +287,23 @@ useEffect(() => {
   }, []); //This only needs to be done on initial render, values will NOT change
 
 
-  const getAllTransactions = () => {
-    return getAllTransactionsApi()
+  const getAllTransactions = (investorData:Investor) => {
+    return getAllTransactionsApi(investorData.investorId)
       .then((transactions) => {
         setTransactions(transactions);
         setPortfolios(transactions)
         console.log(transactions);
+        console.log(portfolios)
       })
       .catch((error) => {
         console.log(error.message);
       });
   };
   
-  useEffect(() => {
-    getAllTransactions();
-  }, []); 
+  
+  useEffect(()=> {
+    localStorage.setItem('investorData', JSON.stringify(investorData));
+  },[investorData])
 
   console.log('investorData: ', investorData)
 
@@ -274,7 +314,7 @@ useEffect(() => {
           <Routes>          
             <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
             <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
-            <Route path='portfolio' element={<PortfolioHome investor={investorData} portfolios={portfolios}/>}></Route>
+            <Route path='portfolio' element={<PortfolioHome investor={investorData} portfolios={portfolios} handleAddMoneySubmit={handleAddMoneySubmit} />}></Route>
             <Route path='/about' element={<About />}></Route>
             <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData}/>}></Route>
             <Route path='invest' element={<Invest exchangeStocks={exchanges} />}></Route>

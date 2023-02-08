@@ -16,7 +16,7 @@ const Invest: React.FunctionComponent<IInvestProps> = ({exchangeStocks}) => {
             <header>
                 <Header/>
             </header>
-            <main className='exchange'>
+            <main className='main'>
                 <h2> ESG Stock Exchange</h2>
                 <div className="mb-1">
                     <Table striped>

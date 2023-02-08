@@ -13,9 +13,10 @@ import Charts from './Charts';
 interface IPortfolioHomeProps {
     portfolios: any;
     investor: Investor
+    handleAddMoneySubmit: any
 }
 
-const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor}) => {
+const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit}) => {
     console.log(`investorData.investorName: ${investor.investorName}`)
     return (
         <div>
@@ -28,7 +29,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
                 <div className='goal-charts'>
                 <Charts />
                 </div>
-                <MoneyDisplay investor={investor}></MoneyDisplay>
+                <MoneyDisplay investor={investor} handleAddMoneySubmit={handleAddMoneySubmit} ></MoneyDisplay>
                 <div>
                     <ESGFilter />
                     <ESGRatingsFilter />

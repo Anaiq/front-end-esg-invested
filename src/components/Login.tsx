@@ -30,8 +30,8 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
         setLoginFormData(newFormData);
     }
 
-    console.log(loginFormData.username);
-    console.log(loginFormData.password);
+    console.log('loginFormData.username: ', loginFormData.username);
+    console.log('loginFormData.password: ', loginFormData.password);
 
     const navigate = useNavigate();
 
