@@ -33,10 +33,15 @@ const MoneyForm: React.FunctionComponent<IMoneyFormProps> = ({investor, handleAd
     console.log('depositFormData.id: ', depositFormData.id);
     console.log('depositFormData.cashDeposit: ', depositFormData.cashDeposit);
 
-    const handleDepositSubmit = (event:any): void => {
+    const handleDepositSubmit = (event:any) => {
         event.preventDefault()
-        if (!depositFormData) return;
-        handleAddMoneySubmit(depositFormData)
+        if (!depositFormData) {
+            console.log('no depositFormData: ', depositFormData);
+            return;
+        } else {
+            console.log('handleAddMoneySubmit(depositFormData) result:', handleAddMoneySubmit(depositFormData))
+            handleAddMoneySubmit(depositFormData!)
+        }
     }
 
     return (

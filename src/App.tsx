@@ -140,15 +140,16 @@ const loginInvestorApi = (loginCredentials:{
 //add money to investor cash balance
 const addMoneyApi = (cashData:{
   id: number,
-  cash: number
+  cashDeposit: number
   }) => {
-const depositedMoney = cashData.cash;
-const requestBody = {id: cashData.id, depositedMoney: depositedMoney}
-console.log('deposited money amount: ', depositedMoney)
-console.log('addMoneyApi requestBody: ', requestBody);
+console.log('cashData: ', cashData);
+// const depositedMoney = cashData.cashDeposit;
+const moneyRequestBody = {id: cashData.id, cash: cashData.cashDeposit}
+console.log('deposited money amount: ', moneyRequestBody.cash)
+console.log('addMoneyApi requestBody: ', moneyRequestBody);
 
 return axios
-.patch(`${kBaseUrl}/investors/${cashData.id}/add_money`)
+.patch(`${kBaseUrl}/investors/${cashData.id}/add_money`, moneyRequestBody)
 .then((response) => {
   console.log('loginInvestorApi: ' , response.data);
   console.log('converted LoginInvestorApi: ',convertInvestorFromApi(response.data));
@@ -192,32 +193,37 @@ const getAllTransactionsApi = (id:number) => {
 
 
 function App() {  
-  const [investorData, setInvestorData] = useState<Investor>({
-    investorId:0, 
-    investorName: '', 
-    isLoggedIn: false, 
-    cashBalance: 0, 
-    totalSharesBuys: 0,
-    totalSharesSales: 0,
-    totalSharesCashValue: 0, 
-    totalAssetsBalance: 0, 
-    currentERating: '',
-    currentSRating: '',
-    currentGRating: '',
-    eGoal: '', 
-    sGoal: '',
-    gGoal: '',
-    transactions: []
+  const [investorData, setInvestorData] = useState<Investor>(() =>{
+    // investorId:0, 
+    // investorName: '', 
+    // isLoggedIn: false, 
+    // cashBalance: 0, 
+    // totalSharesBuys: 0,
+    // totalSharesSales: 0,
+    // totalSharesCashValue: 0, 
+    // totalAssetsBalance: 0, 
+    // currentERating: '',
+    // currentSRating: '',
+    // currentGRating: '',
+    // eGoal: '', 
+    // sGoal: '',
+    // gGoal: '',
+    // transactions: []
+    const savedInvestor = localStorage.getItem("investorData");
+    const parsedItem= JSON.parse(savedInvestor!);
+    return parsedItem ||  "";
   });
+  useEffect(()=> {
+    localStorage.setItem('investorData', JSON.stringify(investorData));
+  },[investorData])
+
 
   const [portfolios, setPortfolios] = useState([]);
   const [exchanges, setExchanges] = useState([]); 
   const [stocks, setStocks] = useState([])
   const [transactions, setTransactions] = useState([]);
 
-useEffect(() => {
-  // data fetching code
-}, [])
+
 
   const handleRegisterSubmit = (data:{
     username: string
@@ -251,17 +257,19 @@ useEffect(() => {
     })
   };
 
+ 
+
   const  handleAddMoneySubmit = (cashData:{
     id: number,
-    cash: number
+    cashDeposit: number
     }) => {
     addMoneyApi(cashData)
-    .then(investorAddedCash => {
-      // console.log('investor that added cash:', investorAddedCash.investorName)
-      setInvestorData(investorAddedCash!);
-      getAllTransactions(investorAddedCash!)
-      if (investorAddedCash) {
-        console.log('investor added cash:', investorAddedCash.investorName)
+    .then(investorWithAddedCash => {
+      console.log('investor that added cash:', investorWithAddedCash)
+      setInvestorData(investorWithAddedCash!);
+      getAllTransactions(investorWithAddedCash!)
+      if (investorWithAddedCash) {
+        console.log('investor with added cash:', investorWithAddedCash.investorName)
       }
     })
     .catch(error => {
@@ -300,10 +308,6 @@ useEffect(() => {
       });
   };
   
-  
-  useEffect(()=> {
-    localStorage.setItem('investorData', JSON.stringify(investorData));
-  },[investorData])
 
   console.log('investorData: ', investorData)
 
