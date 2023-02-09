@@ -2,8 +2,8 @@ import * as React from 'react';
 import { Investor } from '../models/investorModel';
 import Header from './Header'; 
 import Footer from './Footer';
-import GoalChart from './GoalChart';
-import GoalList from './GoalList';
+
+import Goal from './Goal';
 
 interface IESGGoalSetProps {
     investor: Investor;
@@ -16,12 +16,9 @@ const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor}) => {
                 <Header/>
             </header>
             <main className='main'>
-                <h2>{`${investor.investorName}`}, Plan your ESG Goals!</h2>
-                <div className='goal-chart'>
-                    <GoalChart />
-                </div>    
+                <h2>{`${investor.investorName}`}, Plan your ESG Goals!</h2>  
                 <div className='goal-list'>
-                    <GoalList />
+                    <Goal />
                 </div>
             </main>
             

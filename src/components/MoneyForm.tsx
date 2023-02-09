@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { Button, FormControl } from 'react-bootstrap';
 import {Form} from 'react-bootstrap';
 import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';

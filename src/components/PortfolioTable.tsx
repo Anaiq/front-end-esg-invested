@@ -1,13 +1,24 @@
 import * as React from 'react';
 import Table from 'react-bootstrap/Table';
 import PortfolioStocks from './PortfolioStocks';
+import { Stock } from '../models/stockModel';
 import { PortfolioStock } from '../models/portfolioStockModel';
 
 interface IPortfolioTableProps {
     portfolioStocks: PortfolioStock[],
+    stockRatings: Stock[]
+    // handleBuyStockSubmit:any
+    // handleSellStockSubmit:any
+    // stock
 }
 
-const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks}) => {
+const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks, stockRatings }) => {
+    console.log('portfolioStocks: ', portfolioStocks)
+
+    // if length is 0: //guard clause for the rendering
+    // return null (invisible)
+    // OR create portolio enpoint
+    
     return ( 
             <Table striped>
                 <thead>
@@ -25,7 +36,7 @@ const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfoli
                     </tr>
                 </thead>
                 <tbody>
-                    {portfolioStocks.map((portfolioStock) => (<PortfolioStocks portfolioStock={portfolioStock} {...portfolioStock}/>))}
+                    {portfolioStocks.map((portfolioStock) => (<PortfolioStocks stockRatings={stockRatings} portfolioStock={portfolioStock} {...portfolioStock}/>))}
                 </tbody>
             </Table>
     );

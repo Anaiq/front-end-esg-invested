@@ -18,6 +18,9 @@ import ESGGoalSet from './components/ESGGoalSet';
 import Invest from './components/Invest';
 import Transactions from './components/Transactions';
 import Error from './components/Error';
+import { PortfolioStock } from './models/portfolioStockModel';
+import { Transaction } from './models/transactionModel';
+import { Stock } from './models/stockModel';
 
 
   const kBaseUrl = 'http://localhost:5000';
@@ -51,9 +54,10 @@ const convertStockFromApi = (apiStock:StockApi) => {
 const convertTransactionFromApi = (apiTransaction:TransactionApi) => {
   const {transaction_id:transactionId, stock_symbol:stockSymbol, company_name:companyName, current_stock_price:currentStockPrice, 
     number_stock_shares:numberStockShares, transaction_total_value:transactionTotalValue, transaction_type:transactionType, 
-    transaction_time:transactionTime,investor_id:investorId, stock_id:stockId} = apiTransaction;
+    transaction_time:transactionTime,investor_id:investorId, stock_id:stockId, environment_rating:environmentRating, social_rating:socialRating, 
+    governance_rating:governanceRating} = apiTransaction;
   const newTransactionStock = {transactionId, stockSymbol, companyName, currentStockPrice, numberStockShares, 
-    transactionTotalValue, transactionType, transactionTime, investorId, stockId};
+    transactionTotalValue, transactionType, transactionTime, investorId, stockId, environmentRating, socialRating, governanceRating};
   return newTransactionStock;
 };
 
@@ -134,7 +138,33 @@ const loginInvestorApi = (loginCredentials:{
 };
 
 
-// add an investor transaction
+// add an investor buy transaction
+
+// const buyStockApi = (buyData:{
+//   stockSymbol: string,
+//   companyName:string,
+//   currentStockPrice:string,
+//   numberStockShares:string,
+//   transactionTotalValue:string,
+//   transactionType: string,
+//   transactionTime: string,
+//   buyerId: number,
+//   stockId: number
+// }) => {
+// console.log('buyData: ', buyData)
+// const buyRequestBody = {}
+// console.log('buyStock requestBody: ' buyRequestBody);
+
+// return axios
+// .post(`${kBaseUrl}/investors/${buyData.buyerId}/buy`, buyRequestBody)
+// .then((response) => {
+//   console.log('buyStockApi investor: ', response.data);
+//   console.log('converted buyStockApi Investor: ', convertInvestorFromApi(response.data));
+//   return convertInvestorFromApi(response.data);
+// })
+// };
+
+// add an investor sell transaction
 
 
 //add money to investor cash balance
@@ -143,7 +173,6 @@ const addMoneyApi = (cashData:{
   cashDeposit: number
   }) => {
 console.log('cashData: ', cashData);
-// const depositedMoney = cashData.cashDeposit;
 const moneyRequestBody = {id: cashData.id, cash: cashData.cashDeposit}
 console.log('deposited money amount: ', moneyRequestBody.cash)
 console.log('addMoneyApi requestBody: ', moneyRequestBody);
@@ -169,7 +198,7 @@ const getAllExchangesApi = () => {
     .then((response) => {
       console.log(response.data);
       // return response.data;
-      // console.log(response.data.map(convertExchangeFromApi));
+      console.log(response.data.map(convertExchangeFromApi));
       return response.data.map(convertExchangeFromApi);
     })
     .catch((error) => {
@@ -177,7 +206,25 @@ const getAllExchangesApi = () => {
     });
 };
 
-// get all stocks for specified investor
+
+// get all stocks ratings
+const getAllStockRatingsApi = () => {
+  return axios
+  .get(`${kBaseUrl}/stocks`)
+    .then((response) => {
+      console.log(response.data);
+      // return response.data;
+      console.log(response.data.map(convertStockFromApi));
+      return response.data.map(convertStockFromApi);
+    })
+    .catch((error) => {
+      console.log(error.data);
+    });
+};
+
+
+
+// get all transactions for specified investor
 const getAllTransactionsApi = (id:number) => {
   return axios
     .get(`${kBaseUrl}/investors/${id}/transactions`)
@@ -217,11 +264,17 @@ function App() {
     localStorage.setItem('investorData', JSON.stringify(investorData));
   },[investorData])
 
-
-  const [portfolios, setPortfolios] = useState([]);
+  const [portfolios, setPortfolios] = useState<PortfolioStock[]>([]);
   const [exchanges, setExchanges] = useState([]); 
-  const [stocks, setStocks] = useState([])
-  const [transactions, setTransactions] = useState([]);
+  useEffect(()=> {
+    localStorage.setItem('exchanges', JSON.stringify(exchanges));
+  },[exchanges])
+
+  const [stockRatings, setStockRatings] = useState<Stock[]>([])
+  useEffect(()=> {
+    localStorage.setItem('stockRatings', JSON.stringify(stockRatings));
+  },[stockRatings])
+  const [transactions, setTransactions] = useState<Transaction[]>([]);
 
 
 
@@ -257,7 +310,6 @@ function App() {
     })
   };
 
- 
 
   const  handleAddMoneySubmit = (cashData:{
     id: number,
@@ -277,11 +329,41 @@ function App() {
     });
   };
 
+  // const handleBuyStockSubmit = (buyData:{
+  // stockSymbol: string,
+  // companyName:string,
+  // currentStockPrice:string,
+  // numberStockShares:string,
+  // transactionTotalValue:string,
+  // transactionType: string,
+  // transactionTime: string,
+  // buyerId: number,
+  // stockId: number
+  // }) => {
+  //   buyStockApi(buyData)
+  //   .then(InvestorOfStockPurchase => {
+  //     console.log('InvestorOfStockPurchase: ', InvestorOfStockPurchase)
+  //     setInvestorData(InvestorOfStockPurchase!);
+  //     getAllTransactions(InvestorOfStockPurchase!);
+  //     if (InvestorOfStockPurchase) {
+  //       console.log('investor that bought stock: ', InvestorOfStockPurchase.investorName)
+  //     }
+  //   })
+  //   .catch(error => {
+  //     console.log(error);
+  //   });
+  // };
+
+
+const handleSellStockSubmit = () => {
+  console.log('stock sold!!')
+}
+
 
   const getAllExchanges = () => {
     return getAllExchangesApi()
       .then((exchanges) => {
-        // console.log(exchanges);
+        console.log(exchanges);
         setExchanges(exchanges);
         
       })
@@ -295,11 +377,29 @@ function App() {
   }, []); //This only needs to be done on initial render, values will NOT change
 
 
+  const getAllStockRatings = () => {
+    return getAllStockRatingsApi()
+      .then((stockRatings) => {
+        console.log(stockRatings);
+        setStockRatings(stockRatings);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+
+  useEffect(() => {
+    getAllStockRatings();
+  }, []); //This only needs to be done on initial render, values will NOT change
+
+
+
   const getAllTransactions = (investorData:Investor) => {
     return getAllTransactionsApi(investorData.investorId)
       .then((transactions) => {
         setTransactions(transactions);
-        setPortfolios(transactions)
+        setPortfolios(transactions) 
         console.log(transactions);
         console.log(portfolios)
       })
@@ -318,7 +418,8 @@ function App() {
           <Routes>          
             <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
             <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
-            <Route path='portfolio' element={<PortfolioHome investor={investorData} portfolios={portfolios} handleAddMoneySubmit={handleAddMoneySubmit} />}></Route>
+            <Route path='portfolio' element={<PortfolioHome investor={investorData} stockRatings={stockRatings} portfolios={portfolios}
+              handleAddMoneySubmit={handleAddMoneySubmit}  />}></Route>
             <Route path='/about' element={<About />}></Route>
             <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData}/>}></Route>
             <Route path='invest' element={<Invest exchangeStocks={exchanges} />}></Route>

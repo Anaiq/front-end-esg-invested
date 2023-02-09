@@ -2,6 +2,7 @@ import * as React from 'react';
 import Header from './Header'; 
 import Footer from './Footer';
 import {Investor} from '../models/investorModel';
+import { Stock } from '../models/stockModel';
 import PortfolioTable from './PortfolioTable';
 import Salutation from './Salutation';
 import MoneyDisplay from './Money';
@@ -14,9 +15,12 @@ interface IPortfolioHomeProps {
     portfolios: any;
     investor: Investor
     handleAddMoneySubmit: any
+    stockRatings: Stock[]
+    // handleBuyStockSubmit:any
+    // handleSellStockSubmit:any
 }
 
-const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit}) => {
+const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit, stockRatings, }) => {
     console.log(`investorData.investorName: ${investor.investorName}`)
     return (
         <div>
@@ -25,7 +29,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
             </header>
             <div>
                 <Salutation investor={investor}/>
-                <h2>ESG Goal Chart and Current Portfolio ESG Ratings</h2>
+                <h2>ESG Goals and Current Portfolio ESG Ratings</h2>
                 <div className='goal-charts'>
                 <Charts />
                 </div>
@@ -35,7 +39,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
                     <ESGRatingsFilter />
                 </div>
                 <div>
-                    <PortfolioTable portfolioStocks={portfolios}/>
+                    <PortfolioTable stockRatings={stockRatings} portfolioStocks={portfolios}/>
                 </div>
             </div>
             <footer>

@@ -9,5 +9,8 @@ export type TransactionApi = {
     transaction_type: string,
     transaction_time: string,
     investor_id: number,
-    stock_id:number
+    stock_id:number, 
+    environment_rating: string,
+    social_rating: string,
+    governance_rating: string
 };

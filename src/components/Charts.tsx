@@ -18,19 +18,6 @@ ChartJS.register(
     Legend
 );
 
-// export const options = {
-//     responsive: false,
-//     plugins: {
-//         legend: {
-//             position: 'top' as const,
-//         },
-//         title: {
-//             display: true,
-//         text: 'Chart.js Bar Chart',
-//         },
-//     },
-// };
-    
 export const options = {};
 interface IChartsProps {
 }
@@ -40,18 +27,18 @@ const Charts: React.FunctionComponent<IChartsProps> = (props) => {
         labels:["AAA", "AA", "BBB", "BB", "B", "CCC", "CC"],
         datasets:[
             {
-                label: "ESG Portolio Goals",
-                data: [0.8, 0.5, 0.5, 0.87, 0.36, 0.4, 0.12],
-                backgroundColor: "#A6A6A6",
+                label: "ESG Portfolio Goals",
+                data: [15, 15, 15, 15, 10, 10, 10, 10],
+                backgroundColor: "green",
                 borderColor: 'black',
-                borderWidth: 1
+                borderWidth: 2
             },
             {
                 label: "Current ESG Portfolio",
-                data: [0.67, 0.52, 0.69, 0.46, 0.89, 0.18, 0.23],
+                data: [10, 10, 16, 12, 22, 8, 14, 5],
                 backgroundColor: "#595959",
                 borderColor: 'black',
-                borderWidth: 1
+                borderWidth: 2
             },
         ],
     }

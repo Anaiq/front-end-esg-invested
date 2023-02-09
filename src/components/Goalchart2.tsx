@@ -20,17 +20,17 @@ import {
     );
     
 
-interface IGoalChartProps {
+interface IGoalChart2Props {
 } 
 
-const GoalChart: React.FunctionComponent<IGoalChartProps> = () => {
+const GoalChart2: React.FunctionComponent<IGoalChart2Props> = () => {
     
     const data = {
         labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC'],
         datasets:[
             {
                 label: '',
-                data: [15, 15, 15, 15, 10, 10, 10, 10],
+                data: [30, 20, 15, 15, 10,10, 0, 0],
                 backgroundColor: 'green',
                 borderColor: 'black',
                 borderWidth: 2
@@ -52,4 +52,4 @@ const GoalChart: React.FunctionComponent<IGoalChartProps> = () => {
     );
 };
 
-export default GoalChart;
+export default GoalChart2;

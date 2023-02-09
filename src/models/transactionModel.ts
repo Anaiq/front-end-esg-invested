@@ -9,5 +9,8 @@ export type Transaction = {
     transactionType: string,
     transactionTime: string,
     investorId: number,
-    stockId:number
+    stockId:number,
+    environmentRating: string,
+    socialRating: string,
+    governanceRating: string
 };
