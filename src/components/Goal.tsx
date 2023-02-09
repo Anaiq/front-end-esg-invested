@@ -5,18 +5,22 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import GoalChart from './GoalChart';
-import GoalChart2 from './Goalchart2';
+import GoalChart2 from './GoalChart2';
 
 interface IGoalProps {
 }
 
 const Goal: React.FunctionComponent<IGoalProps> = (props) => {
+    const [toggle, setToggle] = useState(true);
+
+    const handleClick = () => {
+        setToggle(!toggle);
+    }
 // display goalchart one as default and change to goalchart2 on button click
     return (
         <div>
             <div>
-                <GoalChart/> 
-                <GoalChart2/>
+                {toggle ? <GoalChart/> : <GoalChart2/>}
             </div>
             <div>
                 <Form>
@@ -72,7 +76,7 @@ const Goal: React.FunctionComponent<IGoalProps> = (props) => {
                         <Form.Control type="text"   size="lg" placeholder="CC" />
                     </Col>
                     </Row>
-                    <Button as="input" type="submit" value="submit" variant="secondary"></Button>
+                    <Button onClick={handleClick}  variant="secondary">Set Goal</Button>
                 </Form>
             </div>
         </div>

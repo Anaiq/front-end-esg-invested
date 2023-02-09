@@ -18,14 +18,13 @@ interface ILoginProps {
 }
 
 const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
-// const Login= ({handleLoginSubmit, currentForm}) => {
     const [loginFormData, setLoginFormData] = useState(kDefaultFormState);
-    // console.log("loginFormData:", loginFormData)
+
 
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>): void =>{
         const fieldValue = event.target.value;
         const fieldName = event.target.name;
-        const newFormData = {...loginFormData, [fieldName]:fieldValue}
+        const newFormData = {...loginFormData, [fieldName]:fieldValue};
         console.log("newFormData:", newFormData);
         setLoginFormData(newFormData);
     }
@@ -64,9 +63,6 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                     >Login</Button>
             </form>
             <Link to='/register'>Need an Account? Register Here.</Link>
-            {/* <footer>
-                <Footer/>
-            </footer> */}
         </div>
         
     );

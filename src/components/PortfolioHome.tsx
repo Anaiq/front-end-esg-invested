@@ -16,8 +16,6 @@ interface IPortfolioHomeProps {
     investor: Investor
     handleAddMoneySubmit: any
     stockRatings: Stock[]
-    // handleBuyStockSubmit:any
-    // handleSellStockSubmit:any
 }
 
 const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit, stockRatings, }) => {

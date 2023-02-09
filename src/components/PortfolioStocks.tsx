@@ -1,31 +1,22 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { PortfolioStock } from '../models/portfolioStockModel';
 import { Stock } from '../models/stockModel';
 import Button from 'react-bootstrap/Button'
-
-const kDefaultForState = {
-    stockSymbol: "",
-    companyName: "",
-    currentStockPrice:"",
-    numberStockShares:"",
-    transactionTotalValue:"",
-    transactionType: "",
-    transactionTime: "",
-    buyerId: 0,
-    stockId: 0
-}
 
 
 interface IPStockProps {
     portfolioStock: PortfolioStock
     stockRatings: Stock[]
-    // handleBuyStockSubmit: any
-    // handleSellStockSubmit: any
 }
 
 const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock, stockRatings}) => {
-    
+    const navigate = useNavigate();
+
+    const handleSubmit = (event:any):void => {
+        navigate('/invest');
+
+    }
 
     return (
             <tr>
@@ -40,8 +31,8 @@ const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock,
                 <td>{portfolioStock.socialRating}</td>
                 <td>{portfolioStock.governanceRating}</td>
                 
-                <td><Button  as="input" type="submit" value="Buy" variant="secondary"></Button></td>
-                <td><Button  as="input" type="submit" value="Sell" variant="secondary"></Button></td>
+                <td><Button onClick={handleSubmit} as="input" type="submit" value="Buy" variant="secondary"></Button></td>
+                <td><Button onClick={handleSubmit} as="input" type="submit" value="Sell" variant="secondary"></Button></td>
             </tr>
     );
 };

@@ -15,27 +15,26 @@ const ExchangeLists: React.FunctionComponent<IExchangeListProps> = ({exchangeSto
             <header>
                 <Header/>
             </header>
-            <main className='exchange'>
-                <h2> ESG Stock Exchange</h2>
-                <div className="mb-1">
-                    <Table striped>
-                        <thead>
-                            <tr>
-                                <th>Stock Symbol</th>
-                                <th>Company Name</th>
-                                <th>Current Stock Price</th>
-                                <th>Environment Rating</th>
-                                <th>Social Rating</th>
-                                <th>Governance Rating</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {exchangeStocks.map((exchangeStock) => (<ExchangeStocks exchangeStock={exchangeStock} {...exchangeStock}/>))}
-                        </tbody>
-                    </Table>
-                </div>
-                
-            </main>
+            <h2> ESG Stock Exchange</h2>
+            <div className="mb-1">
+                <Table striped responsive="md">
+                    <thead>
+                        <tr>
+                            <th>Stock Id</th>
+                            <th>Stock Symbol/Company Name</th>
+                            {/* <th>Company Name</th> */}
+                            <th>Current Stock Price</th>
+                            <th>Environment Rating</th>
+                            <th>Social Rating</th>
+                            <th>Governance Rating</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {exchangeStocks.map((exchangeStock) => (<ExchangeStocks exchangeStock={exchangeStock} {...exchangeStock}/>))}
+                    </tbody>
+                </Table>
+            </div>
+        
             <footer>
                 <Footer/>
             </footer>

@@ -140,29 +140,33 @@ const loginInvestorApi = (loginCredentials:{
 
 // add an investor buy transaction
 
-// const buyStockApi = (buyData:{
-//   stockSymbol: string,
-//   companyName:string,
-//   currentStockPrice:string,
-//   numberStockShares:string,
-//   transactionTotalValue:string,
-//   transactionType: string,
-//   transactionTime: string,
-//   buyerId: number,
-//   stockId: number
-// }) => {
-// console.log('buyData: ', buyData)
-// const buyRequestBody = {}
-// console.log('buyStock requestBody: ' buyRequestBody);
+const buyStockApi = (buyData:{
+  stockSymbol: string,
+  currentStockPrice:number,
+  numberStockSharesBuy:string,
+  transactionType: string,
+  buyerId: number,
+}) => {
+console.log('buyData: ', buyData)
+const buyRequestBody = {
+  stock_symbol: buyData.stockSymbol,
+  current_stock_price:buyData.currentStockPrice,
+  number_stock_shares:buyData.numberStockSharesBuy,
+  transaction_type: buyData.transactionType,
+  investor_id: buyData.buyerId}
+console.log('buyStock requestBody: ', buyRequestBody);
 
-// return axios
-// .post(`${kBaseUrl}/investors/${buyData.buyerId}/buy`, buyRequestBody)
-// .then((response) => {
-//   console.log('buyStockApi investor: ', response.data);
-//   console.log('converted buyStockApi Investor: ', convertInvestorFromApi(response.data));
-//   return convertInvestorFromApi(response.data);
-// })
-// };
+return axios
+.post(`${kBaseUrl}/investors/${buyData.buyerId}/buy`, buyRequestBody)
+.then((response) => {
+  console.log('buyStockApi investor: ', response.data);
+  console.log('converted buyStockApi Investor: ', convertInvestorFromApi(response.data));
+  return convertInvestorFromApi(response.data);
+})
+.catch((error) => {
+  console.log(error.data);
+})
+};
 
 // add an investor sell transaction
 
@@ -282,7 +286,6 @@ function App() {
     username: string
     password: string
     })=> {
-    // call api, update the registered investor data with the data that comes back
     registerInvestorApi(data)
     .then((registeredInvestor) => {
       console.log('new registered Investor: ', registeredInvestor)
@@ -298,9 +301,8 @@ function App() {
     username: string,
     password: string
     }) => {
-    // call api, update the investorData with the data that comes back
     loginInvestorApi(data)
-    .then(loggedInvestor => { //if lggedinves....
+    .then(loggedInvestor => { 
       console.log('loggedInInvestor: ', loggedInvestor)
       setInvestorData(loggedInvestor!); 
       getAllTransactions(loggedInvestor!)
@@ -329,30 +331,26 @@ function App() {
     });
   };
 
-  // const handleBuyStockSubmit = (buyData:{
-  // stockSymbol: string,
-  // companyName:string,
-  // currentStockPrice:string,
-  // numberStockShares:string,
-  // transactionTotalValue:string,
-  // transactionType: string,
-  // transactionTime: string,
-  // buyerId: number,
-  // stockId: number
-  // }) => {
-  //   buyStockApi(buyData)
-  //   .then(InvestorOfStockPurchase => {
-  //     console.log('InvestorOfStockPurchase: ', InvestorOfStockPurchase)
-  //     setInvestorData(InvestorOfStockPurchase!);
-  //     getAllTransactions(InvestorOfStockPurchase!);
-  //     if (InvestorOfStockPurchase) {
-  //       console.log('investor that bought stock: ', InvestorOfStockPurchase.investorName)
-  //     }
-  //   })
-  //   .catch(error => {
-  //     console.log(error);
-  //   });
-  // };
+  const handleBuyStockSubmit = (buyData:{
+    stockSymbol: string,
+    currentStockPrice:number,
+    numberStockSharesBuy:string,
+    transactionType: string,
+    buyerId: number,
+  }) => {
+    buyStockApi(buyData)
+    .then(InvestorOfStockPurchase => {
+      console.log('InvestorOfStockPurchase: ', InvestorOfStockPurchase)
+      setInvestorData(InvestorOfStockPurchase!);
+      getAllTransactions(InvestorOfStockPurchase!);
+      if (InvestorOfStockPurchase) {
+        console.log('investor that bought stock: ', InvestorOfStockPurchase.investorName)
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  };
 
 
 const handleSellStockSubmit = () => {
@@ -422,7 +420,7 @@ const handleSellStockSubmit = () => {
               handleAddMoneySubmit={handleAddMoneySubmit}  />}></Route>
             <Route path='/about' element={<About />}></Route>
             <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData}/>}></Route>
-            <Route path='invest' element={<Invest exchangeStocks={exchanges} />}></Route>
+            <Route path='invest' element={<Invest investor={investorData} exchangeStocks={exchanges} handleBuyStockSubmit={handleBuyStockSubmit} handleSellStockSubmit={handleBuyStockSubmit} />}></Route>
             <Route path='transactions' element={<Transactions investor={investorData} transactions={transactions} />}></Route>
             <Route path='/logout' element={<Logout investor={investorData}/>}></Route>
             <Route path='*' element={<Error />} />

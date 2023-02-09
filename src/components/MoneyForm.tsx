@@ -48,15 +48,6 @@ const MoneyForm: React.FunctionComponent<IMoneyFormProps> = ({investor, handleAd
         <Form onSubmit={handleDepositSubmit}>
             <Form.Group className='mb-3'>
                 <Form.Label>Deposits</Form.Label>
-                {/* <Form.Select aria-label='Add Money' >
-                    <option>Add money to my account</option>
-                    <option value='fifty'>$50.00</option>
-                    <option value='one hundred'>$100.00</option>
-                    <option value='five hundred'>$500.00</option>
-                    <option value='one thousand'>$1000.00</option>
-                    <option value='five thousand'>$5000.00</option>
-                    <option value='ten thousand'>$10000.00</option>
-                </Form.Select> */}
                 <Form.Control  onChange={handleDepositChange} placeholder='Enter Deposit Amount'></Form.Control>
             </Form.Group>
             <Button variant='light' size='sm' type='submit' value='Deposit Money' >Deposit Money</Button>

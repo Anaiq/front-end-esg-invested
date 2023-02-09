@@ -15,8 +15,6 @@ const ExchangeStocks: React.FunctionComponent<IEStockProps> = ({exchangeStock}) 
             <td>{exchangeStock.environmentRating}</td>
             <td>{exchangeStock.socialRating}</td>
             <td>{exchangeStock.governanceRating}</td>
-            <td></td>
-            <td><Button as="input" type="submit" value="Buy" variant="secondary"></Button></td>
         </tr>
     );
 };

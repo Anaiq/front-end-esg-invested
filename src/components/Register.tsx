@@ -51,7 +51,7 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
                 {/* <button type="submit">Register</button> */}
                 <Button variant="light" size="sm" type="submit">Register</Button>
             </form>
-            <Link to='/login'>Already Have Account? Login Here.</Link>
+            <Link to='/'>Already Have Account? Login Here.</Link>
             {/* <footer>
                 <Footer/>
             </footer> */}

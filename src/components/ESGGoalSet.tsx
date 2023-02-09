@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Investor } from '../models/investorModel';
 import Header from './Header'; 
 import Footer from './Footer';
-
 import Goal from './Goal';
 
 interface IESGGoalSetProps {
