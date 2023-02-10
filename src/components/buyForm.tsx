@@ -14,7 +14,7 @@ stockSymbol: '',
 currentStockPrice: 0,
 numberStockSharesBuy: '0',
 transactionType:'buy'
-}
+};
 
 interface IBuyFormProps {
     handleBuyStockSubmit: any,
@@ -31,7 +31,7 @@ const BuyForm: React.FunctionComponent<IBuyFormProps> = ({ investor, handleBuySt
         const newFormData = {...buyFormData, buyerId:investor.investorId, [fieldName]:fieldValue, transactionType:'buy'};
         console.log('newFormData:', newFormData);
         setBuyFormData(newFormData);
-    }
+    };
 
     console.log('BuyFormData.numberStockSharesBuy: ', buyFormData.numberStockSharesBuy);
 
@@ -45,8 +45,8 @@ if (!buyFormData.stockSymbol ) return;
     } else {
         handleBuyStockSubmit(buyFormData)
         navigate('/portfolio');
-    } 
-    }
+    } ;
+    };
 
     return (
         <div className="buy-form-container">

@@ -6,9 +6,21 @@ import Goal from './Goal';
 
 interface IESGGoalSetProps {
     investor: Investor;
+    handleGoalChangeSubmit:any;
+    goalChartData:{
+        AAA:number,
+        AA:number,
+        A:number,
+        BBB:number,
+        BB:number,
+        B:number,
+        CCC:number,
+        CC:number,
+        }
+    
 }
 
-const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor}) => {
+const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor, handleGoalChangeSubmit, goalChartData}) => {
     return (
         <div>
             <header>
@@ -17,7 +29,7 @@ const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor}) => {
             <main className='main'>
                 <h2>{`${investor.investorName}`}, Plan your ESG Goals!</h2>  
                 <div className='goal-list'>
-                    <Goal />
+                    <Goal goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>
                 </div>
             </main>
             
