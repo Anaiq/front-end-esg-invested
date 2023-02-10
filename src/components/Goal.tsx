@@ -5,18 +5,7 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import GoalChart from './GoalChart';
-import GoalChart2 from './GoalChart2';
 
-const kDefaultState = {
-    AAA:15,
-        AA:15,
-        A:15,
-        BBB:15,
-        BB:10,
-        B:10,
-        CCC:10,
-        CC:10,
-};
 
 interface IGoalProps {
     handleGoalChangeSubmit:any;
