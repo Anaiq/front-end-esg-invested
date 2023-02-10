@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from 'react';
 import "./Logout.css";
 import { Investor } from "../models/investorModel";
 import LoginHeader from "./LoginHeader";
@@ -15,9 +14,11 @@ const Logout: React.FunctionComponent<ILogoutProps> = ({investor}) => {
             <header>
                 <LoginHeader/>
             </header>
-            <main>
+            <div>
                 <h1> Goodbye, {`${investor.investorName}`}!</h1>
-            </main>
+                <></>
+                <section>"Develop Financial Literacy... boost Financial Health.... create Financial Freedom... become FREE"</section>
+            </div>
             <footer>
                 <Footer/>
             </footer>

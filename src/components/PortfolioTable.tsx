@@ -11,10 +11,6 @@ interface IPortfolioTableProps {
 
 const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks, stockRatings }) => {
     console.log('portfolioStocks: ', portfolioStocks)
-
-    // if length is 0: //guard clause for the rendering
-    // return null (invisible)
-    // OR create portolio enpoint
     
     return ( 
             <Table striped>
