@@ -288,6 +288,16 @@ function App() {
   },[stockRatings])
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
+  const [goalChartData, setGoalChartData] = useState({
+      AAA:15,
+      AA:15,
+      A:15,
+      BBB:15,
+      BB:10,
+      B:10,
+      CCC:10,
+      CC:10,
+  });
 
 
   const handleRegisterSubmit = (data:{
@@ -382,6 +392,19 @@ const handleSellStockSubmit = (sellData:{
   });
 }
 
+const handleGoalChangeSubmit = (goalData: {
+  AAA:number,
+  AA:number,
+  A:number,
+  BBB:number,
+  BB:number,
+  B:number,
+  CCC:number,
+  CC:number,
+}) => {
+  setGoalChartData(goalData);
+};
+
 
   const getAllExchanges = () => {
     return getAllExchangesApi()
@@ -444,7 +467,7 @@ const handleSellStockSubmit = (sellData:{
             <Route path='portfolio' element={<PortfolioHome investor={investorData} stockRatings={stockRatings} portfolios={portfolios}
               handleAddMoneySubmit={handleAddMoneySubmit}  />}></Route>
             <Route path='/about' element={<About />}></Route>
-            <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData}/>}></Route>
+            <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData} goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>}></Route>
             <Route path='invest' element={<Invest investor={investorData} exchangeStocks={exchanges} handleBuyStockSubmit={handleBuyStockSubmit} handleSellStockSubmit={handleSellStockSubmit} />}></Route>
             <Route path='transactions' element={<Transactions investor={investorData} transactions={transactions} />}></Route>
             <Route path='/logout' element={<Logout investor={investorData}/>}></Route>

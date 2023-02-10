@@ -21,16 +21,27 @@ import {
     
 
 interface IGoalChartProps {
+    goalChartData:{
+        AAA:number,
+        AA:number,
+        A:number,
+        BBB:number,
+        BB:number,
+        B:number,
+        CCC:number,
+        CC:number,
+        }
 } 
+// parseInt(goalChartData.AAA, 10)
 
-const GoalChart: React.FunctionComponent<IGoalChartProps> = () => {
+const GoalChart: React.FunctionComponent<IGoalChartProps> = ({goalChartData}) => {
     
     const data = {
         labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC'],
         datasets:[
             {
-                label: '',
-                data: [15, 15, 15, 15, 10, 10, 10, 10],
+                data: [goalChartData.AAA, goalChartData.AA, goalChartData.A, goalChartData.BBB, 
+                    goalChartData.BB, goalChartData.BB, goalChartData.CCC, goalChartData.CC],
                 backgroundColor: 'green',
                 borderColor: 'black',
                 borderWidth: 2
