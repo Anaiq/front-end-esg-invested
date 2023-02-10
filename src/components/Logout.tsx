@@ -17,8 +17,8 @@ const Logout: React.FunctionComponent<ILogoutProps> = ({investor}) => {
             <div>
                 <h1> Goodbye, {`${investor.investorName}`}!</h1>
                 <></>
-                <section className="develop">"Develop Financial Literacy... Boost Financial Health.... Create Financial Freedom... Pass on  generational Wealth..."</section>
-                <section className="free">Become Free.</section>
+                <section className="develop">Develop Financial Literacy... Boost Financial Health.... Create Financial Freedom... Pass on  generational Wealth...</section>
+                
             </div>
             <footer>
                 <Footer/>
