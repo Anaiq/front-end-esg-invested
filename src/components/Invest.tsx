@@ -7,7 +7,6 @@ import ExchangeStocks from './ExchangeStocks';
 import BuyForm from './buyForm';
 import SellForm from './sellForm';
 import { Investor } from '../models/investorModel';
-import { InvestorApi } from '../models/investorApiModel';
 
 
 interface IInvestProps {
@@ -28,7 +27,7 @@ const Invest: React.FunctionComponent<IInvestProps> = ({investor,exchangeStocks,
                 <BuyForm investor={investor} handleBuyStockSubmit={handleBuyStockSubmit} /> 
             </div>
             <div className='mb-2'>
-                <SellForm investor={investor} handleSellStockSubmit={handleBuyStockSubmit}  />
+                <SellForm investor={investor} handleSellStockSubmit={handleSellStockSubmit}  />
             </div>
             <div className="mb-4">
                 <Table striped>

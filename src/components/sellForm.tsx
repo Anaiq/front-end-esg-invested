@@ -1,21 +1,19 @@
 import React from "react";
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import Button from 'react-bootstrap/Button';
 import { Form } from "react-bootstrap";
 import Header from './Header';
-import Footer from './Footer';
 import { Investor } from "../models/investorModel";
 
 
 const kDefaultFormState = {
-id: 0,
+sellerId: 0,
 stockSymbol: '',
-currentStockPrice: +"0",
-numberStockSharesSell: "0",
-transactionType:"buy"
+currentStockPrice: 0,
+numberStockSharesSell: '0',
+transactionType:'sale'
 }
 
 interface ISellFormProps {
@@ -30,12 +28,12 @@ const SellForm: React.FunctionComponent<ISellFormProps> = ({ investor, handleSel
     const handleSellChange = (event:React.ChangeEvent<HTMLInputElement>): void =>{
         const fieldValue = event.target.value;
         const fieldName = event.target.name; 
-        const newFormData = {...sellFormData, [fieldName]:fieldValue, transactionType:"sell"};
+        const newFormData = {...sellFormData, sellerId:investor.investorId, [fieldName]:fieldValue, transactionType:"sale"};
         console.log("newFormData:", newFormData);
         setSellFormData(newFormData);
     }
 
-    console.log('SellFormData.stockSymbol: ', sellFormData.stockSymbol);
+    console.log('SellFormData.numberStockSharesSell: ', sellFormData.numberStockSharesSell);
 
     const navigate = useNavigate();
 
@@ -47,9 +45,7 @@ if (!sellFormData.stockSymbol ) return;
     } else {
         handleSellStockSubmit(sellFormData)
         navigate('/portfolio');
-    }
-
-    
+    } 
     }
 
     return (
@@ -57,20 +53,19 @@ if (!sellFormData.stockSymbol ) return;
             <header>
                 <Header/>
             </header>
-            {/* <main className="main"></main> */}
             <h2>Sell</h2>
             <Form className="sell-form" onSubmit={handleSellSubmit}>
                 <Form.Group className="mb-3" controlId="stockSymbol">
                 <Form.Label>Stock Symbol</Form.Label>
-                <Form.Control onChange={handleSellChange} type="text" placeholder="Stock Symbol" />
+                <Form.Control onChange={handleSellChange} name="stockSymbol" type="text" placeholder="Stock Symbol" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="currentStockPrice">
                 <Form.Label>Current Stock Price</Form.Label>
-                <Form.Control onChange={handleSellChange} type="text" placeholder="Current Stock Price" />
+                <Form.Control onChange={handleSellChange} name="currentStockPrice" type="text" placeholder="Current Stock Price" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="numberStockSharesSell">
                 <Form.Label>Number of Shares to Sell</Form.Label>
-                <Form.Control onChange={handleSellChange} name="NumberStockSharesSell" type="text" placeholder="Number of Shares" />
+                <Form.Control onChange={handleSellChange} name="numberStockSharesSell" type="text" placeholder="Number of Shares" />
                 </Form.Group>
                 
                 <Button variant="secondary" type="submit">

@@ -4,7 +4,6 @@ import { TransactionApi } from "./transactionApiModel";
 export type InvestorApi ={
     investor_id:number, 
     investor_name: string, 
-    is_logged_in: boolean, 
     cash_balance: number, 
     total_shares_buys: number,
     total_shares_sales: number,

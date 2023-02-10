@@ -34,11 +34,11 @@ const convertExchangeFromApi = (apiExchangeStock:ExchangeStockApi) => {
 };
 
 const convertInvestorFromApi = (apiInvestor:InvestorApi) => {
-  const {investor_id:investorId, investor_name:investorName, is_logged_in:isLoggedIn, cash_balance:cashBalance, 
+  const {investor_id:investorId, investor_name:investorName, cash_balance:cashBalance, 
     total_shares_buys:totalSharesBuys, total_shares_sales:totalSharesSales, total_shares_cash_value:totalSharesCashValue,
     total_assets_balance:totalAssetsBalance, current_e_rating:currentERating, current_s_rating:currentSRating,  
     current_g_rating:currentGRating, e_goal:eGoal, s_goal:sGoal, g_goal:gGoal, transactions} = apiInvestor;
-  const newInvestor = {investorId, investorName, isLoggedIn, cashBalance, totalSharesBuys, totalSharesSales,
+  const newInvestor = {investorId, investorName, cashBalance, totalSharesBuys, totalSharesSales,
     totalSharesCashValue, totalAssetsBalance, currentERating, currentSRating, currentGRating,eGoal,
     sGoal, gGoal, transactions:transactions.map(convertTransactionFromApi)};
   return newInvestor
@@ -71,8 +71,6 @@ const registerInvestorApi = (registrationCredentials:{
   const investorName = registrationCredentials.username;
   const requestBody = {
       investor_name: investorName, 
-      password: 'N/A',
-      is_logged_in: false,
       cash_balance: 0,
       total_shares_buys: 0,
       total_shares_sales: 0,
@@ -108,8 +106,6 @@ const loginInvestorApi = (loginCredentials:{
   const investorName = loginCredentials.username;
   const requestBody = {
     investor_name:investorName, 
-    password: 'N/A',
-    is_logged_in: false,
     cash_balance: 0,
     total_shares_buys: 0,
     total_shares_sales: 0,
@@ -139,7 +135,6 @@ const loginInvestorApi = (loginCredentials:{
 
 
 // add an investor buy transaction
-
 const buyStockApi = (buyData:{
   stockSymbol: string,
   currentStockPrice:number,
@@ -151,9 +146,10 @@ console.log('buyData: ', buyData)
 const buyRequestBody = {
   stock_symbol: buyData.stockSymbol,
   current_stock_price:buyData.currentStockPrice,
-  number_stock_shares:buyData.numberStockSharesBuy,
+  number_stock_shares:parseInt(buyData.numberStockSharesBuy, 10),
   transaction_type: buyData.transactionType,
-  investor_id: buyData.buyerId}
+  investor_id: buyData.buyerId
+};
 console.log('buyStock requestBody: ', buyRequestBody);
 
 return axios
@@ -169,15 +165,42 @@ return axios
 };
 
 // add an investor sell transaction
+const sellStockApi = (sellData:{
+  stockSymbol: string,
+  currentStockPrice:number,
+  numberStockSharesSell:string,
+  transactionType: string,
+  sellerId: number,
+}) => {
+console.log('sellData: ', sellData)
+const sellRequestBody = {
+  stock_symbol: sellData.stockSymbol,
+  current_stock_price:sellData.currentStockPrice,
+  number_stock_shares:parseInt(sellData.numberStockSharesSell, 10),
+  transaction_type: sellData.transactionType,
+  investor_id: sellData.sellerId
+};
+console.log('sellStock requestBody: ', sellRequestBody);
 
+return axios
+.post(`${kBaseUrl}/investors/${sellData.sellerId}/sell`, sellRequestBody)
+.then((response) => {
+  console.log('sellStockApi investor: ', response.data);
+  console.log('converted sellStockApi Investor: ', convertInvestorFromApi(response.data));
+  return convertInvestorFromApi(response.data);
+})
+.catch((error) => {
+  console.log(error.data);
+})
+};
 
 //add money to investor cash balance
 const addMoneyApi = (cashData:{
   id: number,
-  cashDeposit: number
+  cashDeposit: string
   }) => {
 console.log('cashData: ', cashData);
-const moneyRequestBody = {id: cashData.id, cash: cashData.cashDeposit}
+const moneyRequestBody = {id: cashData.id, cash: parseInt(cashData.cashDeposit, 10) * 100}
 console.log('deposited money amount: ', moneyRequestBody.cash)
 console.log('addMoneyApi requestBody: ', moneyRequestBody);
 
@@ -245,21 +268,6 @@ const getAllTransactionsApi = (id:number) => {
 
 function App() {  
   const [investorData, setInvestorData] = useState<Investor>(() =>{
-    // investorId:0, 
-    // investorName: '', 
-    // isLoggedIn: false, 
-    // cashBalance: 0, 
-    // totalSharesBuys: 0,
-    // totalSharesSales: 0,
-    // totalSharesCashValue: 0, 
-    // totalAssetsBalance: 0, 
-    // currentERating: '',
-    // currentSRating: '',
-    // currentGRating: '',
-    // eGoal: '', 
-    // sGoal: '',
-    // gGoal: '',
-    // transactions: []
     const savedInvestor = localStorage.getItem("investorData");
     const parsedItem= JSON.parse(savedInvestor!);
     return parsedItem ||  "";
@@ -315,7 +323,7 @@ function App() {
 
   const  handleAddMoneySubmit = (cashData:{
     id: number,
-    cashDeposit: number
+    cashDeposit: string
     }) => {
     addMoneyApi(cashData)
     .then(investorWithAddedCash => {
@@ -339,12 +347,12 @@ function App() {
     buyerId: number,
   }) => {
     buyStockApi(buyData)
-    .then(InvestorOfStockPurchase => {
-      console.log('InvestorOfStockPurchase: ', InvestorOfStockPurchase)
-      setInvestorData(InvestorOfStockPurchase!);
-      getAllTransactions(InvestorOfStockPurchase!);
-      if (InvestorOfStockPurchase) {
-        console.log('investor that bought stock: ', InvestorOfStockPurchase.investorName)
+    .then(investorOfStockPurchase => {
+      console.log('investorOfStockPurchase: ', investorOfStockPurchase)
+      setInvestorData(investorOfStockPurchase!);
+      getAllTransactions(investorOfStockPurchase!);
+      if (investorOfStockPurchase) {
+        console.log('Investor that bought stock: ', investorOfStockPurchase.investorName)
       }
     })
     .catch(error => {
@@ -353,8 +361,25 @@ function App() {
   };
 
 
-const handleSellStockSubmit = () => {
-  console.log('stock sold!!')
+const handleSellStockSubmit = (sellData:{
+    stockSymbol: string,
+    currentStockPrice:number,
+    numberStockSharesSell:string,
+    transactionType: string,
+    sellerId: number,
+}) => {
+  sellStockApi(sellData)
+  .then(investorOfStockSale => {
+    console.log('investorOfStockSale: ', investorOfStockSale)
+    setInvestorData(investorOfStockSale!);
+    getAllTransactions(investorOfStockSale!);
+    if (investorOfStockSale) {
+      console.log('Investor that sold stock: ', investorOfStockSale.investorName)
+    }
+  })
+  .catch(error => {
+    console.log(error);
+  });
 }
 
 
@@ -420,7 +445,7 @@ const handleSellStockSubmit = () => {
               handleAddMoneySubmit={handleAddMoneySubmit}  />}></Route>
             <Route path='/about' element={<About />}></Route>
             <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData}/>}></Route>
-            <Route path='invest' element={<Invest investor={investorData} exchangeStocks={exchanges} handleBuyStockSubmit={handleBuyStockSubmit} handleSellStockSubmit={handleBuyStockSubmit} />}></Route>
+            <Route path='invest' element={<Invest investor={investorData} exchangeStocks={exchanges} handleBuyStockSubmit={handleBuyStockSubmit} handleSellStockSubmit={handleSellStockSubmit} />}></Route>
             <Route path='transactions' element={<Transactions investor={investorData} transactions={transactions} />}></Route>
             <Route path='/logout' element={<Logout investor={investorData}/>}></Route>
             <Route path='*' element={<Error />} />

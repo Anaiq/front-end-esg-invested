@@ -8,7 +8,7 @@ import { Investor } from '../models/investorModel';
 
 const kDefaultForState = {
     id:0,
-    cashDeposit: 0
+    cashDeposit: "0"
 }  
 
 
@@ -24,7 +24,7 @@ const MoneyForm: React.FunctionComponent<IMoneyFormProps> = ({investor, handleAd
     console.log('depositFormData:', depositFormData);
 
     const handleDepositChange = (event:React.ChangeEvent<HTMLInputElement>): void =>{
-        const fieldValue = +event.target.value * 100 ;
+        const fieldValue = event.target.value;
         const newDepositFormData = {...depositFormData, id:investor.investorId, cashDeposit:fieldValue }
         console.log("newFormData:", newDepositFormData);
         setDepositFormData(newDepositFormData);

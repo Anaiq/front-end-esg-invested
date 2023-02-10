@@ -7,9 +7,6 @@ import { PortfolioStock } from '../models/portfolioStockModel';
 interface IPortfolioTableProps {
     portfolioStocks: PortfolioStock[],
     stockRatings: Stock[]
-    // handleBuyStockSubmit:any
-    // handleSellStockSubmit:any
-    // stock
 }
 
 const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfolioStocks, stockRatings }) => {

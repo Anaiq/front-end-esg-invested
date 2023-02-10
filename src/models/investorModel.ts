@@ -4,7 +4,6 @@ import { Transaction } from "./transactionModel";
 export type Investor ={
     investorId:number, 
     investorName: string, 
-    isLoggedIn: boolean, 
     cashBalance: number, 
     totalSharesBuys: number,
     totalSharesSales: number,
