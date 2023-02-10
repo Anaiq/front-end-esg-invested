@@ -33,11 +33,6 @@ interface IGoalProps {
 }
 
 const Goal: React.FunctionComponent<IGoalProps> = ({handleGoalChangeSubmit, goalChartData}) => {
-    // const [toggle, setToggle] = useState(true);
-
-    // const handleClick = () => {
-    //     setToggle(!toggle);
-    // } //onClick={handleClick}
 
     const [goalFormData, setGoalFormData] = useState(goalChartData);
 
@@ -62,7 +57,6 @@ const Goal: React.FunctionComponent<IGoalProps> = ({handleGoalChangeSubmit, goal
     return (
         <div>
             <div>
-                {/* {toggle ? <GoalChart/> : <GoalChart2/>} */}
                 <GoalChart goalChartData={goalChartData}/>
             </div>
             <div>
