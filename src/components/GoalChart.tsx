@@ -40,6 +40,7 @@ const GoalChart: React.FunctionComponent<IGoalChartProps> = ({goalChartData}) =>
         labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC'],
         datasets:[
             {
+                label: 'ESG Ratings',
                 data: [goalChartData.AAA, goalChartData.AA, goalChartData.A, goalChartData.BBB, 
                     goalChartData.BB, goalChartData.BB, goalChartData.CCC, goalChartData.CC],
                 backgroundColor: 'green',
