@@ -1,37 +1,30 @@
 import React from "react";
-import { useEffect, useState } from 'react';
-import "./Header.css";
-import { Interface } from "readline";
 import { Link } from 'react-router-dom';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
 
 interface ILoginHeaderProps {
 }
 
 const Header: React.FunctionComponent<ILoginHeaderProps> = (props) => {
     return (
-        <Navbar   fixed="top" bg="light" variant="light">
-            <Container>
-                <Navbar.Brand>
-                <img  src="images/esglogo2.png" alt="tree,scale,money logo" width="400" height="200"  className="d-inline-block align-top">
-                </img>
-                </Navbar.Brand> 
-                <Navbar.Collapse className="justify-content-end">
-                    <Navbar.Text>
-                        <Nav defaultActiveKey="/login" as="ul">
-                            <Nav.Item as="li">
-                            <Link to='/' className='btn'><Nav.Link href="/login" eventKey="portfolio">Login</Nav.Link></Link>
-                            </Nav.Item>
-                            <Nav.Item as="li">
-                                <Link to='/register' className='btn'><Nav.Link href="/register" eventKey="about">Register</Nav.Link></Link>
-                            </Nav.Item>
-                        </Nav>
-                    </Navbar.Text>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <div className='container'>
+            <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div className="container-fluid">
+                <h2>ESGInvested</h2>
+                    <div className="collapse navbar-collapse " id="navbarColor02">
+                        <ul className="navbar-nav me-auto ">
+                        <li className="nav-item">
+                            <Link to='/' className='btn'><a className="nav-link" href="/login">Login</a></Link>
+                        </li>
+                        <li className="nav-item ">
+                        <Link to='/register' className='btn'><a className="nav-link" href="/register">Register</a></Link>
+                        </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+
     );
 };
 

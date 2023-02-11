@@ -2,8 +2,8 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './App.css';
+import 'bootswatch/dist/flatly/bootstrap.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 import { Investor } from './models/investorModel';
 import { InvestorApi } from './models/investorApiModel';
 import { StockApi } from './models/stockApiModel';
@@ -459,8 +459,7 @@ const handleGoalChangeSubmit = (goalData: {
   console.log('investorData: ', investorData)
 
   return ( 
-    <div className='App'>
-      <main className='main'>
+    <div className='container'>
         <BrowserRouter>
           <Routes>          
             <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
@@ -475,7 +474,6 @@ const handleGoalChangeSubmit = (goalData: {
             <Route path='*' element={<Error />} />
           </Routes>
         </BrowserRouter>
-      </main>
     </div>   
   );
 }
