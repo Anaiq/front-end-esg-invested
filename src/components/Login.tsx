@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-import Button from 'react-bootstrap/Button';
 import LoginHeader from './LoginHeader';
 import Footer from './Footer';
 
@@ -55,22 +54,20 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                 </header>
             </div>
             
-            <div className="row mb-5">
-                {/* <div className="col-md">
-                    <h2>Login</h2>
-                </div> */}
-            </div>
-
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
             <div className="row">
-                <div></div>
-                <form className="login-form mb-3" onSubmit={handleSubmit}>
-                    <label htmlFor='username' >Username</label>
-                    <input type="text" id="username" value={loginFormData.username} onChange={handleChange} placeholder="Username" name="username"></input>
-                    <label htmlFor="password">Password</label>
-                    <input type="password" id="password" value={loginFormData.password} onChange={handleChange} placeholder="********" name="password"></input>
-                    <Button variant="light" size="sm" type="submit" value="Log In" 
-                        >Login</Button>
-                </form>
+                <div className="col"></div>
+                <div className="mb-3 col-4 login-form-container">
+                    <form className="login-form text-primary" onSubmit={handleSubmit}>
+                        <label className="form-label" htmlFor='username' >Username</label>
+                        <input type="text" id="username" value={loginFormData.username} onChange={handleChange} placeholder="Username" name="username"></input>
+                        <label className="form-label" htmlFor="password">Password</label>
+                        <input type="password" id="password" value={loginFormData.password} onChange={handleChange} placeholder="********" name="password"></input>
+                        <button className="btn btn-primary"  type="submit" value="Log In" >Login</button>
+                    </form>
+                </div>
+                <div className="col"></div>
             </div>
             
             <div className="col mb-5 text-center">

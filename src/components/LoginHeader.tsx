@@ -13,9 +13,9 @@ const Header: React.FunctionComponent<ILoginHeaderProps> = (props) => {
         <div className="container mb-5">
             <Navbar fixed="top" bg="light" variant="light">
             <Container>
-                <Navbar.Brand>
-                    <h2>ESGInvested</h2>
-                </Navbar.Brand> 
+                <Navbar.Text >
+                    <h3>ESGInvested</h3>
+                </Navbar.Text>  
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
                         <Nav defaultActiveKey="/login" as="ul">

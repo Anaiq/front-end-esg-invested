@@ -11,11 +11,11 @@ interface IHeaderProps {
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     return (
-        <Navbar   fixed="top" bg="light" variant="light">
+        <Navbar fixed="top" bg="light" variant="light">
             <Container>
-                <Navbar.Brand>
-                    ESGInvested
-                </Navbar.Brand> 
+                <Navbar.Text >
+                    <h3>ESGInvested</h3>
+                </Navbar.Text> 
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
                         <Nav defaultActiveKey="/portfolio" as="ul">
