@@ -474,40 +474,43 @@ function App() {
     let transactionCount = 0;
 
     portfolios.forEach(portfolio => {
-    if (portfolio.environmentRating || portfolio.socialRating || portfolio.governanceRating === 'AAA') {
-      AAACount += 1;
-      console.log('AAACount:', AAACount);
-    } else if (portfolio.environmentRating || portfolio.socialRating || portfolio.governanceRating === 'AA') {
-      AACount +=1;
-      console.log('AACount:', AACount);
-    } else if (portfolio.environmentRating || portfolio.socialRating || portfolio.governanceRating === 'A') {
-      ACount +=1;
-      console.log('ACount:', ACount);
-    } else if (portfolio.environmentRating || portfolio.socialRating || portfolio.governanceRating === 'BBB') {
-      BBBCount +=1;
-      console.log('BBBCount:', BBBCount);
-    } else if (portfolio.environmentRating || portfolio.socialRating || portfolio.governanceRating === 'BB') {
-      BBCount +=1;
-      console.log('BBCount:', BBCount);
-    } else if (portfolio.environmentRating || portfolio.socialRating || portfolio.governanceRating === 'B') {
-      BCount +=1;
-      console.log('BCount:', BCount);
-    } else if (portfolio.environmentRating || portfolio.socialRating || portfolio.governanceRating === 'CCC') {
-      CCCCount +=1;
-      console.log('CCCCount:', CCCCount);
-    } else if (portfolio.environmentRating || portfolio.socialRating || portfolio.governanceRating === 'CC') {
-      CCCount +=1;
-      console.log('CCCount:', CCCount);
-    }
+      if (portfolio.environmentRating === 'AAA'|| portfolio.socialRating === 'AAA'|| portfolio.governanceRating === 'AAA') {
+        AAACount += 1;
+        console.log('AAACount:', AAACount);
+      } else if (portfolio.environmentRating === 'AA'|| portfolio.socialRating === 'AA'|| portfolio.governanceRating === 'AA') {
+        AACount +=1;
+        console.log('AACount:', AACount);
+      } else if (portfolio.environmentRating === 'A'|| portfolio.socialRating === 'A' || portfolio.governanceRating === 'A') {
+        ACount +=1;
+        console.log('ACount:', ACount);
+      } else if (portfolio.environmentRating === 'BBB'|| portfolio.socialRating === 'BBB'|| portfolio.governanceRating === 'BBB') {
+        BBBCount +=1;
+        console.log('BBBCount:', BBBCount);
+      } else if (portfolio.environmentRating === 'BB'|| portfolio.socialRating === 'BB'|| portfolio.governanceRating === 'BB') {
+        BBCount +=1;
+        console.log('BBCount:', BBCount);
+      } else if (portfolio.environmentRating === 'B'|| portfolio.socialRating === 'B'|| portfolio.governanceRating === 'B') {
+        BCount +=1;
+        console.log('BCount:', BCount);
+      } else if (portfolio.environmentRating=== 'CCC' || portfolio.socialRating === 'CCC'|| portfolio.governanceRating === 'CCC') {
+        CCCCount +=1;
+        console.log('CCCCount:', CCCCount);
+      } else if (portfolio.environmentRating === 'CC'|| portfolio.socialRating === 'CC'|| portfolio.governanceRating === 'CC') {
+        CCCount +=1;
+        console.log('CCCount:', CCCount);
+      }
   })
   
   portfolios.forEach(portfolio => {
     transactionCount +=1
   })
+  console.log('transaction count:', transactionCount)
 
   const totalCount = transactionCount * 3
+  console.log('total ratings:', totalCount)
   
   const tempChartData = {
+  // AAA: Math.round(AAACount / totalCount) * 100,
   AAA:(AAACount / totalCount) * 100,
   AA: (AACount/ totalCount) * 100,
   A: (ACount/ totalCount) * 100,
@@ -515,9 +518,10 @@ function App() {
   BB: (BBCount/ totalCount) * 100,
   B: (BCount/ totalCount) * 100,
   CCC: (CCCCount/ totalCount) * 100,
-  CC: (CCCount/ totalCount) * 100};
+  CC: (CCCount/ totalCount) * 100
+  };
 
-  // return setPortfolioChartData(tempChartData)
+  console.log('tempChartData: ', tempChartData)
   return tempChartData
   }
 
@@ -532,7 +536,7 @@ function App() {
             <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
             <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
             <Route path='portfolio' element={<PortfolioHome investor={investorData} goalChartData={goalChartData} stockRatings={stockRatings} portfolios={portfolios}
-              handleAddMoneySubmit={handleAddMoneySubmit} portfolioChartData={portfolioChartData} getPortfolioChartData={getPortfolioChartData} />}></Route>
+              handleAddMoneySubmit={handleAddMoneySubmit} portfolioChartData={portfolioChartData}  />}></Route>
             <Route path='/about' element={<About />}></Route>
             <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData} goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>}></Route>
             <Route path='invest' element={<Invest investor={investorData} exchangeStocks={exchanges} handleBuyStockSubmit={handleBuyStockSubmit} handleSellStockSubmit={handleSellStockSubmit} />}></Route>

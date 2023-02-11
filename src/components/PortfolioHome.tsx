@@ -16,7 +16,6 @@ interface IPortfolioHomeProps {
     investor: Investor
     handleAddMoneySubmit: any
     stockRatings: Stock[]
-    getPortfolioChartData: any
     goalChartData:{
         AAA:number,
         AA:number,
@@ -41,7 +40,7 @@ interface IPortfolioHomeProps {
 }
 
 const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit, stockRatings,
-    goalChartData, portfolioChartData, getPortfolioChartData}) => {
+    goalChartData, portfolioChartData}) => {
     console.log(`investorData.investorName: ${investor.investorName}`)
     return (
         <div>
@@ -52,7 +51,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
                 <Salutation investor={investor}/>
                 <h2>ESG Goals and Current Portfolio ESG Ratings</h2>
                 <div className='goal-charts'>
-                <Charts goalChartData={goalChartData} portfolioChartData={portfolioChartData} getPortfolioChartData={getPortfolioChartData}/>
+                <Charts goalChartData={goalChartData} portfolioChartData={portfolioChartData}/>
                 </div>
                 <MoneyDisplay investor={investor} handleAddMoneySubmit={handleAddMoneySubmit} ></MoneyDisplay>
                 <div>

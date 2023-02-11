@@ -21,7 +21,6 @@ ChartJS.register(
 export const options = {};
 
 interface IChartsProps {
-    getPortfolioChartData:any
     goalChartData:{
         AAA:number,
         AA:number,
@@ -44,11 +43,11 @@ interface IChartsProps {
         }
 }
 
-const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolioChartData, getPortfolioChartData}) => {
+const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolioChartData}) => {
     
     
     const data = {
-        labels:["AAA", "AA", "BBB", "BB", "B", "CCC", "CC"],
+        labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'C'],
         datasets:[
             {
                 label: "ESG Portfolio Goals",
@@ -61,7 +60,7 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolio
             {
                 label: "Current ESG Portfolio",
                 data: [portfolioChartData.AAA, portfolioChartData.AA, portfolioChartData.A, portfolioChartData.BBB, 
-                    portfolioChartData.BB, portfolioChartData.BB, portfolioChartData.CCC, portfolioChartData.CC],
+                    portfolioChartData.BB, portfolioChartData.B, portfolioChartData.CCC, portfolioChartData.CC],
                 backgroundColor: "#595959",
                 borderColor: 'black',
                 borderWidth: 2
