@@ -459,21 +459,21 @@ const handleGoalChangeSubmit = (goalData: {
   console.log('investorData: ', investorData)
 
   return ( 
-    <div className='container'>
-        <BrowserRouter>
-          <Routes>          
-            <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
-            <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
-            <Route path='portfolio' element={<PortfolioHome investor={investorData} goalChartData={goalChartData} stockRatings={stockRatings} portfolios={portfolios}
-              handleAddMoneySubmit={handleAddMoneySubmit}  />}></Route>
-            <Route path='/about' element={<About />}></Route>
-            <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData} goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>}></Route>
-            <Route path='invest' element={<Invest investor={investorData} exchangeStocks={exchanges} handleBuyStockSubmit={handleBuyStockSubmit} handleSellStockSubmit={handleSellStockSubmit} />}></Route>
-            <Route path='transactions' element={<Transactions investor={investorData} transactions={transactions} />}></Route>
-            <Route path='/logout' element={<Logout investor={investorData}/>}></Route>
-            <Route path='*' element={<Error />} />
-          </Routes>
-        </BrowserRouter>
+    <div className="container ">
+      <BrowserRouter>
+        <Routes>          
+          <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
+          <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
+          <Route path='portfolio' element={<PortfolioHome investor={investorData} goalChartData={goalChartData} stockRatings={stockRatings} portfolios={portfolios}
+            handleAddMoneySubmit={handleAddMoneySubmit}  />}></Route>
+          <Route path='/about' element={<About />}></Route>
+          <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData} goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>}></Route>
+          <Route path='invest' element={<Invest investor={investorData} exchangeStocks={exchanges} handleBuyStockSubmit={handleBuyStockSubmit} handleSellStockSubmit={handleSellStockSubmit} />}></Route>
+          <Route path='transactions' element={<Transactions investor={investorData} transactions={transactions} />}></Route>
+          <Route path='/logout' element={<Logout investor={investorData}/>}></Route>
+          <Route path='*' element={<Error />} />
+        </Routes>
+      </BrowserRouter>
     </div>   
   );
 }

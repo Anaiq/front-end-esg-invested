@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+// import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
 
 interface IHeaderProps {
 }
@@ -37,6 +39,15 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                             </Nav.Item>
                         </Nav>
                     </Navbar.Text>
+                    <Form className="d-flex">
+                        <Form.Control
+                        type="search"
+                        placeholder="Search"
+                        className="me-2"
+                        aria-label="Search"
+                        />
+                        <button type="button" className="btn btn-primary">Search</button>
+                    </Form>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

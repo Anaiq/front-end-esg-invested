@@ -48,59 +48,99 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
     }
 
     return (
-        <div className="container text-center">
-            <header>
-                <LoginHeader/>
-            </header>
-            <div className="row">
-                <div className="col-md">
+        <div className="container">
+            <div className="row mb-5">
+                <header>
+                    <LoginHeader/>
+                </header>
+            </div>
+            
+            <div className="row mb-5">
+                {/* <div className="col-md">
                     <h2>Login</h2>
-                </div>
+                </div> */}
             </div>
 
-            <form className="login-form" onSubmit={handleSubmit}>
-                <label htmlFor='username' >Username</label>
-                <input type="text" id="username" value={loginFormData.username} onChange={handleChange} placeholder="Username" name="username"></input>
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" value={loginFormData.password} onChange={handleChange} placeholder="********" name="password"></input>
-                <Button variant="light" size="sm" type="submit" value="Log In" 
-                    >Login</Button>
-            </form>
-            <div className="col mb-5">
+            <div className="row">
+                <div></div>
+                <form className="login-form mb-3" onSubmit={handleSubmit}>
+                    <label htmlFor='username' >Username</label>
+                    <input type="text" id="username" value={loginFormData.username} onChange={handleChange} placeholder="Username" name="username"></input>
+                    <label htmlFor="password">Password</label>
+                    <input type="password" id="password" value={loginFormData.password} onChange={handleChange} placeholder="********" name="password"></input>
+                    <Button variant="light" size="sm" type="submit" value="Log In" 
+                        >Login</Button>
+                </form>
+            </div>
+            
+            <div className="col mb-5 text-center">
                 <Link to='/register'>Need an Account? Register Here.</Link>
             </div>
             
-            <div className="row  align-items-center">
+            <div className="row  mb-5">
                 <div className="col">
                     <div className="card border-light mb-3" >
-                        <div className="card-header">Header</div>
+                        <div className="card-header text-center">E</div>
                         <div className="card-body">
-                            <h4 className="card-title">Light card title</h4>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h4 className="card-title">Environment</h4>
+                            <p className="card-text"> "Environment issues may include corporate climate policies, energy use,
+                                waste, pollution, natural resource conservation, and treatment of animals." (source investopedia)
+                            </p>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Publishes a carbon or sustainability report</li>
+                                <li className="list-group-item">Limits harmful pollutants and chemicals</li>
+                                <li className="list-group-item">Seeks to lower greenhouse gas emissions and CO2 footprint</li>
+                                <li className="list-group-item">Uses renewable energy sources and reduces waste</li>
+                            </ul> 
                         </div>
                     </div>
                 </div>
                 <div className="col">
                     <div className="card border-light mb-3" >
-                        <div className="card-header">Header</div>
+                        <div className="card-header text-center">S</div>
                         <div className="card-body">
-                            <h4 className="card-title">Light card title</h4>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h4 className="card-title">Social</h4>
+                            <p className="card-text">
+                            "Social aspects look at the company’s relationships with internal and external stakeholders."
+                            (source investopedia)
+                            </p>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Operates an ethical supply chains</li>
+                                <li className="list-group-item">Has a high regard for employees’ health and safety
+                                    or avoids companies that employ child labor</li>
+                                <li className="list-group-item">Supports LGBTQ+ rights and encourages all forms of diversity</li>
+                                <li className="list-group-item">Has policies to protect against sexual misconduct</li>
+                                <li className="list-group-item">Pays fair (living) wages</li>
+                            </ul> 
                         </div>
                     </div>
                 </div>
                 <div className="col">
                     <div className="card border-light mb-3" >
-                        <div className="card-header">Header</div>
+                        <div className="card-header text-center">G</div>
                         <div className="card-body">
-                            <h4 className="card-title">Light card title</h4>
-                            <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                            <h4 className="card-title ">Governance</h4>
+                            <p className="card-text">
+                            "Governance standards ensure a company uses accurate and transparent accounting methods, 
+                            pursues integrity and diversity in selecting its leadership, and is accountable to shareholders."
+                            (source investopedia)
+                            </p>
+                            <ul className="list-group list-group-flush">
+                                <li className="list-group-item">Embraces diversity on board of directors</li>
+                                <li className="list-group-item">Embraces corporate transparency</li>
+                                <li className="list-group-item">Someone other than the CEO is chair of the board</li>
+                                <li className="list-group-item">Staggers board elections</li>
+                            </ul>  
                         </div>
                     </div>
                 </div>
-                
             </div >
 
+            <div className="row mb-5 text-center">
+                <footer>
+                    <Footer/>
+                </footer>
+            </div>
         </div>
     );
 };

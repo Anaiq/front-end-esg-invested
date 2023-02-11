@@ -1,8 +1,8 @@
 .reg-form-container, .reg-form {
     display:flex;
     flex-direction:column;
+    align-items:center;
     /* background-color: ; */
-    /* align-items:center; */
 }
 
 .reg-form-container {
