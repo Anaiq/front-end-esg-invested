@@ -26,9 +26,21 @@ interface IPortfolioHomeProps {
         CCC:number,
         CC:number,
         }
+    portfolioChartData: {
+        AAA:number,
+        AA:number,
+        A:number,
+        BBB:number,
+        BB:number,
+        B:number,
+        CCC:number,
+        CC:number,
+    }
+
 }
 
-const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit, stockRatings, goalChartData }) => {
+const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit, stockRatings,
+    goalChartData, portfolioChartData}) => {
     console.log(`investorData.investorName: ${investor.investorName}`)
     return (
         <div>
@@ -39,7 +51,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
                 <Salutation investor={investor}/>
                 <h2>ESG Goals and Current Portfolio ESG Ratings</h2>
                 <div className='goal-charts'>
-                <Charts goalChartData={goalChartData} />
+                <Charts goalChartData={goalChartData} portfolioChartData={portfolioChartData}/>
                 </div>
                 <MoneyDisplay investor={investor} handleAddMoneySubmit={handleAddMoneySubmit} ></MoneyDisplay>
                 <div>
