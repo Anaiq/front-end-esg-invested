@@ -1,35 +1,21 @@
 .reg-form-container, .reg-form {
     display:flex;
     flex-direction:column;
-    align-items:center;
-    /* background-color: ; */
+    justify-content:space-around;
 }
 
 .reg-form-container {
     padding: 4rem;
-    border: 1px solid white;
-    border-radius: 5px;
+    border: 5px solid rgb(44,62,80);
+    border-radius: 10px;
 }
 
 label {
-    text-align: left;
-    color: white;
-    padding:0.25rem 0;
+    color: rgb(44,62,80)
 }
 
 input {
     margin: 0.25rem 0;
-    border-radius: 5px;
-    border: none;
+    border: 0.5px solid ;
+    margin-bottom: 20px;
 }
-
-h2 {
-    color: white;
-}
-
-/* display: grid;
-  min-height: 100vh;
-  align-items: center; 
-  justify-content: center; */
-  /* background-image: linear-gradient(21deg,#069688 20%, #67d7b1 40%, #abcea7 ) */
-  /* background-color: #abcea7; */
