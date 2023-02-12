@@ -73,8 +73,8 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolio
     return(
         <div className="container">
             <div className="row mb-5">
-                <div className="col"><h4>ESG Goal Ratings</h4></div>
-                <div className="col"><h4>ESG Portfolio Ratings</h4></div>
+                <div className="col"><h4>ESG Ratings Goals</h4></div>
+                <div className="col"><h4>Portfolio ESG Ratings</h4></div>
             </div>
             <Bar data={data}
                 options={options}>

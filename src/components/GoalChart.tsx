@@ -54,7 +54,7 @@ const GoalChart: React.FunctionComponent<IGoalChartProps> = ({goalChartData}) =>
     return(
         <div className="container">
             <div className="row mb-5">
-                <div className="col"><h4>ESG Portfolio Goals</h4></div>
+                <div className="col"><h4>Portfolio ESG Ratings Goals</h4></div>
             </div>
             <Bar data={data}
                 options={options}>

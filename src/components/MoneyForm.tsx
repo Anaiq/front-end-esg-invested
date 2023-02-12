@@ -46,7 +46,7 @@ const MoneyForm: React.FunctionComponent<IMoneyFormProps> = ({investor, handleAd
     return (
         <div className='container'>
             <Form onSubmit={handleDepositSubmit}>
-                <Form.Label>Add money to my account</Form.Label>
+                <Form.Label><legend>Add money to my account</legend></Form.Label>
                 <InputGroup className="mb-3 input-group-lg">
                     <InputGroup.Text>$</InputGroup.Text>
                     <Form.Control aria-label="Amount (to the nearest dollar)" onChange={handleDepositChange} placeholder='Enter Dollar Amount'></Form.Control>

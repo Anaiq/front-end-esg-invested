@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-import Button from 'react-bootstrap/Button';
+// import Button from 'react-bootstrap/Button';
 
 
 interface IGoalProps {
@@ -43,67 +43,73 @@ const Goal: React.FunctionComponent<IGoalProps> = ({handleGoalChangeSubmit, goal
 
 
     return (
-        <div>
-            <div>
-                <Form className="goal-form" onSubmit={handleGoalSubmit}>
-                    <Row>
+        <div className='container'>
+                <Form onSubmit={handleGoalSubmit}>
+                    <Row className='mb-3 text-md-center'>
                         <Col>
-                            <Form.Label>Environmental</Form.Label>
+                            <Form.Label><legend>Environmental</legend></Form.Label>
                         </Col>
                         <Col>
-                            <Form.Label>Social</Form.Label>
+                            <Form.Label><legend>Social</legend></Form.Label>
                         </Col>
                         <Col>
-                            <Form.Label>Governance</Form.Label>
+                            <Form.Label><legend>Governance</legend></Form.Label>
                         </Col>
                     </Row>
-                    <Row>
-                            <Col>Place choose Maximal rating for each ESG Category</Col>
+                    <Row className="mb-5 text-center">
+                            <Col><h5>Place choose Maximal rating for each ESG Category</h5></Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Label>AAA</Form.Label>
+                            <Form.Label><strong>AAA</strong></Form.Label>
                             <Form.Control onChange={handleGoalChange} name="AAA" type="text"   size="lg" placeholder="AAA" />
                         </Col>
                         <Col>
-                            <Form.Label>AA</Form.Label>
+                            <Form.Label><strong>AA</strong></Form.Label>
                             <Form.Control onChange={handleGoalChange} name="AA" type="text"   size="lg" placeholder="AA" />
                         </Col>
                         <Col>
-                            <Form.Label>A</Form.Label>
+                            <Form.Label><strong>A</strong></Form.Label>
                             <Form.Control onChange={handleGoalChange} name="A"type="text"    size="lg" placeholder="A" />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Label>BBB</Form.Label>    
+                            <Form.Label><strong>BBB</strong></Form.Label>    
                             <Form.Control onChange={handleGoalChange} name="BBB" type="text"    size="lg" placeholder="BBB" />
                         </Col>
                         <Col>
-                            <Form.Label>BB</Form.Label> 
+                            <Form.Label><strong>BB</strong></Form.Label> 
                             <Form.Control onChange={handleGoalChange} name="BB" type="text"  size="lg" placeholder="BB" />
                         </Col>
                         <Col>
-                            <Form.Label>B</Form.Label> 
+                            <Form.Label><strong>B</strong></Form.Label> 
                             <Form.Control onChange={handleGoalChange} name="B" type="text"   size="lg" placeholder="B" />
                         </Col>
                     </Row>
                     <Row>
                         <Col>
-                            <Form.Label>CCC</Form.Label> 
+                            <Form.Label><strong>CCC</strong></Form.Label> 
                             <Form.Control onChange={handleGoalChange} name="CCC" type="text"   size="lg" placeholder="CCC" />
                         </Col>
                         <Col>
-                            <Form.Label>CC</Form.Label> 
+                            <Form.Label><strong>CC</strong></Form.Label> 
                             <Form.Control onChange={handleGoalChange} name="CC" type="text"   size="lg" placeholder="CC" />
                         </Col>
                     </Row>
-                    <div id="space">SUBMIT YOUR GOALS</div>
-                    <Button   type="submit" variant="secondary">Set Goal</Button>
+                    <div className='container '>
+                        <div className='row mb-5 text-center'>
+                            <div className="col-4"></div>
+                            <div className="col">
+                                <button className="btn btn-primary" type="submit" value='Set Goal'>SUBMIT YOUR GOALS</button>
+                            </div>
+                            <div className="col-4"></div>
+                        </div>
+                    </div>
+                    
+                    
                 </Form>
-            </div>
         </div>
-        
     );
 };
 

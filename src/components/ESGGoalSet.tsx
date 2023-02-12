@@ -38,10 +38,19 @@ const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor, handle
             <div className="row mb-5"></div>
             <div className="row  mb-5"><h2>{`${investor.investorName}`}, Plan your ESG goals here.</h2></div>
 
-            <div className="col shadow p-3 mb-5 bg-body-tertiary rounded">
-                <GoalChart goalChartData={goalChartData}/>
+
+            <div className="container  mb-5">
+                <div className="row text-center mb-5"><h2>ESG Ratings Goals</h2></div>
+                <div className="col"></div>
+                <div className="col shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <GoalChart goalChartData={goalChartData}/>
+                </div>
+                <div className="col"></div>
             </div>
-        
+
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            
             <div className="container  mb-5">
                 <div className="col"></div>
                 <div className="col">
