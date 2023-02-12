@@ -24,8 +24,8 @@ import { Transaction } from './models/transactionModel';
 import { Stock } from './models/stockModel';
 
 
-// const kBaseUrl = 'https://esg-invested-back.herokuapp.com';
-const kBaseUrl = 'http://localhost:5000';
+const kBaseUrl = 'https://esg-invested-back.herokuapp.com';
+// const kBaseUrl = 'http://localhost:5000';
 
   // convert from API functions goes here:
 const convertExchangeFromApi = (apiExchangeStock:ExchangeStockApi) => {
