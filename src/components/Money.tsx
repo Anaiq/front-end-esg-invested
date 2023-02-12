@@ -1,5 +1,4 @@
 import * as React from 'react';
-// import { Button } from 'react-bootstrap';
 import { Investor } from '../models/investorModel';
 import MoneyBalance from './MoneyBalanceCard';
 import MoneyForm from './MoneyForm';
@@ -13,16 +12,18 @@ interface IMoneyDisplayProps {
 
 const MoneyDisplay: React.FunctionComponent<IMoneyDisplayProps> = ({investor, handleAddMoneySubmit}) => {
     return (
-        <div>
-            <div>
-                <MoneyBalance investor={investor}></MoneyBalance>
+        <div className="container">
+            <div className="row">
+                <div className="col">
+                    <MoneyBalance investor={investor}></MoneyBalance>
+                </div>
+                <div className="col">
+                    <MoneyForm investor={investor} handleAddMoneySubmit={handleAddMoneySubmit}></MoneyForm>
+                </div>
             </div>
-            <div>
-                <MoneyForm investor={investor} handleAddMoneySubmit={handleAddMoneySubmit}></MoneyForm>
-            </div>
-            {/* <Button variant="light" size="sm" type="submit" value="Deposit Money" >Deposit Money</Button> */}
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
         </div>
-        
     );
 };
 

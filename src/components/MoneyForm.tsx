@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { Button, FormControl } from 'react-bootstrap';
+import InputGroup from 'react-bootstrap/InputGroup';
 import {Form} from 'react-bootstrap';
-import FormCheckLabel from 'react-bootstrap/esm/FormCheckLabel';
 import { Investor } from '../models/investorModel';
 
 
@@ -46,11 +45,13 @@ const MoneyForm: React.FunctionComponent<IMoneyFormProps> = ({investor, handleAd
 
     return (
         <Form onSubmit={handleDepositSubmit}>
-            <Form.Group className='mb-3'>
-                <Form.Label>Deposits</Form.Label>
-                <Form.Control  onChange={handleDepositChange} placeholder='Enter Deposit Amount'></Form.Control>
-            </Form.Group>
-            <Button variant='light' size='sm' type='submit' value='Deposit Money' >Deposit Money</Button>
+            <Form.Label>Add money to my account</Form.Label>
+            <InputGroup className="mb-3">
+                <InputGroup.Text>$</InputGroup.Text>
+                <Form.Control aria-label="Amount (to the nearest dollar)" onChange={handleDepositChange} placeholder='Enter Dollar Amount'></Form.Control>
+                <InputGroup.Text>.00</InputGroup.Text>
+            </InputGroup>
+            <button className="btn btn-primary" type="submit" value='Deposit Money'>Deposit Money</button>
         </Form>
     );
 };

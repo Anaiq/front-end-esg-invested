@@ -39,15 +39,6 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                             </Nav.Item>
                         </Nav>
                     </Navbar.Text>
-                    {/* <Form className="d-flex">
-                        <Form.Control
-                        type="search"
-                        placeholder="Search"
-                        className="me-2"
-                        aria-label="Search"
-                        />
-                        <button type="button" className="btn btn-primary ">Search</button>
-                    </Form> */}
                     <form className="d-flex" role="search">
                         <input className="form-control me-2 mt-3" type="search" placeholder="Search" aria-label="Search"></input>
                         <button className="btn btn-primary" type="submit">Search</button>

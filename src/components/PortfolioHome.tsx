@@ -41,14 +41,27 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>
 
-            <div className=''></div>
-            <div>
+            <div className="row mb-5">
                 <Salutation investor={investor}/>
+            </div>
+
+            <div className="row">
+                    <MoneyDisplay investor={investor} handleAddMoneySubmit={handleAddMoneySubmit} ></MoneyDisplay>
+            </div>
+
+
+
+
+
+            <div>
+            </div>
+            <div>
+                
                 <h2>ESG Goals and Current Portfolio ESG Ratings</h2>
                 <div className='goal-charts'>
                 <Charts goalChartData={goalChartData} />
                 </div>
-                <MoneyDisplay investor={investor} handleAddMoneySubmit={handleAddMoneySubmit} ></MoneyDisplay>
+                
                 <div>
                     <ESGFilter />
                     <ESGRatingsFilter />
