@@ -57,6 +57,43 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
             <div className="row mb-5"></div>
 
             <div className="row text-center mb-5"><h2>Welcome to ESGInvested.</h2></div> 
+        
+            <div className="row shadow p-3 mb-5 bg-body-tertiary rounded mb-5">
+                <div className="col">
+                    <div className="card border-warning mb-3" >
+                        <div className="card-header text-center">E</div>
+                        <div className="card-body">
+                            <h4 className="card-title">Environment</h4>
+                            <div className="text-center">
+                                <img  src="images/esgtree.png" alt="tree logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div className="col">
+                    <div className="card border-warning mb-3" >
+                        <div className="card-header text-center">S</div>
+                        <div className="card-body">
+                            <h4 className="card-title">Social</h4>
+                            <div className="text-center">
+                                <img  src="images/esgscale.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+                <div className="col ">
+                    <div className="card border-warning mb-3" >
+                        <div className="card-header text-center">G</div>
+                            <div className="card-body">
+                                <h4 className="card-title ">Governance</h4>
+                                <div className="text-center">
+                                    <img  src="images/esgmagnifyingglass.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                                </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className="row">
                 <div className="col"></div>
                 <div className="mb-3 col-4 login-form-container">
@@ -68,71 +105,13 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                         <button className="btn btn-primary"  type="submit" value="Log In" >Login</button>
                     </form>
                 </div>
-            <div className="col"></div>
-        </div>
+                <div className="col"></div>
+            </div>
             
-        <div className="col mb-5 text-center">
-            <Link to='/register'>Need an Account? Register Here.</Link>
-        </div>
-        
-        <div className="row shadow p-3 mb-5 bg-body-tertiary rounded mb-5">
-            <div className="col">
-                <div className="card border-warning mb-3" >
-                    <div className="card-header text-center">E</div>
-                    <div className="card-body">
-                        <h4 className="card-title">Environment</h4>
-                        <p className="card-text"> "Environment issues may include corporate climate policies, energy use,
-                            waste, pollution, natural resource conservation, and treatment of animals." (source investopedia)
-                        </p>
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item">Publishes a carbon or sustainability report</li>
-                            <li className="list-group-item">Limits harmful pollutants and chemicals</li>
-                            <li className="list-group-item">Seeks to lower greenhouse gas emissions and CO2 footprint</li>
-                            <li className="list-group-item">Uses renewable energy sources and reduces waste</li>
-                        </ul> 
-                    </div>
-                </div>
+            <div className="col mb-5 text-center">
+                <Link to='/register'>Need an Account? Register Here.</Link>
             </div>
-            <div className="col">
-                <div className="card border-warning mb-3" >
-                    <div className="card-header text-center">S</div>
-                    <div className="card-body">
-                        <h4 className="card-title">Social</h4>
-                        <p className="card-text">
-                        "Social aspects look at the company’s relationships with internal and external stakeholders."
-                        (source investopedia)
-                        </p>
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item">Operates an ethical supply chains</li>
-                            <li className="list-group-item">Has a high regard for employees’ health and safety
-                                or avoids companies that employ child labor</li>
-                            <li className="list-group-item">Supports LGBTQ+ rights and encourages all forms of diversity</li>
-                            <li className="list-group-item">Has policies to protect against sexual misconduct</li>
-                            <li className="list-group-item">Pays fair (living) wages</li>
-                        </ul> 
-                    </div>
-                </div>
-            </div>
-            <div className="col">
-                <div className="card border-warning mb-3" >
-                    <div className="card-header text-center">G</div>
-                        <div className="card-body">
-                            <h4 className="card-title ">Governance</h4>
-                            <p className="card-text">
-                            "Governance standards ensure a company uses accurate and transparent accounting methods, 
-                            pursues integrity and diversity in selecting its leadership, and is accountable to shareholders."
-                            (source investopedia)
-                            </p>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Embraces diversity on board of directors</li>
-                                <li className="list-group-item">Embraces corporate transparency</li>
-                                <li className="list-group-item">Someone other than the CEO is chair of the board</li>
-                                <li className="list-group-item">Staggers board elections</li>
-                            </ul>  
-                        </div>
-                    </div>
-                </div>
-            </div >
+            
 
             <div className="row mb-5 text-center">
                 <footer>
