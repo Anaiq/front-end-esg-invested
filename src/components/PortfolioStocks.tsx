@@ -2,7 +2,6 @@ import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PortfolioStock } from '../models/portfolioStockModel';
 import { Stock } from '../models/stockModel';
-import Button from 'react-bootstrap/Button'
 
 
 interface IPStockProps {
@@ -31,9 +30,10 @@ const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock,
                 <td>{portfolioStock.socialRating}</td>
                 <td>{portfolioStock.governanceRating}</td>
                 
-                <td><Button onClick={handleSubmit} as="input" type="submit" value="Buy" variant="secondary"></Button></td>
-                <td><Button onClick={handleSubmit} as="input" type="submit" value="Sell" variant="secondary"></Button></td>
+                <td><button onClick={handleSubmit} className="btn btn-outline-primary"  type="submit" value="Buy" >Buy</button></td>
+                <td><button onClick={handleSubmit} className="btn btn-outline-primary" type="submit" value="Sell" >Sell</button></td>
             </tr>
+            
     );
 };
 

@@ -1,7 +1,5 @@
 import React from "react";
-import { useEffect, useState } from 'react';
 import "./Header.css";
-import { Interface } from "readline";
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -12,12 +10,12 @@ interface ILoginHeaderProps {
 
 const Header: React.FunctionComponent<ILoginHeaderProps> = (props) => {
     return (
-        <Navbar   fixed="top" bg="light" variant="light">
+        <div className="container mb-5">
+            <Navbar fixed="top" bg="light" variant="light">
             <Container>
-                <Navbar.Brand>
-                <img  src="images/esglogo2.png" alt="tree,scale,money logo" width="400" height="200"  className="d-inline-block align-top">
-                </img>
-                </Navbar.Brand> 
+                <Navbar.Text >
+                    <h3>ESGInvested</h3>
+                </Navbar.Text>  
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
                         <Nav defaultActiveKey="/login" as="ul">
@@ -32,6 +30,7 @@ const Header: React.FunctionComponent<ILoginHeaderProps> = (props) => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+        </div>
     );
 };
 

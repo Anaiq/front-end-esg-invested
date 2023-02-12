@@ -1,23 +1,21 @@
 import React from "react";
-import { useEffect, useState } from 'react';
-import "./Header.css";
-import { Interface } from "readline";
 import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+// import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form';
 
 interface IHeaderProps {
 }
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {
     return (
-        <Navbar   fixed="top" bg="light" variant="light">
+        <Navbar fixed="top" bg="light" variant="light">
             <Container>
-                <Navbar.Brand>
-                <img  src="images/esglogo2.png" alt="tree,scale,money logo" width="200" height="100"  className="d-inline-block align-top">
-                </img>
-                </Navbar.Brand> 
+                <Navbar.Text >
+                    <h3>ESGInvested</h3>
+                </Navbar.Text> 
                 <Navbar.Collapse className="justify-content-end">
                     <Navbar.Text>
                         <Nav defaultActiveKey="/portfolio" as="ul">
@@ -41,6 +39,10 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                             </Nav.Item>
                         </Nav>
                     </Navbar.Text>
+                    <form className="d-flex" role="search">
+                        <input className="form-control me-2 mt-3" type="search" placeholder="Search" aria-label="Search"></input>
+                        <button className="btn btn-primary" type="submit">Search</button>
+                    </form>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
@@ -49,3 +51,4 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
 
 
 export default Header;
+
