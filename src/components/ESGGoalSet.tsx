@@ -50,7 +50,7 @@ const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor, handle
 
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>
-            
+
             <div className="container  mb-5">
                 <div className="col"></div>
                 <div className="col">
@@ -59,9 +59,11 @@ const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor, handle
                 <div className="col"></div>
             </div>
             
-            <footer>
-                <Footer/>
-            </footer>
+            <div className="row mb-5 text-center">
+                <footer>
+                    <Footer/>
+                </footer>
+            </div>
         </div>
     );
 };

@@ -106,8 +106,6 @@ const Goal: React.FunctionComponent<IGoalProps> = ({handleGoalChangeSubmit, goal
                             <div className="col-4"></div>
                         </div>
                     </div>
-                    
-                    
                 </Form>
         </div>
     );
