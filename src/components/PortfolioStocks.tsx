@@ -33,6 +33,7 @@ const PortfolioStocks: React.FunctionComponent<IPStockProps> = ({portfolioStock,
                 <td><button onClick={handleSubmit} className="btn btn-outline-primary"  type="submit" value="Buy" >Buy</button></td>
                 <td><button onClick={handleSubmit} className="btn btn-outline-primary" type="submit" value="Sell" >Sell</button></td>
             </tr>
+            
     );
 };
 

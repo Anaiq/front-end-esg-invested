@@ -13,6 +13,7 @@ const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfoli
     console.log('portfolioStocks: ', portfolioStocks)
     
     return ( 
+        <div className="container">
             <Table striped hover>
                 <thead>
                     <tr>
@@ -32,6 +33,8 @@ const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfoli
                     {portfolioStocks.map((portfolioStock) => (<PortfolioStocks stockRatings={stockRatings} portfolioStock={portfolioStock} {...portfolioStock}/>))}
                 </tbody>
             </Table>
+        </div>
+            
     );
 };
 
