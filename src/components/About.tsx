@@ -1,7 +1,4 @@
 import * as React from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -40,7 +37,7 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
 
             <div className="row shadow p-3 mb-5 bg-body-tertiary rounded mb-5">
                 <div className="col">
-                    <div className="card border-light mb-3" >
+                    <div className="card border-success mb-3" >
                         <div className="card-header text-center">E</div>
                         <div className="card-body">
                             <h4 className="card-title">Environment</h4>
@@ -57,7 +54,7 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
                     </div>
                 </div>
                 <div className="col">
-                    <div className="card border-light mb-3" >
+                    <div className="card border-success mb-3" >
                         <div className="card-header text-center">S</div>
                         <div className="card-body">
                             <h4 className="card-title">Social</h4>
@@ -77,7 +74,7 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
                     </div>
                 </div>
                 <div className="col">
-                    <div className="card border-light mb-3" >
+                    <div className="card border-success mb-3" >
                         <div className="card-header text-center">G</div>
                             <div className="card-body">
                                 <h4 className="card-title ">Governance</h4>
@@ -118,10 +115,10 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
                         </div>
                         <div className="col-6 text-start">
                             <div className="list-group">
-                                <a href="https://www.investopedia.com/financial-advisor/esg-sri-impact-investing-explaining-difference-clients/" 
-                                    target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">ESG, SRI, and Impact Investing: What's the Difference?</a>
                                 <a href="https://www.investopedia.com/terms/g/green-investing.asp" target="_blank" rel="noopener noreferrer" 
                                     className="list-group-item list-group-item-action">What Is Green Investing?</a>
+                                <a href="https://www.investopedia.com/financial-advisor/esg-sri-impact-investing-explaining-difference-clients/" 
+                                    target="_blank" rel="noopener noreferrer" className="list-group-item list-group-item-action">ESG, SRI, and Impact Investing: What's the Difference?</a>
                                 <a href="https://www.investopedia.com/terms/i/impact-investing.asp" target="_blank" rel="noopener noreferrer" 
                                     className="list-group-item list-group-item-action">What Is Impact Investing?</a>
                             </div>
@@ -135,9 +132,7 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>
-            <div className="row mb-5"></div>
-            <div className="row mb-5"></div>
-            <div className="row mb-5"></div>
+
             
             <div className="row mb-5 text-center">
                 <footer>
@@ -151,4 +146,3 @@ const About: React.FunctionComponent<IAboutProps> = (props) => {
 export default About;
             
             
-// https://www.investopedia.com/terms/e/environmental-social-and-governance-esg-criteria.asp#toc-environmental-social-and-governance
