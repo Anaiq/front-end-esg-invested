@@ -16,16 +16,16 @@ const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfoli
             <Table striped hover>
                 <thead>
                     <tr>
-                        <th>Stock Symbol</th>
-                        <th>Company Name</th>
-                        <th>Current Stock Price</th>
-                        <th>Number Stock Shares</th>
-                        <th>Transaction Total Value</th>
-                        <th>Transaction Type</th>
-                        <th>Transaction Time</th>
-                        <th>Environment Rating</th>
-                        <th>Social Rating</th>
-                        <th>Governance Rating</th>
+                        <th><h4 className='text center'>Stock Symbol</h4></th>
+                        <th><h4>Company Name</h4></th>
+                        <th><h4>Current Stock Price</h4></th>
+                        <th><h4>Number Stock Shares</h4></th>
+                        <th><h4>Transaction Total Value</h4></th>
+                        <th><h4>Transaction Type</h4></th>
+                        <th><h4>Transaction Time</h4></th>
+                        <th><h4>Environment Rating</h4></th>
+                        <th><h4>Social Rating</h4></th>
+                        <th><h4>Governance Rating</h4></th>
                     </tr>
                 </thead>
                 <tbody>
