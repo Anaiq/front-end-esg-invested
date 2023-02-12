@@ -53,17 +53,17 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolio
                 label: "ESG Portfolio Goals",
                 data: [goalChartData.AAA, goalChartData.AA, goalChartData.A, goalChartData.BBB, 
                     goalChartData.BB, goalChartData.BB, goalChartData.CCC, goalChartData.CC],
-                backgroundColor: "green",
+                backgroundColor: "#18BC9C",
                 borderColor: 'black',
-                borderWidth: 2
+                borderWidth: 1
             },
             {
                 label: "Current ESG Portfolio",
                 data: [portfolioChartData.AAA, portfolioChartData.AA, portfolioChartData.A, portfolioChartData.BBB, 
                     portfolioChartData.BB, portfolioChartData.B, portfolioChartData.CCC, portfolioChartData.CC],
-                backgroundColor: "#595959",
+                backgroundColor: "#2C3E50",
                 borderColor: 'black',
-                borderWidth: 2
+                borderWidth: 1
             },
         ],
     }
@@ -71,9 +71,12 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolio
     // const options = {};
 
     return(
-        <Bar data={data}
-        options={options}>
-        </Bar>
+        <div className="container">
+            <Bar data={data}
+                options={options}>
+            </Bar>
+        </div>
+        
     );
 };
 

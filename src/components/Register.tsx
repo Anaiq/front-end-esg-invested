@@ -2,7 +2,6 @@ import React from "react";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap/Button';
 import "./Register.css";
 import LoginHeader from './LoginHeader';
 import Footer from './Footer';
@@ -28,36 +27,58 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
         setRegFormData(newFormData);
     }
 
+    console.log('regFormData.username: ', regFormData.username);
+    console.log('regFormData.password: ', regFormData.password);
+
     const navigate = useNavigate();
 
     const handleSubmit = (event:any): void => {
     event.preventDefault()
-    handleRegisterSubmit(regFormData)
-    setRegFormData(kDefaultFormState);
-    navigate('/portfolio');
+    if (!regFormData.username || ! regFormData.password) return;
+    if (regFormData=== undefined) {
+        return;
+    } else {
+        handleRegisterSubmit(regFormData)
+        // setRegFormData(kDefaultFormState);
+        navigate('/portfolio');
     }
+    };
 
     return (
-        <div className="reg-form-container">
-            <header>
-                <LoginHeader/>
-            </header>
-            <h2>Registration</h2>
-            <form className="reg-form" onSubmit={handleSubmit}>
-                <label htmlFor="text">Username</label>
-                <input type="text" value={regFormData.username} onChange={handleChange} placeholder="Username" name="username"></input>
-                <label htmlFor="password">Password</label>
-                <input type="password" value={regFormData.password} onChange={handleChange} placeholder="********" name="password"></input>
-                {/* <button type="submit">Register</button> */}
-                <Button variant="light" size="sm" type="submit">Register</Button>
-            </form>
-            <Link to='/'>Already Have Account? Login Here.</Link>
-            {/* <footer>
-                <Footer/>
-            </footer> */}
-        </div>
+        <div className="container">
+            <div className="row mb-5">
+                <header>
+                    <LoginHeader/>
+                </header>
+            </div>
 
-    )
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row">
+                <div className="col"></div>
+                    <div className="mb-3 col-4 reg-form-container">
+                        <form className="reg-form text-primary" onSubmit={handleSubmit}>
+                            <label className="form-label" htmlFor="username">Username</label>
+                            <input type="text" id="username" value={regFormData.username} onChange={handleChange} placeholder="Username" name="username"></input>
+                            <label className="form-label" htmlFor="password">Password</label>
+                            <input type="password" id="password" value={regFormData.password} onChange={handleChange} placeholder="********" name="password"></input>
+                            <button className="btn btn-primary" type="submit" value="Register">Register</button>
+                        </form>
+                    </div>
+                <div className="col"></div>
+            </div>
+
+            <div className="col mb-5 text-center">
+                <Link to='/'>Already Have Account? Login Here.</Link>
+            </div>
+
+            <div className="row mb-5 text-center">
+                <footer>
+                    <Footer/>
+                </footer>
+            </div>
+        </div>
+    );
 };
 
 

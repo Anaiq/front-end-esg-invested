@@ -43,30 +43,52 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
     goalChartData, portfolioChartData}) => {
     console.log(`investorData.investorName: ${investor.investorName}`)
     return (
-        <div>
-            <header className='portfolio'>
-                <Header/>
-            </header>
-            <div>
+        <div className='container'>
+            <div className="row mb-5">
+                <div className="col">
+                    <header className='portfolio'>
+                        <Header/>
+                    </header>
+                </div>  
+            </div>
+
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+
+            <div className="row mb-5">
                 <Salutation investor={investor}/>
-                <h2>ESG Goals and Current Portfolio ESG Ratings</h2>
-                <div className='goal-charts'>
-                <Charts goalChartData={goalChartData} portfolioChartData={portfolioChartData}/>
+            </div>
+
+            <div className="row">
+                    <MoneyDisplay investor={investor} handleAddMoneySubmit={handleAddMoneySubmit} ></MoneyDisplay>
+            </div>
+
+            <div className='container  mb-5'>
+                <div className="row text-center mb-5"><h2>ESG Goals and Current Portfolio ESG Ratings</h2></div>
+                <div className="col"></div>
+                <div className="col shadow p-3 mb-5 bg-body-tertiary rounded">
+                    <Charts goalChartData={goalChartData} />
                 </div>
-                <MoneyDisplay investor={investor} handleAddMoneySubmit={handleAddMoneySubmit} ></MoneyDisplay>
-                <div>
-                    <ESGFilter />
-                    <ESGRatingsFilter />
-                </div>
-                <div>
+                <div className="col"></div>
+            </div>
+            
+            <div className="row mb-3">
+                <div className="col"><ESGFilter/></div>
+                <div className="col"><ESGRatingsFilter /></div>
+            </div>
+
+            <div className="col">
                     <PortfolioTable stockRatings={stockRatings} portfolioStocks={portfolios}/>
                 </div>
+
+            <div className="row mb-5 text-center">
+                <footer>
+                    <Footer/>
+                </footer>
             </div>
-            <footer>
-                <Footer/>
-            </footer>
         </div >
-        
     );
 };
 
