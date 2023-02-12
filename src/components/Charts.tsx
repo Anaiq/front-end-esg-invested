@@ -50,7 +50,7 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolio
         labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'C'],
         datasets:[
             {
-                label: "ESG Portfolio Goals",
+                label: "",
                 data: [goalChartData.AAA, goalChartData.AA, goalChartData.A, goalChartData.BBB, 
                     goalChartData.BB, goalChartData.BB, goalChartData.CCC, goalChartData.CC],
                 backgroundColor: "#18BC9C",
@@ -58,7 +58,7 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolio
                 borderWidth: 1
             },
             {
-                label: "Current ESG Portfolio",
+                label: "",
                 data: [portfolioChartData.AAA, portfolioChartData.AA, portfolioChartData.A, portfolioChartData.BBB, 
                     portfolioChartData.BB, portfolioChartData.B, portfolioChartData.CCC, portfolioChartData.CC],
                 backgroundColor: "#2C3E50",
@@ -68,10 +68,14 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolio
         ],
     }
 
-    // const options = {};
+    const options = {};
 
     return(
         <div className="container">
+            <div className="row mb-5">
+                <div className="col"><h4>ESG Goal Ratings</h4></div>
+                <div className="col"><h4>ESG Portfolio Ratings</h4></div>
+            </div>
             <Bar data={data}
                 options={options}>
             </Bar>

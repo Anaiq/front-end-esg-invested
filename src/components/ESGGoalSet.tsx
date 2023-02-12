@@ -3,6 +3,7 @@ import { Investor } from '../models/investorModel';
 import Header from './Header'; 
 import Footer from './Footer';
 import Goal from './Goal';
+import GoalChart from './GoalChart';
 
 interface IESGGoalSetProps {
     investor: Investor;
@@ -22,16 +23,32 @@ interface IESGGoalSetProps {
 
 const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor, handleGoalChangeSubmit, goalChartData}) => {
     return (
-        <div>
-            <header>
-                <Header/>
-            </header>
-            <main className='main'>
-                <h2>{`${investor.investorName}`}, Plan your ESG Goals!</h2>  
-                <div className='goal-list'>
+        <div className="container">
+            <div className="row mb-5">
+                <div className="col">
+                    <header>
+                        <Header/>
+                    </header>
+                </div>  
+            </div>
+
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row  mb-5"><h2>{`${investor.investorName}`}, Plan your ESG goals here.</h2></div>
+
+            <div className="col shadow p-3 mb-5 bg-body-tertiary rounded">
+                <GoalChart goalChartData={goalChartData}/>
+            </div>
+        
+            <div className="container  mb-5">
+                <div className="col"></div>
+                <div className="col">
                     <Goal goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>
                 </div>
-            </main>
+                <div className="col"></div>
+            </div>
             
             <footer>
                 <Footer/>

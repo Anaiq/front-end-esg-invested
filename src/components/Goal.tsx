@@ -4,7 +4,6 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
-import GoalChart from './GoalChart';
 
 
 interface IGoalProps {
@@ -45,9 +44,6 @@ const Goal: React.FunctionComponent<IGoalProps> = ({handleGoalChangeSubmit, goal
 
     return (
         <div>
-            <div>
-                <GoalChart goalChartData={goalChartData}/>
-            </div>
             <div>
                 <Form className="goal-form" onSubmit={handleGoalSubmit}>
                     <Row>

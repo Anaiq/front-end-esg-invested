@@ -296,14 +296,14 @@ function App() {
 
 
   const [portfolioChartData, setPortfolioChartData] = useState({
-    AAA:15,
-    AA:15,
-    A:15,
-    BBB:15,
-    BB:10,
-    B:10,
-    CCC:10,
-    CC:10,
+    AAA:1,
+    AA:1,
+    A:1,
+    BBB:1,
+    BB:1,
+    B:1,
+    CCC:1,
+    CC:1,
   })
 
   const handleRegisterSubmit = (data:{

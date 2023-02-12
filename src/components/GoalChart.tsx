@@ -32,7 +32,6 @@ interface IGoalChartProps {
         CC:number,
         }
 } 
-// parseInt(goalChartData.AAA, 10)
 
 const GoalChart: React.FunctionComponent<IGoalChartProps> = ({goalChartData}) => {
     
@@ -40,12 +39,12 @@ const GoalChart: React.FunctionComponent<IGoalChartProps> = ({goalChartData}) =>
         labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC'],
         datasets:[
             {
-                label: 'ESG Ratings',
+                label: '',
                 data: [goalChartData.AAA, goalChartData.AA, goalChartData.A, goalChartData.BBB, 
                     goalChartData.BB, goalChartData.BB, goalChartData.CCC, goalChartData.CC],
-                backgroundColor: 'green',
+                backgroundColor: '#18BC9C',
                 borderColor: 'black',
-                borderWidth: 2
+                borderWidth: 1
             },
         ],
     }
@@ -53,14 +52,14 @@ const GoalChart: React.FunctionComponent<IGoalChartProps> = ({goalChartData}) =>
     const options = {};
 
     return(
-        <div>
-            <h2>ESG Portfolio Goals</h2>
-            <Bar 
-            data={data}
-            options={options}>
+        <div className="container">
+            <div className="row mb-5">
+                <div className="col"><h4>ESG Portfolio Goals</h4></div>
+            </div>
+            <Bar data={data}
+                options={options}>
             </Bar>
-        </div>
-        
+        </div>  
     );
 };
 
