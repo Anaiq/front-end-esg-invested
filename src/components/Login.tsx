@@ -71,7 +71,7 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
             <Link to='/register'>Need an Account? Register Here.</Link>
         </div>
         
-        <div className="row  mb-5">
+        <div className="row shadow p-3 mb-5 bg-body-tertiary rounded mb-5">
             <div className="col">
                 <div className="card border-light mb-3" >
                     <div className="card-header text-center">E</div>

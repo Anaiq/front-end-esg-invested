@@ -17,6 +17,7 @@ const MoneyDisplay: React.FunctionComponent<IMoneyDisplayProps> = ({investor, ha
                 <div className="col">
                     <MoneyBalance investor={investor}></MoneyBalance>
                 </div>
+                <div className="col-2"></div>
                 <div className="col">
                     <MoneyForm investor={investor} handleAddMoneySubmit={handleAddMoneySubmit}></MoneyForm>
                 </div>

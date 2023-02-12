@@ -13,7 +13,7 @@ const PortfolioLists: React.FunctionComponent<IPortfolioTableProps> = ({portfoli
     console.log('portfolioStocks: ', portfolioStocks)
     
     return ( 
-            <Table striped>
+            <Table striped hover>
                 <thead>
                     <tr>
                         <th>Stock Symbol</th>

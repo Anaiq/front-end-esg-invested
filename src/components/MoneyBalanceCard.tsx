@@ -7,28 +7,16 @@ interface IMoneyBalanceProps {
 
 const MoneyBalance: React.FunctionComponent<IMoneyBalanceProps> = ({investor}) => {
     return (
-        <>
-        <Card
-            text={'dark'}
-            style={{ width: '18rem' }}
-            className="mb-2"
-            >
-            <Card.Header></Card.Header>
-            <Card.Body>
-                <Card.Title> Current Cash Balances </Card.Title>
-                <Card.Text>
-                    Total Cash Balance: $ {`${(investor.cashBalance/100).toFixed(2)}`}
-                </Card.Text>
-                <Card.Text>
-                    Total Shares Cash Balance: $ {`${(investor.totalSharesCashValue/100).toFixed(2)}`}
-                </Card.Text>
-                <Card.Text>
-                    Total Assets Balance: $ {`${(investor.totalAssetsBalance/100).toFixed(2)}`}
-                </Card.Text>
-            </Card.Body>
-        </Card>
-        </>
-        
+        <div className="container shadow p-3 mb-5 bg-body-tertiary rounded">
+            <div className="card border-warning mb-3">
+            <div className="card-header"><h4>Portfolio Account Balances</h4></div>
+                <div className="card-body">
+                    <p className="card-text lead">Total Cash Balance: $ {`${(investor.cashBalance/100).toFixed(2)}`}</p>
+                    <p className="card-text lead">Total Shares Cash Balance: $ {`${(investor.totalSharesCashValue/100).toFixed(2)}`}</p>
+                    <p className="card-text lead">Total Assets Balance: $ {`${(investor.totalAssetsBalance/100).toFixed(2)}`}</p>
+                </div>
+            </div>
+        </div>
     );
 };
 
