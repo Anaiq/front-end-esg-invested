@@ -1,10 +1,8 @@
 import React from "react";
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
-import Button from 'react-bootstrap/Button';
 import { Form } from "react-bootstrap";
-import Header from './Header';
+import InputGroup from 'react-bootstrap/InputGroup';
 import { Investor } from "../models/investorModel";
 
 
@@ -50,10 +48,8 @@ if (!sellFormData.stockSymbol ) return;
 
     return (
         <div className="sell-form-container">
-            <header>
-                <Header/>
-            </header>
-            <h2>Sell</h2>
+            <div className="row mb-2"> <h2>Sell</h2></div>
+            
             <Form className="sell-form" onSubmit={handleSellSubmit}>
                 <Form.Group className="mb-3" controlId="stockSymbol">
                 <Form.Label>Stock Symbol</Form.Label>
@@ -61,16 +57,21 @@ if (!sellFormData.stockSymbol ) return;
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="currentStockPrice">
                 <Form.Label>Current Stock Price</Form.Label>
-                <Form.Control onChange={handleSellChange} name="currentStockPrice" type="text" placeholder="Current Stock Price" />
+                <InputGroup className="mb-3 input-group">
+                    <InputGroup.Text>$</InputGroup.Text>
+                    <Form.Control onChange={handleSellChange} name="currentStockPrice" type="text" placeholder="Current Stock Price" />
+                    <InputGroup.Text>.00</InputGroup.Text>
+                </InputGroup>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="numberStockSharesSell">
                 <Form.Label>Number of Shares to Sell</Form.Label>
                 <Form.Control onChange={handleSellChange} name="numberStockSharesSell" type="text" placeholder="Number of Shares" />
                 </Form.Group>
                 
-                <Button variant="secondary" type="submit">
+                {/* <Button variant="secondary" type="submit">
                     Sell
-                </Button>
+                </Button> */}
+                <button className="btn btn-primary" type="submit" value='Sell'>Sell</button>
             </Form>
         </div>
         

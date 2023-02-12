@@ -53,7 +53,7 @@ const ESGGoalSet: React.FunctionComponent<IESGGoalSetProps> = ({investor, handle
 
             <div className="container  mb-5">
                 <div className="col"></div>
-                <div className="col">
+                <div className="col border border-primary ">
                     <Goal goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>
                 </div>
                 <div className="col"></div>

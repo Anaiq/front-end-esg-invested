@@ -19,17 +19,36 @@ interface IInvestProps {
 const Invest: React.FunctionComponent<IInvestProps> = ({investor,exchangeStocks, handleSellStockSubmit, handleBuyStockSubmit}) => {
     return (
         <div className='container'>
-            <header>
-                <Header/>
-            </header>
-            <h2> ESG Stock Exchange</h2>
-            <div className='mb-2'>
-                <BuyForm investor={investor} handleBuyStockSubmit={handleBuyStockSubmit} /> 
+            <div className="row mb-5">
+                <div className="col">
+                    <header>
+                        <Header/>
+                    </header>
+                </div>  
             </div>
-            <div className='mb-2'>
-                <SellForm investor={investor} handleSellStockSubmit={handleSellStockSubmit}  />
+
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+
+            <div className="row mb-5"><h2> ESG Stock Exchange</h2></div>
+            
+            <div className="row border border-warning shadow p-3 mb-5 bg-body-tertiary rounded">
+                <div className="col">
+                    <BuyForm investor={investor} handleBuyStockSubmit={handleBuyStockSubmit} /> 
+                </div>
+                {/* <div className="col-2"></div> */}
+                <div className="col">
+                    <SellForm investor={investor} handleSellStockSubmit={handleSellStockSubmit} />
+                </div>
             </div>
-            <div className="mb-4">
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            
+            <div className="row">
+                <div className="col"></div>
+                <div>
                 <Table striped>
                     <thead>
                         <tr>
@@ -45,10 +64,19 @@ const Invest: React.FunctionComponent<IInvestProps> = ({investor,exchangeStocks,
                         {exchangeStocks.map((exchangeStock) => (<ExchangeStocks exchangeStock={exchangeStock} {...exchangeStock}/>))}
                     </tbody>
                 </Table>
+                </div>
+                <div className="col"></div>
             </div>
-            <footer>
-                <Footer/>
-            </footer>
+
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5 text-center">
+                <footer>
+                    <Footer/>
+                </footer>
+            </div>
             
         </div>
     );
