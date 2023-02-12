@@ -32,7 +32,7 @@ const Invest: React.FunctionComponent<IInvestProps> = ({investor,exchangeStocks,
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>
 
-            <div className="row mb-5"><h2> ESG Stock Exchange</h2></div>
+            <div className="row mb-5"><h2> ESG Stock Exchange:</h2></div>
             
             <div className="row border border-warning shadow p-3 mb-5 bg-body-tertiary rounded">
                 <div className="col">

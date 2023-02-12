@@ -78,19 +78,20 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
             </div>
 
             <div className="row">
-                <div className="col"></div>
-                <div>
+                <div className='col'>
                     <PortfolioTable stockRatings={stockRatings} portfolioStocks={portfolios}/>
                 </div>
-                <div className="col"></div>
             </div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
+            <div className="row mb-5"></div>
 
             <div className="row mb-5 text-center">
                 <footer>
                     <Footer/>
                 </footer>
             </div>
-
         </div>
     );
 };

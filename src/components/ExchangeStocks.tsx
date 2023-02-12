@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ExchangeStock } from '../models/exchangeStockModel'; //importing the Exchange interface
-import Button from 'react-bootstrap/Button'
 
 interface IEStockProps {
     exchangeStock: ExchangeStock

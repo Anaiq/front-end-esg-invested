@@ -46,13 +46,17 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
     return (
         <div className="container">
             <div className="row mb-5">
-                <header>
-                    <LoginHeader/>
-                </header>
+                <div className="col">
+                    <header>
+                        <LoginHeader/>
+                    </header>
+                </div>  
             </div>
-            
+
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>
+
+            <div className="row text-center mb-5"><h2>Welcome to ESGInvested.</h2></div> 
             <div className="row">
                 <div className="col"></div>
                 <div className="mb-3 col-4 login-form-container">
@@ -73,7 +77,7 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
         
         <div className="row shadow p-3 mb-5 bg-body-tertiary rounded mb-5">
             <div className="col">
-                <div className="card border-light mb-3" >
+                <div className="card border-warning mb-3" >
                     <div className="card-header text-center">E</div>
                     <div className="card-body">
                         <h4 className="card-title">Environment</h4>
@@ -90,7 +94,7 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                 </div>
             </div>
             <div className="col">
-                <div className="card border-light mb-3" >
+                <div className="card border-warning mb-3" >
                     <div className="card-header text-center">S</div>
                     <div className="card-body">
                         <h4 className="card-title">Social</h4>
@@ -110,7 +114,7 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                 </div>
             </div>
             <div className="col">
-                <div className="card border-light mb-3" >
+                <div className="card border-warning mb-3" >
                     <div className="card-header text-center">G</div>
                         <div className="card-body">
                             <h4 className="card-title ">Governance</h4>
