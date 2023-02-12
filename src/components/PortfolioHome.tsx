@@ -69,7 +69,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
                 <div className="row text-center mb-5"><h2>ESG Goals and Current Portfolio ESG Ratings</h2></div>
                 <div className="col"></div>
                 <div className="col shadow p-3 mb-5 bg-body-tertiary rounded">
-                    <Charts goalChartData={goalChartData} />
+                    <Charts portfolioChartData={portfolioChartData} goalChartData={goalChartData} />
                 </div>
                 <div className="col"></div>
             </div>

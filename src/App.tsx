@@ -532,7 +532,7 @@ function App() {
         <Routes>          
           <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
           <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
-          <Route path='portfolio' element={<PortfolioHome investor={investorData} goalChartData={goalChartData} stockRatings={stockRatings} portfolios={portfolios}
+          <Route path='portfolio' element={<PortfolioHome portfolioChartData={portfolioChartData} investor={investorData} goalChartData={goalChartData} stockRatings={stockRatings} portfolios={portfolios}
             handleAddMoneySubmit={handleAddMoneySubmit}  />}></Route>
           <Route path='/about' element={<About />}></Route>
           <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData} goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>}></Route>
