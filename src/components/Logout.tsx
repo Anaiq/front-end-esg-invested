@@ -53,7 +53,7 @@ const Logout: React.FunctionComponent<ILogoutProps> = ({investor}) => {
                     <div className="col-3 mb-5 text-primary shadow p-3 mb-5 bg-body-tertiary rounded">
                         <div className="card text-white bg-success mb-3" >
                             <div className="card-body">
-                                <h4 className="card-title">Pass on generational Wealth.</h4>
+                                <h4 className="card-title">Transfer generational Wealth.</h4>
                                 <p className="card-text"></p>
                             </div>
                         </div>

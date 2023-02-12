@@ -43,10 +43,10 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
     goalChartData, portfolioChartData}) => {
     console.log(`investorData.investorName: ${investor.investorName}`)
     return (
-        <div className='container'>
+        <div className="container">
             <div className="row mb-5">
                 <div className="col">
-                    <header className='portfolio'>
+                    <header>
                         <Header/>
                     </header>
                 </div>  
@@ -65,7 +65,7 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
                     <MoneyDisplay investor={investor} handleAddMoneySubmit={handleAddMoneySubmit} ></MoneyDisplay>
             </div>
 
-            <div className='container  mb-5'>
+            <div className="container  mb-5">
                 <div className="row text-center mb-5"><h2>ESG Goals and Current Portfolio ESG Ratings</h2></div>
                 <div className="col"></div>
                 <div className="col shadow p-3 mb-5 bg-body-tertiary rounded">
@@ -79,9 +79,11 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
                 <div className="col"><ESGRatingsFilter /></div>
             </div>
 
-            <div className="col">
+            <div className="row">
+                <div className="col"></div>
                     <PortfolioTable stockRatings={stockRatings} portfolioStocks={portfolios}/>
                 </div>
+                <div className="col"></div>
 
             <div className="row mb-5 text-center">
                 <footer>
