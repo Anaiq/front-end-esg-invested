@@ -47,30 +47,27 @@ if (!sellFormData.stockSymbol ) return;
     }
 
     return (
-        <div className="sell-form-container">
+        <div className="container">
             <div className="row mb-2"> <h2>Sell</h2></div>
             
             <Form className="sell-form" onSubmit={handleSellSubmit}>
                 <Form.Group className="mb-3" controlId="stockSymbol">
-                <Form.Label>Stock Symbol</Form.Label>
-                <Form.Control onChange={handleSellChange} name="stockSymbol" type="text" placeholder="Stock Symbol" />
+                    <Form.Label>Stock Symbol</Form.Label>
+                    <Form.Control onChange={handleSellChange} name="stockSymbol" type="text" placeholder="Stock Symbol" />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="currentStockPrice">
-                <Form.Label>Current Stock Price</Form.Label>
-                <InputGroup className="mb-3 input-group">
-                    <InputGroup.Text>$</InputGroup.Text>
-                    <Form.Control onChange={handleSellChange} name="currentStockPrice" type="text" placeholder="Current Stock Price" />
-                    <InputGroup.Text>.00</InputGroup.Text>
-                </InputGroup>
+                    <Form.Label>Current Stock Price</Form.Label>
+                    <InputGroup className="mb-3 input-group">
+                        <InputGroup.Text>$</InputGroup.Text>
+                        <Form.Control onChange={handleSellChange} name="currentStockPrice" type="text" placeholder="Current Stock Price" />
+                        <InputGroup.Text>.00</InputGroup.Text>
+                    </InputGroup>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="numberStockSharesSell">
-                <Form.Label>Number of Shares to Sell</Form.Label>
-                <Form.Control onChange={handleSellChange} name="numberStockSharesSell" type="text" placeholder="Number of Shares" />
+                    <Form.Label>Number of Shares to Sell</Form.Label>
+                    <Form.Control onChange={handleSellChange} name="numberStockSharesSell" type="text" placeholder="Number of Shares" />
                 </Form.Group>
-                
-                {/* <Button variant="secondary" type="submit">
-                    Sell
-                </Button> */}
+
                 <button className="btn btn-primary" type="submit" value='Sell'>Sell</button>
             </Form>
         </div>
