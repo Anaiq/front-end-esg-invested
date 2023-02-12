@@ -26,9 +26,21 @@ interface IPortfolioHomeProps {
         CCC:number,
         CC:number,
         }
+    portfolioChartData: {
+        AAA:number,
+        AA:number,
+        A:number,
+        BBB:number,
+        BB:number,
+        B:number,
+        CCC:number,
+        CC:number,
+    }
+
 }
 
-const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit, stockRatings, goalChartData }) => {
+const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios, investor, handleAddMoneySubmit, stockRatings,
+    goalChartData, portfolioChartData}) => {
     console.log(`investorData.investorName: ${investor.investorName}`)
     return (
         <div className='container'>

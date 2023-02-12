@@ -31,11 +31,23 @@ interface IChartsProps {
         CCC:number,
         CC:number,
         }
+        portfolioChartData: {
+            AAA:number,
+            AA:number,
+            A:number,
+            BBB:number,
+            BB:number,
+            B:number,
+            CCC:number,
+            CC:number,
+        }
 }
 
-const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData}) => {
+const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolioChartData}) => {
+    
+    
     const data = {
-        labels:["AAA", "AA", "BBB", "BB", "B", "CCC", "CC"],
+        labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'C'],
         datasets:[
             {
                 label: "ESG Portfolio Goals",
@@ -47,7 +59,8 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData}) => {
             },
             {
                 label: "Current ESG Portfolio",
-                data: [10, 10, 16, 12, 22, 8, 14, 5],
+                data: [portfolioChartData.AAA, portfolioChartData.AA, portfolioChartData.A, portfolioChartData.BBB, 
+                    portfolioChartData.BB, portfolioChartData.B, portfolioChartData.CCC, portfolioChartData.CC],
                 backgroundColor: "#2C3E50",
                 borderColor: 'black',
                 borderWidth: 1
