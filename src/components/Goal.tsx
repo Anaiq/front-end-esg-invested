@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
-// import Button from 'react-bootstrap/Button';
+import Percent from './Percent';
 
 
 interface IGoalProps {
@@ -58,6 +58,7 @@ const Goal: React.FunctionComponent<IGoalProps> = ({handleGoalChangeSubmit, goal
                     </Row>
                     <Row className="mb-5 text-center">
                             <Col><h5>Place choose Maximal rating for each ESG Category</h5></Col>
+                            <Col className='col-3'><Percent /></Col>
                     </Row>
                     <Row>
                         <Col>
