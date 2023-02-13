@@ -123,5 +123,3 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
 };
 
 export default Login;
-
-// https://www.investopedia.com/terms/e/environmental-social-and-governance-esg-criteria.asp#toc-environmental-social-and-governance
