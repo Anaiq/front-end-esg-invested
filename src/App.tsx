@@ -459,7 +459,7 @@ function App() {
   };
 
   const getPortfolioChartData = (portfolios: PortfolioStock[]) => {
-    // for each portfolio stockRatings, grab the number of AAA toCC
+    // for each portfolio stockRatings, grab the number of AAA to CC
     let AAACount = 0;
     let AACount = 0;
     let ACount = 0;
@@ -472,28 +472,99 @@ function App() {
     let transactionCount = 0;
 
     portfolios.forEach(portfolio => {
-      if (portfolio.environmentRating === 'AAA'|| portfolio.socialRating === 'AAA'|| portfolio.governanceRating === 'AAA') {
+      if (portfolio.environmentRating === 'AAA') {
         AAACount += 1;
         console.log('AAACount:', AAACount);
-      } else if (portfolio.environmentRating === 'AA'|| portfolio.socialRating === 'AA'|| portfolio.governanceRating === 'AA') {
+      }
+      if (portfolio.socialRating === 'AAA') {
+        AAACount += 1;
+        console.log('AAACount:', AAACount);
+      } 
+      if (portfolio.governanceRating === 'AAA') {
+        AAACount += 1;
+        console.log('AAACount:', AAACount);
+      } 
+      if (portfolio.environmentRating === 'AA')  {
         AACount +=1;
         console.log('AACount:', AACount);
-      } else if (portfolio.environmentRating === 'A'|| portfolio.socialRating === 'A' || portfolio.governanceRating === 'A') {
+      } 
+      if (portfolio.socialRating === 'AA') {
+        AACount +=1;
+        console.log('AACount:', AACount);
+      } 
+      if (portfolio.governanceRating === 'AA') {
+        AACount +=1;
+        console.log('AACount:', AACount);
+      }
+      if (portfolio.environmentRating === 'A') {
         ACount +=1;
         console.log('ACount:', ACount);
-      } else if (portfolio.environmentRating === 'BBB'|| portfolio.socialRating === 'BBB'|| portfolio.governanceRating === 'BBB') {
+      } 
+      if (portfolio.socialRating === 'A') {
+        ACount +=1;
+        console.log('ACount:', ACount);
+      } 
+      if (portfolio.governanceRating === 'A') {
+        ACount +=1;
+        console.log('ACount:', ACount);
+      }
+      if (portfolio.environmentRating === 'BBB')   {
         BBBCount +=1;
         console.log('BBBCount:', BBBCount);
-      } else if (portfolio.environmentRating === 'BB'|| portfolio.socialRating === 'BB'|| portfolio.governanceRating === 'BB') {
+      } 
+      if (portfolio.socialRating === 'BBB') {
+        BBBCount +=1;
+        console.log('BBBCount:', BBBCount);
+      }
+      if (portfolio.governanceRating === 'BBB') {
+        BBBCount +=1;
+        console.log('BBBCount:', BBBCount);
+      } 
+      if (portfolio.environmentRating === 'BB') {
         BBCount +=1;
         console.log('BBCount:', BBCount);
-      } else if (portfolio.environmentRating === 'B'|| portfolio.socialRating === 'B'|| portfolio.governanceRating === 'B') {
+      }
+      if (portfolio.socialRating === 'BB') {
+        BBCount +=1;
+        console.log('BBCount:', BBCount);
+      }
+      if (portfolio.governanceRating === 'BB') {
+        BBCount +=1;
+        console.log('BBCount:', BBCount);
+      }
+      if (portfolio.environmentRating === 'B') {
         BCount +=1;
         console.log('BCount:', BCount);
-      } else if (portfolio.environmentRating === 'CCC' || portfolio.socialRating === 'CCC'|| portfolio.governanceRating === 'CCC') {
+      } 
+      if (portfolio.socialRating === 'B') {
+        BCount +=1;
+        console.log('BCount:', BCount);
+      }
+      if (portfolio.governanceRating === 'B') {
+        BCount +=1;
+        console.log('BCount:', BCount);
+      }
+      if (portfolio.environmentRating === 'CCC')  {
         CCCCount +=1;
         console.log('CCCCount:', CCCCount);
-      } else if (portfolio.environmentRating === 'CC'|| portfolio.socialRating === 'CC'|| portfolio.governanceRating === 'CC') {
+      } 
+      if (portfolio.socialRating === 'CCC') {
+        CCCCount +=1;
+        console.log('CCCCount:', CCCCount);
+      } 
+      if (portfolio.governanceRating === 'CCC') {
+        CCCCount +=1;
+        console.log('CCCCount:', CCCCount);
+      } 
+      if (portfolio.environmentRating === 'CC')  {
+        CCCount +=1;
+        console.log('CCCount:', CCCount);
+      } 
+      if (portfolio.socialRating === 'CC') {
+        CCCount +=1;
+        console.log('CCCount:', CCCount);
+      } 
+      if (portfolio.governanceRating === 'CC') {
         CCCount +=1;
         console.log('CCCount:', CCCount);
       }
