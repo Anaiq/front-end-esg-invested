@@ -54,6 +54,45 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
 
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>
+
+            <div className="row text-center mb-5"><h2>Welcome to ESGInvested.</h2></div> 
+
+            <div className="row shadow p-3 mb-5 bg-body-tertiary rounded mb-5">
+                <div className="col">
+                    <div className="card border-warning mb-3" >
+                        <div className="card-header text-center">E</div>
+                        <div className="card-body">
+                            <h4 className="card-title">Environment</h4>
+                            <div className="text-center">
+                                <img  src="images/esgtree.png" alt="tree logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <div className="col">
+                    <div className="card border-warning mb-3" >
+                        <div className="card-header text-center">S</div>
+                        <div className="card-body">
+                            <h4 className="card-title">Social</h4>
+                            <div className="text-center">
+                                <img  src="images/esgscale.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                            </div>  
+                        </div>
+                    </div>
+                </div>
+                <div className="col ">
+                    <div className="card border-warning mb-3" >
+                        <div className="card-header text-center">G</div>
+                            <div className="card-body">
+                                <h4 className="card-title ">Governance</h4>
+                                <div className="text-center">
+                                    <img  src="images/esgmagnifyingglass.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                                </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div className="row">
                 <div className="col"></div>
                     <div className="mb-3 col-4 reg-form-container">
