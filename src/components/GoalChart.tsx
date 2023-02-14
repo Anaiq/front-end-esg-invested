@@ -41,7 +41,7 @@ const GoalChart: React.FunctionComponent<IGoalChartProps> = ({goalChartData}) =>
             {
                 label: '',
                 data: [goalChartData.AAA, goalChartData.AA, goalChartData.A, goalChartData.BBB, 
-                    goalChartData.BB, goalChartData.BB, goalChartData.CCC, goalChartData.CC],
+                    goalChartData.BB, goalChartData.B, goalChartData.CCC, goalChartData.CC],
                 backgroundColor: '#18BC9C',
                 borderColor: 'black',
                 borderWidth: 1

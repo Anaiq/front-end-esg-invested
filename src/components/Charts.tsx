@@ -47,12 +47,12 @@ const Charts: React.FunctionComponent<IChartsProps> = ({goalChartData, portfolio
     
     
     const data = {
-        labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'C'],
+        labels:['AAA', 'AA', 'A', 'BBB', 'BB', 'B', 'CCC', 'CC'],
         datasets:[
             {
                 label: "",
                 data: [goalChartData.AAA, goalChartData.AA, goalChartData.A, goalChartData.BBB, 
-                    goalChartData.BB, goalChartData.BB, goalChartData.CCC, goalChartData.CC],
+                    goalChartData.BB, goalChartData.B, goalChartData.CCC, goalChartData.CC],
                 backgroundColor: "#18BC9C",
                 borderColor: 'black',
                 borderWidth: 1

@@ -22,8 +22,8 @@ import { Transaction } from './models/transactionModel';
 import { Stock } from './models/stockModel';
 
 
-const kBaseUrl = 'https://esg-invested-back.herokuapp.com';
-// const kBaseUrl = 'http://localhost:5000';
+// const kBaseUrl = 'https://esg-invested-back.herokuapp.com';
+const kBaseUrl = 'http://localhost:5000';
 
   // convert from API functions goes here:
 const convertExchangeFromApi = (apiExchangeStock:ExchangeStockApi) => {
@@ -490,7 +490,7 @@ function App() {
       } else if (portfolio.environmentRating === 'B'|| portfolio.socialRating === 'B'|| portfolio.governanceRating === 'B') {
         BCount +=1;
         console.log('BCount:', BCount);
-      } else if (portfolio.environmentRating=== 'CCC' || portfolio.socialRating === 'CCC'|| portfolio.governanceRating === 'CCC') {
+      } else if (portfolio.environmentRating === 'CCC' || portfolio.socialRating === 'CCC'|| portfolio.governanceRating === 'CCC') {
         CCCCount +=1;
         console.log('CCCCount:', CCCCount);
       } else if (portfolio.environmentRating === 'CC'|| portfolio.socialRating === 'CC'|| portfolio.governanceRating === 'CC') {
