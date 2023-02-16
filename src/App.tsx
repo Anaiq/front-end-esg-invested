@@ -86,7 +86,7 @@ const registerInvestorApi = (registrationCredentials:{
   }
   console.log('registerInvestorApi requestBody:' , requestBody)
   return axios
-  .post(`${kBaseUrl}/investors`, requestBody)
+  .post(`${kBaseUrl}/register`, requestBody)
   .then((response) => {
     console.log('registerInvestorApi response.data: ', response.data)
     console.log(convertInvestorFromApi(response.data));
