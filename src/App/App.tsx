@@ -3,23 +3,23 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootswatch/dist/flatly/bootstrap.min.css'
-import { Investor } from './models/investorModel';
-import { InvestorApi } from './models/investorApiModel';
-import { StockApi } from './models/stockApiModel';
-import { ExchangeStockApi } from './models/exchangeStockApiModel';
-import { TransactionApi } from './models/transactionApiModel'
-import Register from './components/Register'; 
-import Login from './components/Login'; 
-import Logout from './components/Logout';
-import PortfolioHome from './components/PortfolioHome';
-import About from './components/About';
-import ESGGoalSet from './components/ESGGoalSet';
-import Invest from './components/Invest';
-import Transactions from './components/Transactions';
-import Error from './components/Error';
-import { PortfolioStock } from './models/portfolioStockModel';
-import { Transaction } from './models/transactionModel';
-import { Stock } from './models/stockModel';
+import { Investor } from '../models/investorModel';
+import { InvestorApi } from '../models/investorApiModel';
+import { StockApi } from '../models/stockApiModel';
+import { ExchangeStockApi } from '../models/exchangeStockApiModel';
+import { TransactionApi } from '../models/transactionApiModel'
+import Register from '../components/Register'; 
+import Login from '../components/Login'; 
+import Logout from '../components/Logout';
+import PortfolioHome from '../components/PortfolioHome';
+import About from '../components/About';
+import ESGGoalSet from '../components/ESGGoalSet';
+import Invest from '../components/Invest';
+import Transactions from '../components/Transactions';
+import Error from '../components/Error';
+import { PortfolioStock } from '../models/portfolioStockModel';
+import { Transaction } from '../models/transactionModel';
+import { Stock } from '../models/stockModel';
 
 
 // const kBaseUrl = 'https://esg-invested-back.herokuapp.com';
