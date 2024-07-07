@@ -64,7 +64,7 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
                         <div className="card-body">
                             <h4 className="card-title">Environment</h4>
                             <div className="text-center">
-                                <img  src="images/esgtree.png" alt="tree logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                                <img  src="assets/images/esgtree.png" alt="tree logo" width="250" height="400"  className="d-inline-block align-top"></img>
                             </div> 
                         </div>
                     </div>
@@ -75,7 +75,7 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
                         <div className="card-body">
                             <h4 className="card-title">Social</h4>
                             <div className="text-center">
-                                <img  src="images/esgscale.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                                <img  src="assets/images/esgscale.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
                             </div>  
                         </div>
                     </div>
@@ -86,7 +86,7 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
                             <div className="card-body">
                                 <h4 className="card-title ">Governance</h4>
                                 <div className="text-center">
-                                    <img  src="images/esgmagnifyingglass.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                                    <img  src="assets/images/esgmagnifyingglass.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
                                 </div> 
                         </div>
                     </div>
