@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import LoginHeader from './LoginHeader';
 import Footer from './Footer';
+import esgscale from '../assets/images/esgscale.png';
+import esgtree from '../assets/images/esgtree.png';
+import esgmagnifyingglass from '../assets/images/esgmagnifyingglass.png'
 
 const kDefaultFormState = {
     username: '',
@@ -65,7 +68,7 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                         <div className="card-body">
                             <h4 className="card-title">Environment</h4>
                             <div className="text-center">
-                                <img  src="assets/images/esgtree.png" alt="tree logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                                <img  src={esgtree} alt="tree logo" width="250" height="400"  className="d-inline-block align-top"></img>
                             </div> 
                         </div>
                     </div>
@@ -76,7 +79,7 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                         <div className="card-body">
                             <h4 className="card-title">Social</h4>
                             <div className="text-center">
-                                <img  src="assets/images/esgscale.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                                <img  src={esgscale} alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
                             </div>  
                         </div>
                     </div>
@@ -87,7 +90,7 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                             <div className="card-body">
                                 <h4 className="card-title ">Governance</h4>
                                 <div className="text-center">
-                                    <img  src="assets/images/esgmagnifyingglass.png" alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
+                                    <img  src={esgmagnifyingglass} alt="scale logo" width="250" height="400"  className="d-inline-block align-top"></img>
                                 </div> 
                         </div>
                     </div>
