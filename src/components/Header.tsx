@@ -4,7 +4,6 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 // import Button from 'react-bootstrap/Button'
-import Form from 'react-bootstrap/Form';
 
 interface IHeaderProps {
 }
@@ -20,22 +19,28 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                     <Navbar.Text>
                         <Nav defaultActiveKey="/portfolio" as="ul">
                             <Nav.Item as="li">
-                            <Link to='/portfolio' className='btn'><Nav.Link href="/portfolio" eventKey="portfolio">Portfolio</Nav.Link></Link>
+                            {/* <Link to='/portfolio' className='btn'><Nav.Link href="/portfolio" eventKey="portfolio">Portfolio</Nav.Link></Link> */}
+                            <Link to='/portfolio' className='btn'>Portfolio</Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/about' className='btn'><Nav.Link href="/about" eventKey="about">About</Nav.Link></Link>
+                                {/* <Link to='/about' className='btn'><Nav.Link href="/about" eventKey="about">About</Nav.Link></Link> */}
+                                <Link to='/about' className='btn'>About</Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/esg-goal-planner' className='btn'><Nav.Link href="/esg-goal-planner"eventKey="esg-goal-planner">ESG Goal Planner</Nav.Link></Link>
+                                {/* <Link to='/esg-goal-planner' className='btn'><Nav.Link href="/esg-goal-planner"eventKey="esg-goal-planner">ESG Goal Planner</Nav.Link></Link> */}
+                                <Link to='/esg-goal-planner' className='btn'>ESG Goal Planner</Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/invest' className='btn'><Nav.Link href="/invest" eventKey="invest">Invest</Nav.Link></Link>
+                                <Link to='/invest' className='btn'>Invest</Link>
+                                {/* <Link to='/invest' className='btn'><Nav.Link href="/invest" eventKey="invest">Invest</Nav.Link></Link> */}
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/transactions' className='btn'><Nav.Link href="/transactions" eventKey="transactions">Transactions</Nav.Link></Link>
+                                {/* <Link to='/transactions' className='btn'><Nav.Link href="/transactions" eventKey="transactions">Transactions</Nav.Link></Link> */}
+                                <Link to='/transactions' className='btn'>Transactions</Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/logout' className='btn'><Nav.Link href="/logout" eventKey="logout">Logout</Nav.Link></Link>
+                                {/* <Link to='/logout' className='btn'><Nav.Link href="/logout" eventKey="logout">Logout</Nav.Link></Link> */}
+                                <Link to='/logout' className='btn'>Logout</Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Text>

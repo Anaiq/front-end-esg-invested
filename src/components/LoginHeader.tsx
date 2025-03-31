@@ -8,7 +8,7 @@ import Navbar from 'react-bootstrap/Navbar';
 interface ILoginHeaderProps {
 }
 
-const Header: React.FunctionComponent<ILoginHeaderProps> = (props) => {
+const LoginHeader: React.FunctionComponent<ILoginHeaderProps> = (props) => {
     return (
         <div className="container mb-5">
             <Navbar fixed="top" bg="light" variant="light">
@@ -21,9 +21,11 @@ const Header: React.FunctionComponent<ILoginHeaderProps> = (props) => {
                         <Nav defaultActiveKey="/login" as="ul">
                             <Nav.Item as="li">
                             <Link to='/' className='btn'><Nav.Link href="/login" eventKey="portfolio">Login</Nav.Link></Link>
+                            {/* <Link to='/' className='btn'>Login</Link> */}
                             </Nav.Item>
                             <Nav.Item as="li">
                                 <Link to='/register' className='btn'><Nav.Link href="/register" eventKey="about">Register</Nav.Link></Link>
+                                {/* <Link to='/register' className='btn'>Register</Link> */}
                             </Nav.Item>
                         </Nav>
                     </Navbar.Text>
@@ -35,4 +37,4 @@ const Header: React.FunctionComponent<ILoginHeaderProps> = (props) => {
 };
 
 
-export default Header;
+export default LoginHeader;

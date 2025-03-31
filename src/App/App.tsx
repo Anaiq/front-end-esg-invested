@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {  Routes, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootswatch/dist/flatly/bootstrap.min.css'
@@ -11,6 +11,7 @@ import { TransactionApi } from '../models/transactionApiModel'
 import Register from '../components/Register'; 
 import Login from '../components/Login'; 
 import Logout from '../components/Logout';
+import { LoginData } from '../types/auth';
 import PortfolioHome from '../components/PortfolioHome';
 import About from '../components/About';
 import ESGGoalSet from '../components/ESGGoalSet';
@@ -20,10 +21,12 @@ import Error from '../components/Error';
 import { PortfolioStock } from '../models/portfolioStockModel';
 import { Transaction } from '../models/transactionModel';
 import { Stock } from '../models/stockModel';
+import responseData from '../data/investorData.json';
+import Header from '../components/Header';
+import LoginHeader from '../components/LoginHeader';
 
 
-// const kBaseUrl = 'https://esg-invested-back.herokuapp.com';
-const kBaseUrl = 'http://localhost:5000';
+const kBaseUrl = process.env.REACT_APP_BACKEND_URL;
 
   // convert from API functions goes here:
 const convertExchangeFromApi = (apiExchangeStock:ExchangeStockApi) => {
@@ -119,11 +122,14 @@ const loginInvestorApi = (loginCredentials:{
     g_goal: '',
     transactions: []
   }
+    
 
   console.log('loginInvestorApi requestBody:', requestBody);
   return axios
   .post(`${kBaseUrl}/login`, requestBody)
   .then((response) => {
+  // const response = responseData
+  
     console.log('loginInvestorApi: ' , response.data);
     console.log('converted LoginInvestorApi: ',convertInvestorFromApi(response.data));
     return convertInvestorFromApi(response.data);
@@ -321,19 +327,8 @@ function App() {
   }
   
 
-  const handleLoginSubmit = (data:{
-    username: string,
-    password: string
-    }) => {
-    loginInvestorApi(data)
-    .then(loggedInvestor => { 
-      console.log('loggedInInvestor: ', loggedInvestor)
-      setInvestorData(loggedInvestor!); 
-      getAllTransactions(loggedInvestor!)
-    })
-    .catch(error => {
-      console.log(error);
-    })
+  const handleLoginSubmit = (data:LoginData) => {
+    console.log(data.username, data.password)
   };
 
 
@@ -594,12 +589,12 @@ function App() {
   return tempChartData
   }
 
-
   console.log('investorData: ', investorData)
+
+  const location = useLocation()
 
   return ( 
     <div className="container">
-      <BrowserRouter>
         <Routes>          
           <Route path='/' element={<Login handleLoginSubmit={handleLoginSubmit}  />}></Route> 
           <Route path='register' element={<Register handleRegisterSubmit={handleRegisterSubmit}  />}></Route>
@@ -612,7 +607,20 @@ function App() {
           <Route path='/logout' element={<Logout investor={investorData}/>}></Route>
           <Route path='*' element={<Error />} />
         </Routes>
-      </BrowserRouter>
+          {location.pathname === '/login' || location.pathname === '/logout' ? 
+                        <div className="row mb-5">
+                          <div className="col">
+                              <header>
+                                  <LoginHeader/>
+                              </header>
+                          </div>  
+                      </div> : <div className="row mb-5">
+                          <div className="col">
+                              <header>
+                                  <Header/>
+                              </header>
+                          </div>  
+                      </div>}
     </div>   
   );
 }

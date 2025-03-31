@@ -49,11 +49,11 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
 
     return (
         <div className="container">
-            <div className="row mb-5">
+            {/* <div className="row mb-5">
                 <header>
                     <LoginHeader/>
                 </header>
-            </div>
+            </div> */}
 
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>

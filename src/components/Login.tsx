@@ -8,14 +8,15 @@ import Footer from './Footer';
 import esgscale from '../assets/images/esgscale.png';
 import esgtree from '../assets/images/esgtree.png';
 import esgmagnifyingglass from '../assets/images/esgmagnifyingglass.png'
+import { LoginData } from "../types/auth";
 
-const kDefaultFormState = {
+const kDefaultFormState: LoginData  = {
     username: '',
     password: ''
     };
 
 interface ILoginProps {
-    handleLoginSubmit: any,
+    handleLoginSubmit:(kDefaultFormState: LoginData) => void;
 }
 
 const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
@@ -56,10 +57,10 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
                 </div>  
             </div>
 
-            <div className="row mb-5"></div>
-            <div className="row mb-5"></div>
+            <div className="row mt-5"></div>
+            <div className="row mt-5"></div>
 
-            <div className="row text-center mb-5"><h2>Welcome to ESGInvested.</h2></div> 
+            <div className="row text-center mb-5 mt-10"><h2>Welcome to ESGInvested.</h2></div> 
         
             <div className="row shadow p-3 mb-5 bg-body-tertiary rounded mb-5">
                 <div className="col">

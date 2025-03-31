@@ -6,12 +6,12 @@
 
 .login-form-container {
     padding: 4rem;
-    border: 5px solid rgb(44,62,80);
+    border: 5px solid rgb(3, 29, 54);
     border-radius: 10px;
 }
 
 label {
-    color: rgb(44,62,80);
+    color: rgb(3, 29, 54);
 }
 input {
     margin: 0.25rem 0;

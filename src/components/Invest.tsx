@@ -19,13 +19,13 @@ interface IInvestProps {
 const Invest: React.FunctionComponent<IInvestProps> = ({investor,exchangeStocks, handleSellStockSubmit, handleBuyStockSubmit}) => {
     return (
         <div className='container'>
-            <div className="row mb-5">
+            {/* <div className="row mb-5">
                 <div className="col">
                     <header>
                         <Header/>
                     </header>
                 </div>  
-            </div>
+            </div> */}
 
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>

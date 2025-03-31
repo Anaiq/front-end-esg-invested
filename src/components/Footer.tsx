@@ -7,7 +7,7 @@ const Footer: React.FunctionComponent<IFooterProps> = (props) => {
     return (
         <div >
             <section>
-                MIT License &copy; QP, 2023
+                MIT License &copy; QP, 2025
             </section>
         </div>
     ) ;

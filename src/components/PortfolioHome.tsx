@@ -44,13 +44,13 @@ const PortfolioHome: React.FunctionComponent<IPortfolioHomeProps> = ({portfolios
     console.log(`investorData.investorName: ${investor.investorName}`)
     return (
         <div className="container">
-            <div className="row mb-5">
+            {/* <div className="row mb-5">
                 <div className="col">
                     <header>
                         <Header/>
                     </header>
                 </div>  
-            </div>
+            </div> */}
 
             <div className="row mb-5"></div>
             <div className="row mb-5"></div>

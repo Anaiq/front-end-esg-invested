@@ -1,0 +1,20 @@
+{
+    "data": {
+    "investors": [{
+    "investor_id": 1,
+    "investor_name": "Luckybutter17",
+    "cash_balance": 1000,
+    "total_shares_buys": 0,
+    "total_shares_sales": 0,
+    "total_shares_cash_value": 0,
+    "total_assets_balance": 0,
+    "current_e_rating": "",
+    "current_s_rating": "",
+    "current_g_rating": "",
+    "e_goal": "",
+    "s_goal": "",
+    "g_goal": "",
+    "transactions": []
+    }]
+}      
+}
