@@ -50,7 +50,8 @@ Push to the Branch (git push origin feature/AmazingFeature)
 Open a Pull Request
 
 <h2>Acknowledgments/Credits</h2>
-Project Manager: Ansel Rognlie
+Project Manager: Qiana P. - 2023 to Present
+Project Manager: Ansel Rognlie - 2022
 
-MIT License - Copyright © 2022 Qiana Partee
+MIT License - Copyright © 2025 Qiana P.
 
