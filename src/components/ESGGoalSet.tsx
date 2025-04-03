@@ -7,7 +7,7 @@ import GoalChart from './GoalChart';
 
 interface IESGGoalSetProps {
     investor: Investor;
-    handleGoalChangeSubmit:any;
+    handleGoalChangeSubmit:(goalChartData: {})=> void;
     goalChartData:{
         AAA:number,
         AA:number,

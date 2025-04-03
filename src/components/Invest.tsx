@@ -60,9 +60,9 @@ const Invest: React.FunctionComponent<IInvestProps> = ({investor,exchangeStocks,
                             <th>Governance Rating</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    {/* <tbody>
                         {exchangeStocks.map((exchangeStock) => (<ExchangeStocks exchangeStock={exchangeStock} {...exchangeStock}/>))}
-                    </tbody>
+                    </tbody> */}
                 </Table>
                 </div>
                 <div className="col"></div>

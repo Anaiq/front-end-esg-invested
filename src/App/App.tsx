@@ -11,7 +11,7 @@ import { TransactionApi } from '../models/transactionApiModel'
 import Register from '../components/Register'; 
 import Login from '../components/Login'; 
 import Logout from '../components/Logout';
-import { LoginData } from '../types/auth';
+import { LoginData, GoalChartData } from '../types/auth';
 import PortfolioHome from '../components/PortfolioHome';
 import About from '../components/About';
 import ESGGoalSet from '../components/ESGGoalSet';
@@ -290,14 +290,14 @@ function App() {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
 
   const [goalChartData, setGoalChartData] = useState({
-    AAA:15,
-    AA:15,
-    A:15,
-    BBB:15,
-    BB:10,
-    B:10,
-    CCC:10,
-    CC:10,
+    AAA:0,
+    AA:0,
+    A:0,
+    BBB:0,
+    BB:0,
+    B:0,
+    CCC:0,
+    CC:0,
   });
 
 
@@ -393,17 +393,9 @@ function App() {
     });
   }
 
-  const handleGoalChangeSubmit = (goalData: {
-    AAA:number,
-    AA:number,
-    A:number,
-    BBB:number,
-    BB:number,
-    B:number,
-    CCC:number,
-    CC:number,
-  }) => {
+  const handleGoalChangeSubmit = (goalData: GoalChartData) => {
     setGoalChartData(goalData);
+    alert(`Your new investment goals are set!`);
   };
 
   const getAllExchanges = () => {
@@ -601,13 +593,13 @@ function App() {
           <Route path='portfolio' element={<PortfolioHome portfolioChartData={portfolioChartData} investor={investorData} goalChartData={goalChartData} stockRatings={stockRatings} portfolios={portfolios}
             handleAddMoneySubmit={handleAddMoneySubmit}  />}></Route>
           <Route path='/about' element={<About />}></Route>
-          <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData} goalChartData={goalChartData} handleGoalChangeSubmit={handleGoalChangeSubmit}/>}></Route>
+          <Route path='esg-goal-planner' element={<ESGGoalSet investor={investorData} goalChartData={goalChartData} handleGoalChangeSubmit={() => handleGoalChangeSubmit(goalChartData)}/>}></Route>
           <Route path='invest' element={<Invest investor={investorData} exchangeStocks={exchanges} handleBuyStockSubmit={handleBuyStockSubmit} handleSellStockSubmit={handleSellStockSubmit} />}></Route>
           <Route path='transactions' element={<Transactions investor={investorData} transactions={transactions} />}></Route>
           <Route path='/logout' element={<Logout investor={investorData}/>}></Route>
           <Route path='*' element={<Error />} />
         </Routes>
-          {location.pathname === '/login' || location.pathname === '/logout' ? 
+          {location.pathname === '/' || location.pathname === '/logout' ? 
                         <div className="row mb-5">
                           <div className="col">
                               <header>
