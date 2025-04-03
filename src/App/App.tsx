@@ -395,7 +395,7 @@ function App() {
 
   const handleGoalChangeSubmit = (goalData: GoalChartData) => {
     setGoalChartData(goalData);
-    alert(`Your new investment goals are set!`);
+    console.log('Your goals have been set.')
   };
 
   const getAllExchanges = () => {
