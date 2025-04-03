@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import styles from './Percent.module.css';
 
 interface IPercentProps {
@@ -7,11 +7,9 @@ interface IPercentProps {
 }
 
 const Percent: React.FunctionComponent<IPercentProps> = ({total}) => {
-    // const [newTotal, setNewTotal] = useState(total);
 
     useEffect( () => {
         console.log(`total: ${total}`)
-        // setNewTotal(newTotal)
     },
     [total]
     );
