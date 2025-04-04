@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import "./Login.module.css";
+import styles from "./Login.module.css";
 import LoginHeader from './LoginHeader';
 import Footer from './Footer';
 import esgscale from '../assets/images/esgscale.png';
@@ -21,7 +21,8 @@ interface ILoginProps {
 
 const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
     const [loginFormData, setLoginFormData] = useState(kDefaultFormState);
-
+    const loginFormContainer = styles.loginFormContainer;
+    const loginForm = styles.loginForm;
 
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>): void =>{
         const fieldValue = event.target.value;
@@ -100,8 +101,8 @@ const Login: React.FunctionComponent<ILoginProps> = ({ handleLoginSubmit}) => {
 
             <div className="row">
                 <div className="col"></div>
-                <div className="mb-3 col-4 login-form-container">
-                    <form className="login-form text-primary" onSubmit={handleSubmit}>
+                <div className={`mb-3 col-4 ${loginFormContainer}`}>
+                    <form className={`${loginForm} text-primary`} onSubmit={handleSubmit}>
                         <label className="form-label" htmlFor="username" >Username</label>
                         <input type="text" id="username" value={loginFormData.username} onChange={handleChange} placeholder="Username" name="username"></input>
                         <label className="form-label" htmlFor="password">Password</label>
