@@ -3,12 +3,13 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-// import Button from 'react-bootstrap/Button'
+import styles from './Header.module.css';
 
 interface IHeaderProps {
 }
 
 const Header: React.FunctionComponent<IHeaderProps> = (props) => {
+    const btnMargin = styles.btnMargin;
     return (
         <Navbar fixed="top" bg="light" variant="light">
             <Container>
@@ -19,28 +20,28 @@ const Header: React.FunctionComponent<IHeaderProps> = (props) => {
                     <Navbar.Text>
                         <Nav defaultActiveKey="/portfolio" as="ul">
                             <Nav.Item as="li">
-                            {/* <Link to='/portfolio' className='btn'><Nav.Link href="/portfolio" eventKey="portfolio">Portfolio</Nav.Link></Link> */}
-                            <Link to='/portfolio' className='btn'>Portfolio</Link>
+                            {/* <Link to='/portfolio' className={btn}><Nav.Link href="/portfolio" eventKey="portfolio">Portfolio</Nav.Link></Link> */}
+                            <Link to='/portfolio' className={btnMargin}>Portfolio</Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                {/* <Link to='/about' className='btn'><Nav.Link href="/about" eventKey="about">About</Nav.Link></Link> */}
-                                <Link to='/about' className='btn'>About</Link>
+                                {/* <Link to='/about' className={btn}><Nav.Link href="/about" eventKey="about">About</Nav.Link></Link> */}
+                                <Link to='/about' className={btnMargin}>About</Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                {/* <Link to='/esg-goal-planner' className='btn'><Nav.Link href="/esg-goal-planner"eventKey="esg-goal-planner">ESG Goal Planner</Nav.Link></Link> */}
-                                <Link to='/esg-goal-planner' className='btn'>ESG Goal Planner</Link>
+                                {/* <Link to='/esg-goal-planner' className={btn}><Nav.Link href="/esg-goal-planner"eventKey="esg-goal-planner">ESG Goal Planner</Nav.Link></Link> */}
+                                <Link to='/esg-goal-planner' className={btnMargin}>ESG Goal Planner</Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/invest' className='btn'>Invest</Link>
-                                {/* <Link to='/invest' className='btn'><Nav.Link href="/invest" eventKey="invest">Invest</Nav.Link></Link> */}
+                                <Link to='/invest' className={btnMargin}>Invest</Link>
+                                {/* <Link to='/invest' className={btn}><Nav.Link href="/invest" eventKey="invest">Invest</Nav.Link></Link> */}
                             </Nav.Item>
                             <Nav.Item as="li">
-                                {/* <Link to='/transactions' className='btn'><Nav.Link href="/transactions" eventKey="transactions">Transactions</Nav.Link></Link> */}
-                                <Link to='/transactions' className='btn'>Transactions</Link>
+                                {/* <Link to='/transactions' className={btn}><Nav.Link href="/transactions" eventKey="transactions">Transactions</Nav.Link></Link> */}
+                                <Link to='/transactions' className={btnMargin}>Transactions</Link>
                             </Nav.Item>
                             <Nav.Item as="li">
-                                {/* <Link to='/logout' className='btn'><Nav.Link href="/logout" eventKey="logout">Logout</Nav.Link></Link> */}
-                                <Link to='/logout' className='btn'>Logout</Link>
+                                {/* <Link to='/logout' className={btn}><Nav.Link href="/logout" eventKey="logout">Logout</Nav.Link></Link> */}
+                                <Link to='/logout' className={btnMargin}>Logout</Link>
                             </Nav.Item>
                         </Nav>
                     </Navbar.Text>

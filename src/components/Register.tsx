@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import "./Register.css";
+import styles from "./Register.module.css";
 import LoginHeader from './LoginHeader';
 import Footer from './Footer';
 import esgscale from '../assets/images/esgscale.png';
@@ -19,8 +19,9 @@ interface IRegisterProps {
 }
 
 const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmit }) => {
-// const Register = (props:any) => {
     const [regFormData, setRegFormData] = useState(kDefaultFormState);
+    const regFormContainer = styles.regFormContainer;
+    const regForm = styles.regForm;
 
     const handleChange = (event:React.ChangeEvent<HTMLInputElement>): void =>{
         const fieldValue = event.target.value;
@@ -98,8 +99,8 @@ const Register: React.FunctionComponent<IRegisterProps> = ({ handleRegisterSubmi
 
             <div className="row">
                 <div className="col"></div>
-                    <div className="mb-3 col-4 reg-form-container">
-                        <form className="reg-form text-primary" onSubmit={handleSubmit}>
+                    <div className={`mb-3 col-4 ${regFormContainer} `}>
+                        <form className={`${regForm} text-primary`} onSubmit={handleSubmit}>
                             <label className="form-label" htmlFor="username">Username</label>
                             <input type="text" id="username" value={regFormData.username} onChange={handleChange} placeholder="Username" name="username"></input>
                             <label className="form-label" htmlFor="password">Password</label>

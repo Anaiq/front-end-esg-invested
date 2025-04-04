@@ -1,21 +1,16 @@
-.login-form-container, .login-form {
+.regFormContainer, .regForm {
     display:flex;
     flex-direction:column;
     justify-content:space-around;
 }
 
-.login-form-container {
+.regFormContainer {
     padding: 4rem;
-    border: 5px solid rgb(3, 29, 54);
+    border: 5px solid rgb(44,62,80);
     border-radius: 10px;
 }
 
-label {
-    color: rgb(3, 29, 54);
-}
 input {
     margin: 0.25rem 0;
-    border-radius: 5px;
-    border: 0.5px solid ;
     margin-bottom: 20px;
 }

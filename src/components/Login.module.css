@@ -1,0 +1,11 @@
+.loginFormContainer, .loginForm {
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+}
+
+.loginFormContainer {
+    padding: 4rem;
+    border: 5px solid rgb(3, 29, 54);
+    border-radius: 10px;
+}
