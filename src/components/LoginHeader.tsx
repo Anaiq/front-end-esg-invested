@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import styles from './LoginHeader.module.css';
 
 interface ILoginHeaderProps {
 }
 
 const LoginHeader: React.FunctionComponent<ILoginHeaderProps> = (props) => {
+    const btnMargin = styles.btnMargin;
     return (
         <div className="container mb-5">
             <Navbar fixed="top" bg="light" variant="light">
@@ -20,11 +22,11 @@ const LoginHeader: React.FunctionComponent<ILoginHeaderProps> = (props) => {
                     <Navbar.Text>
                         <Nav defaultActiveKey="/login" as="ul">
                             <Nav.Item as="li">
-                            <Link to='/' className='btn'><Nav.Link href="/login" eventKey="portfolio">Login</Nav.Link></Link>
+                            <Link to='/' className={btnMargin}><Nav.Link href="/login" eventKey="portfolio">Login</Nav.Link></Link>
                             {/* <Link to='/' className='btn'>Login</Link> */}
                             </Nav.Item>
                             <Nav.Item as="li">
-                                <Link to='/register' className='btn'><Nav.Link href="/register" eventKey="about">Register</Nav.Link></Link>
+                                <Link to='/register' className={btnMargin}><Nav.Link href="/register" eventKey="about">Register</Nav.Link></Link>
                                 {/* <Link to='/register' className='btn'>Register</Link> */}
                             </Nav.Item>
                         </Nav>
