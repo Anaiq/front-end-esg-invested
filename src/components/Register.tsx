@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
-import "./Register.css";
+import "./Register.module.css";
 import LoginHeader from './LoginHeader';
 import Footer from './Footer';
 import esgscale from '../assets/images/esgscale.png';

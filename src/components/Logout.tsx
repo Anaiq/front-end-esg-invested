@@ -1,5 +1,5 @@
 import React from "react";
-import "./Logout.css";
+import "./Logout.module.css";
 import { Investor } from "../models/investorModel";
 import LoginHeader from "./LoginHeader";
 import Footer from "./Footer";
